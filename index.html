@@ -39,6 +39,39 @@
 
 html { height: 100%; }
 
+/* DEBUG PANEL */
+#debug-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 10px;
+  z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  color: #0f0;
+  font-family: monospace;
+  font-size: 10px;
+  padding: 8px;
+  max-width: 280px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 4px;
+  border: 1px solid #0f0;
+  display: none;
+}
+#debug-panel.show { display: block; }
+#debug-panel-toggle {
+  position: fixed;
+  bottom: 90px;
+  right: 10px;
+  z-index: 10000;
+  background: #D4621A;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
@@ -550,6 +583,10 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 </style>
 </head>
 <body>
+<!-- DEBUG PANEL -->
+<button id="debug-panel-toggle" onclick="toggleDebugPanel()">🐛 Debug</button>
+<div id="debug-panel"></div>
+
 <div id="app">
   <!-- Sidebar -->
   <nav id="sidebar">
@@ -787,6 +824,28 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 
 <script>
 // =====================================================
+//  DEBUG UTILITIES
+// =====================================================
+const debugLogs = [];
+function debugLog(msg) {
+  const time = new Date().toLocaleTimeString();
+  const line = `[${time}] ${msg}`;
+  debugLogs.push(line);
+  const panel = document.getElementById('debug-panel');
+  if (panel) panel.innerHTML = debugLogs.slice(-15).join('<br>');
+}
+function toggleDebugPanel() {
+  const panel = document.getElementById('debug-panel');
+  if (panel) panel.classList.toggle('show');
+}
+// Override console.log for debugging
+const originalLog = console.log;
+console.log = function(...args) {
+  originalLog(...args);
+  debugLog(args.join(' '));
+};
+
+// =====================================================
 //  DATA LAYER
 // =====================================================
 const DB_KEY = 'babystats_data';
@@ -802,17 +861,24 @@ const defaultData = {
 
 function loadData() {
   try {
+    debugLog('🔍 Loading data from localStorage...');
     const raw = localStorage.getItem(DB_KEY);
-    if (!raw) return structuredClone(defaultData);
+    if (!raw) {
+      debugLog('❌ No data found - using defaults');
+      return structuredClone(defaultData);
+    }
+    debugLog(`✅ Found ${raw.length} bytes in localStorage`);
     const d = JSON.parse(raw);
+    debugLog(`📦 Parsed data: v${d.version}, ${d.tournaments?.length||0} tournaments, ${d.matches?.length||0} matches`);
+    
     // FORCE MIGRATION: reset version to 0 to ensure migration runs
-    // This is needed if Safari cached an old version without proper migration
     if (d.tournaments && d.tournaments.length > 0 && (!d.matches || d.matches.length === 0)) {
-      console.log('⚠️ Detected old architecture without matches table - forcing migration...');
+      debugLog('⚠️ FORCING MIGRATION: Old architecture detected!');
       d.version = 0;
     }
     return migrate(d);
   } catch(e) {
+    debugLog(`❌ ERROR loading: ${e.message}`);
     return structuredClone(defaultData);
   }
 }
