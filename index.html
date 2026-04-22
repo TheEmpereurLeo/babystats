@@ -805,6 +805,12 @@ function loadData() {
     const raw = localStorage.getItem(DB_KEY);
     if (!raw) return structuredClone(defaultData);
     const d = JSON.parse(raw);
+    // FORCE MIGRATION: reset version to 0 to ensure migration runs
+    // This is needed if Safari cached an old version without proper migration
+    if (d.tournaments && d.tournaments.length > 0 && (!d.matches || d.matches.length === 0)) {
+      console.log('⚠️ Detected old architecture without matches table - forcing migration...');
+      d.version = 0;
+    }
     return migrate(d);
   } catch(e) {
     return structuredClone(defaultData);
