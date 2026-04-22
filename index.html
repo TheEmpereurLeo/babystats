@@ -896,6 +896,7 @@ function migrate(d) {
   // avec { stats: { a: { attacker: {id,goals,pinches,gamelles,saves}, defender: {…} }, b: {…} } }
   // Nouvelle structure : db.matches[] avec { players: { [playerId]: {goals,saves,shots,sorties,csc} } }
   if (d.version < 1) {
+    let totalMigratedMatches = 0;
     d.tournaments.forEach(t => {
       const oldMatches = t.matches || [];
       oldMatches.forEach(om => {
@@ -909,7 +910,10 @@ function migrate(d) {
           if (!sideStats) return;
           ['attacker','defender'].forEach(role => {
             const ps = sideStats[role];
-            if (!ps?.id) return;
+            if (!ps?.id) {
+              debugLog(`⚠️ Missing player ID in match ${om.id} side=${side} role=${role}`);
+              return;
+            }
             const pid = ps.id;
             if (!players[pid]) players[pid] = { goals:0, saves:0, shots:0, sorties:0, csc:0 };
             players[pid].goals   += ps.goals    || 0;
@@ -938,11 +942,13 @@ function migrate(d) {
           createdAt: t.date || Date.now(),
           groupId: null,
         });
+        totalMigratedMatches++;
       });
 
       // Nettoyer les matchs de l'ancienne structure pour ne pas re-migrer
       delete t.matches;
     });
+    debugLog(`✅ Migration complete: ${totalMigratedMatches} matches migrated`);
   }
   // ────────────────────────────────────────────────────────────────────────────
 
