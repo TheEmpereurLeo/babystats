@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git reset *)",
+      "Bash(git checkout *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git config *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "$d = $input | ConvertFrom-Json; $f = $d.tool_input.file_path; if ($f -match '\\.html$') { git -C 'C:\\Claude_Code\\BabyStats' add \"$f\"; git -C 'C:\\Claude_Code\\BabyStats' commit -m \"Update $(Split-Path $f -Leaf)\"; if ($LASTEXITCODE -eq 0) { git -C 'C:\\Claude_Code\\BabyStats' push } }",
+            "statusMessage": "Pushing HTML changes to GitHub..."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -308,6 +308,17 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .font-bold{font-weight:700} .font-display{font-family:var(--font-display)}
 .w-full{width:100%}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* ADMIN */
+.admin-tool{background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-md);padding:18px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.admin-tool-title{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--text-900);margin-bottom:4px}
+.admin-tool-desc{font-size:13px;color:var(--text-500);margin-bottom:14px;line-height:1.5}
+.debug-stat{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--beige-200);font-size:13px}
+.debug-stat:last-child{border-bottom:none}
+.debug-stat-key{color:var(--text-500);font-weight:600}
+.debug-stat-val{font-family:var(--font-display);font-weight:700;color:var(--text-900)}
+.debug-raw{background:#1A1208;color:#E8D8C0;font-family:monospace;font-size:11px;padding:14px;border-radius:var(--radius-sm);max-height:300px;overflow-y:auto;white-space:pre-wrap;word-break:break-all;line-height:1.5;margin-top:10px}
+.debug-error{background:var(--red-50);border:1px solid #FFC5BF;border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--red-500);font-family:monospace;margin-top:8px;white-space:pre-wrap;word-break:break-all}
 </style>
 </head>
 <body>
@@ -321,6 +332,8 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
   <button class="desktop-nav-btn"        id="dn-tournaments" onclick="showPage('tournaments')"> <span class="dn-icon">🏆</span> Tournois</button>
   <button class="desktop-nav-btn"        id="dn-stats"       onclick="showPage('stats')">       <span class="dn-icon">📊</span> Stats</button>
   <button class="desktop-nav-btn"        id="dn-compare"     onclick="showPage('compare')">     <span class="dn-icon">⚖️</span> Comparer</button>
+  <div style="flex:1"></div>
+  <button class="desktop-nav-btn"        id="dn-admin"       onclick="showPage('admin')">       <span class="dn-icon">⚙️</span> Admin</button>
 </nav>
 
 <!-- ── HOME ── -->
@@ -552,6 +565,46 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 </div>
 
 <!-- ── COMPARE ── -->
+<div id="page-admin" class="page">
+  <div class="header"><span class="header-title">⚙️ Admin</span></div>
+  <div class="container">
+
+    <div class="section-header">📄 Export données</div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">Exporter en Markdown</div>
+      <div class="admin-tool-desc">Génère un fichier <code>.md</code> avec toutes les données locales : joueurs, équipes, tournois, matchs amicaux et JSON brut.</div>
+      <button class="btn btn-primary btn-full" onclick="adminExportMD()">⬇️ Télécharger export.md</button>
+    </div>
+
+    <div class="section-header">📥 Import données</div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">Importer un JSON</div>
+      <div class="admin-tool-desc">Colle un JSON valide au format <code>babystats_v2</code>. Les données actuelles seront <strong>remplacées</strong>.</div>
+      <div class="form-group">
+        <label class="form-label">JSON à importer</label>
+        <textarea id="admin-import-json" class="form-input" rows="5" placeholder='{"version":1,"players":[],"teams":[],"tournaments":[],"friendlyMatches":[]}'></textarea>
+      </div>
+      <button class="btn btn-warn btn-full" onclick="adminImportData()">⬆️ Importer et remplacer</button>
+    </div>
+
+    <div class="section-header">🐛 Debug</div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">État du stockage</div>
+      <div id="debug-stats"></div>
+    </div>
+    <div class="admin-tool">
+      <div class="admin-tool-title" style="display:flex;justify-content:space-between;align-items:center">
+        Données brutes
+        <button class="btn btn-secondary btn-xs" onclick="adminRefreshDebug()">🔄 Rafraîchir</button>
+      </div>
+      <div id="debug-errors"></div>
+      <div id="debug-raw" class="debug-raw"></div>
+    </div>
+    <div style="height:20px"></div>
+
+  </div>
+</div>
+
 <div id="page-compare" class="page">
   <div class="header"><span class="header-title">Comparer des joueurs</span></div>
   <div class="container">
@@ -728,13 +781,28 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
   </div>
 </div>
 
+<!-- confirm import modal -->
+<div id="modal-confirm-import" class="modal-overlay">
+  <div class="modal"><div class="modal-handle"></div>
+    <div class="modal-title">Confirmer l'import</div>
+    <div class="modal-body">
+      <p class="text-sm">Les données actuelles (joueurs, équipes, tournois, matchs) seront <strong>définitivement remplacées</strong> par le JSON importé.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary btn-full" onclick="closeModal('modal-confirm-import')">Annuler</button>
+      <button class="btn btn-danger btn-full" id="confirm-import-data">⬆️ Remplacer</button>
+    </div>
+  </div>
+</div>
+
 <!-- BOTTOM NAV (mobile) -->
-<nav class="nav">
+<nav class="nav" style="grid-template-columns:repeat(6,1fr)">
   <button class="nav-btn active" id="nav-home"        onclick="showPage('home')">        <span class="nav-icon">🏠</span>Accueil</button>
   <button class="nav-btn"        id="nav-players"     onclick="showPage('players')">     <span class="nav-icon">👤</span>Joueurs</button>
   <button class="nav-btn"        id="nav-teams"       onclick="showPage('teams')">       <span class="nav-icon">👥</span>Équipes</button>
   <button class="nav-btn"        id="nav-tournaments" onclick="showPage('tournaments')"> <span class="nav-icon">🏆</span>Tournois</button>
   <button class="nav-btn"        id="nav-stats"       onclick="showPage('stats')">       <span class="nav-icon">📊</span>Stats</button>
+  <button class="nav-btn"        id="nav-admin"       onclick="showPage('admin')">       <span class="nav-icon">⚙️</span>Admin</button>
 </nav>
 
 <script>
@@ -787,7 +855,7 @@ dbLoad();
 /* ═══════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════ */
-const MAIN_PAGES = ['home','players','teams','tournaments','stats','compare'];
+const MAIN_PAGES = ['home','players','teams','tournaments','stats','compare','admin'];
 let currentPage = 'home';
 let currentTabStates = {};
 let currentTeamStatsId = null;
@@ -816,6 +884,7 @@ function showPage(name, data) {
     'team-stats':       () => renderTeamStatsPage(data),
     friendly:           renderFriendly,
     compare:            renderCompare,
+    admin:              renderAdmin,
     match:              () => {},
   };
   if (renders[name]) renders[name]();
@@ -2372,6 +2441,139 @@ function renderTournaments() {
       <div class="text-xs text-muted mt-8">${done}/${total} matchs · ${pct}%</div>
     </div>`;
   }).join('');
+}
+
+/* ═══════════════════════════════════════
+   ADMIN
+═══════════════════════════════════════ */
+function adminExportMD() {
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('fr-FR');
+  const timeStr = now.toLocaleTimeString('fr-FR');
+  let md = `# BabyStats — Export données\n\n`;
+  md += `**Exporté le** : ${dateStr} à ${timeStr}  \n`;
+  md += `**Version DB** : ${db.version}  \n`;
+  md += `**Clé localStorage** : \`${DB_KEY}\`\n\n---\n\n`;
+
+  md += `## Joueurs (${db.players.length})\n\n`;
+  if (db.players.length) {
+    md += `| ID | Nom | Rôle |\n|---|---|---|\n`;
+    db.players.forEach(p => { md += `| \`${p.id}\` | ${p.name} | ${p.role} |\n`; });
+  } else { md += `_Aucun joueur._\n`; }
+
+  md += `\n## Équipes (${db.teams.length})\n\n`;
+  if (db.teams.length) {
+    md += `| ID | Nom | Attaquant | Défenseur | Victoires manuelles | À jamais 1ers |\n|---|---|---|---|---|---|\n`;
+    db.teams.forEach(t => {
+      md += `| \`${t.id}\` | ${t.name} | ${playerName(t.attackerId)} | ${playerName(t.defenderId)} | ${t.manualWins||0} | ${t.foreverFirst?'👑 Oui':'Non'} |\n`;
+    });
+  } else { md += `_Aucune équipe._\n`; }
+
+  md += `\n## Tournois (${db.tournaments.length})\n\n`;
+  db.tournaments.forEach(t => {
+    const done = t.matches.filter(m => m.finished).length;
+    md += `### ${t.name}\n\n`;
+    md += `- **Date** : ${new Date(t.date).toLocaleDateString('fr-FR')}\n`;
+    md += `- **Statut** : ${t.status === 'finished' ? 'Terminé' : 'En cours'}\n`;
+    md += `- **Phase** : ${phaseName(t.phase)}\n`;
+    md += `- **Durée match** : ${t.matchDuration} min · **Sorties/but** : ${t.sortiesPerBut}\n`;
+    md += `- **Équipes** : ${t.teams.map(id => teamName(id)).join(', ')}\n`;
+    md += `- **Progression** : ${done}/${t.matches.length} matchs\n\n`;
+    if (t.matches.length) {
+      md += `#### Matchs\n\n| Phase | Équipe A | Sc.A | Sc.B | Équipe B | Statut |\n|---|---|---|---|---|---|\n`;
+      t.matches.forEach(m => {
+        md += `| ${phaseName(m.phase)} | ${teamName(m.teamA)} | ${m.scoreA} | ${m.scoreB} | ${teamName(m.teamB)} | ${m.finished ? '✓ Terminé' : '—'} |\n`;
+      });
+      md += `\n`;
+    }
+  });
+  if (!db.tournaments.length) md += `_Aucun tournoi._\n`;
+
+  md += `\n## Matchs amicaux (${db.friendlyMatches.length})\n\n`;
+  if (db.friendlyMatches.length) {
+    md += `| Date | Équipe A | Sc.A | Sc.B | Équipe B |\n|---|---|---|---|---|\n`;
+    db.friendlyMatches.forEach(m => {
+      const d = m.date ? new Date(m.date).toLocaleDateString('fr-FR') : '—';
+      md += `| ${d} | ${teamName(m.teamA)} | ${m.scoreA||0} | ${m.scoreB||0} | ${teamName(m.teamB)} |\n`;
+    });
+  } else { md += `_Aucun match amical._\n`; }
+
+  md += `\n---\n\n## JSON brut\n\n\`\`\`json\n${JSON.stringify(db, null, 2)}\n\`\`\`\n`;
+
+  const blob = new Blob([md], { type: 'text/markdown' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `babystats-export-${now.toISOString().split('T')[0]}.md`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Export téléchargé !');
+}
+
+function adminImportData() {
+  const raw = document.getElementById('admin-import-json').value.trim();
+  if (!raw) { toast('Colle du JSON d\'abord'); return; }
+  let parsed;
+  try { parsed = JSON.parse(raw); }
+  catch(e) { toast('JSON invalide : ' + e.message); return; }
+  if (typeof parsed !== 'object' || !parsed.version) { toast('Format invalide — version manquante'); return; }
+  openModal('modal-confirm-import');
+  document.getElementById('confirm-import-data').onclick = () => {
+    localStorage.setItem(DB_KEY, raw);
+    dbLoad();
+    closeModal('modal-confirm-import');
+    document.getElementById('admin-import-json').value = '';
+    adminRefreshDebug();
+    renderHome();
+    toast('Données importées !');
+  };
+}
+
+const _adminErrors = [];
+const _origError = window.onerror;
+window.onerror = function(msg, src, line, col, err) {
+  _adminErrors.push({ time: new Date().toLocaleTimeString('fr-FR'), msg: String(msg), src: (src||'').split('/').pop() + ':' + line });
+  if (_adminErrors.length > 50) _adminErrors.shift();
+  if (_origError) _origError.apply(this, arguments);
+};
+
+function adminRefreshDebug() {
+  const raw = localStorage.getItem(DB_KEY) || '';
+  const sizeKB = (new Blob([raw]).size / 1024).toFixed(2);
+  const totalMatches = db.tournaments.reduce((s, t) => s + t.matches.length, 0);
+
+  const statsEl = document.getElementById('debug-stats');
+  const errEl   = document.getElementById('debug-errors');
+  const rawEl   = document.getElementById('debug-raw');
+  if (!statsEl) return;
+
+  const rows = [
+    ['Joueurs', db.players.length],
+    ['Équipes', db.teams.length],
+    ['Tournois', db.tournaments.length],
+    ['Matchs tournoi', totalMatches],
+    ['Matchs amicaux', db.friendlyMatches.length],
+    ['Version DB', db.version],
+    ['Taille localStorage', sizeKB + ' KB'],
+    ['Clé', DB_KEY],
+  ];
+  statsEl.innerHTML = rows.map(([k,v]) =>
+    `<div class="debug-stat"><span class="debug-stat-key">${k}</span><span class="debug-stat-val">${v}</span></div>`
+  ).join('');
+
+  if (_adminErrors.length) {
+    errEl.innerHTML = _adminErrors.map(e =>
+      `<div class="debug-error">[${e.time}] ${e.src} — ${e.msg}</div>`
+    ).join('');
+  } else {
+    errEl.innerHTML = '<div class="text-xs text-muted mt-8 mb-8">✓ Aucune erreur JS détectée</div>';
+  }
+
+  rawEl.textContent = JSON.stringify(db, null, 2);
+}
+
+function renderAdmin() {
+  adminRefreshDebug();
 }
 
 /* ═══════════════════════════════════════
