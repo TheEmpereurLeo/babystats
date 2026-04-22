@@ -813,12 +813,68 @@ function loadData() {
 
 function migrate(d) {
   if (!d.version) d.version = 0;
-  // future migrations go here
-  d.version = DB_VERSION;
+
   if (!d.players) d.players = [];
   if (!d.teams) d.teams = [];
   if (!d.tournaments) d.tournaments = [];
   if (!d.matches) d.matches = [];
+
+  // ── Migration v0 (ancienne architecture) → v1 ──────────────────────────────
+  // Ancienne structure : les matchs étaient stockés dans tournament.matches[]
+  // avec { stats: { a: { attacker: {id,goals,pinches,gamelles,saves}, defender: {…} }, b: {…} } }
+  // Nouvelle structure : db.matches[] avec { players: { [playerId]: {goals,saves,shots,sorties,csc} } }
+  if (d.version < 1) {
+    d.tournaments.forEach(t => {
+      const oldMatches = t.matches || [];
+      oldMatches.forEach(om => {
+        // Évite les doublons si la migration a déjà tourné partiellement
+        if (d.matches.find(m => m.id === om.id)) return;
+
+        // Construire le dict players à partir de l'ancienne structure
+        const players = {};
+        ['a','b'].forEach(side => {
+          const sideStats = om.stats?.[side];
+          if (!sideStats) return;
+          ['attacker','defender'].forEach(role => {
+            const ps = sideStats[role];
+            if (!ps?.id) return;
+            const pid = ps.id;
+            if (!players[pid]) players[pid] = { goals:0, saves:0, shots:0, sorties:0, csc:0 };
+            players[pid].goals   += ps.goals    || 0;
+            players[pid].saves   += ps.saves    || 0;
+            // pinches et gamelles n'existent pas dans le nouveau schéma → shots ≈ pinches
+            players[pid].shots   += ps.pinches  || 0;
+            players[pid].sorties += ps.sorties  || 0;
+            players[pid].csc     += ps.csc      || 0;
+          });
+        });
+
+        // Mapper les noms de phase
+        const phaseMap = { poule:'group', quart:'quarter', demi:'semi', petit_finale:'third', finale:'final', gala:'gala' };
+
+        d.matches.push({
+          id: om.id,
+          tournamentId: t.id,
+          team1Id: om.teamA,
+          team2Id: om.teamB,
+          type: phaseMap[om.phase] || 'group',
+          status: om.finished ? 'done' : 'pending',
+          duration: t.matchDuration || 5,
+          score1: om.scoreA || 0,
+          score2: om.scoreB || 0,
+          players,
+          createdAt: t.date || Date.now(),
+          groupId: null,
+        });
+      });
+
+      // Nettoyer les matchs de l'ancienne structure pour ne pas re-migrer
+      delete t.matches;
+    });
+  }
+  // ────────────────────────────────────────────────────────────────────────────
+
+  d.version = DB_VERSION;
   return d;
 }
 
