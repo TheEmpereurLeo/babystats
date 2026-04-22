@@ -548,6 +548,58 @@ h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
 .text-right { text-align: right; }
 .w-full { width: 100%; }
 </style>
+<script>
+// ── SERVICE WORKER INLINE ──────────────────────────────────────────────
+// On enregistre un SW depuis un blob pour éviter d'avoir un fichier séparé.
+// Le SW force un réseau-d'abord sur index.html → Safari rechargera toujours
+// la dernière version dès que la connexion est disponible.
+const SW_VERSION = '2'; // ← incrémenter ici pour forcer un nouveau SW
+const swCode = `
+const CACHE = 'babystats-v${SW_VERSION}';
+self.addEventListener('install', e => {
+  self.skipWaiting();
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+self.addEventListener('fetch', e => {
+  const url = new URL(e.request.url);
+  // Pour index.html → réseau d'abord, cache en fallback
+  if (url.pathname.endsWith('/') || url.pathname.endsWith('index.html')) {
+    e.respondWith(
+      fetch(e.request, { cache: 'no-store' })
+        .then(res => {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, clone));
+          return res;
+        })
+        .catch(() => caches.match(e.request))
+    );
+  }
+});
+`;
+if ('serviceWorker' in navigator) {
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, { scope: '/' })
+    .then(reg => {
+      // Si une nouvelle version du SW est détectée, recharge la page
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'activated') {
+            window.location.reload();
+          }
+        });
+      });
+    })
+    .catch(() => {}); // silencieux si SW non supporté
+}
+</script>
 </head>
 <body>
 <div id="app">
