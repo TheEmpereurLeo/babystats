@@ -49,7 +49,7 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .header-back:active{background:var(--orange-50)}
 
 /* NAV */
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--beige-50);border-top:1px solid var(--beige-300);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -2px 16px rgba(26,18,8,.07)}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--beige-50);border-top:1px solid var(--beige-300);display:grid;grid-template-columns:repeat(6,1fr);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -2px 16px rgba(26,18,8,.07)}
 .nav-btn{display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;gap:3px;color:var(--text-400);font-size:10px;font-weight:600;font-family:var(--font-display);letter-spacing:.02em;transition:color .15s}
 .nav-btn .nav-icon{font-size:20px;line-height:1;transition:transform .15s}
 .nav-btn.active{color:var(--orange-400)}
@@ -340,7 +340,6 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 <div id="page-home" class="page active">
   <div class="header">
     <span class="header-title">BabyStats ⚽</span>
-    <button class="btn btn-secondary btn-sm" onclick="openModal('modal-new-friendly')" style="padding:7px 12px">🤝 Amical</button>
     <button class="btn btn-primary btn-sm" onclick="openModal('modal-new-tournament')">+ Tournoi</button>
   </div>
   <div class="container">
@@ -348,9 +347,7 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div class="section-header">Trophées</div>
     <div id="home-badges" class="home-badges-wrap"></div>
     <div class="section-header">Hall of Shame 🔥</div>
-    <div id="home-shame"></div>
-    <div class="section-header">Tournois récents</div>
-    <div id="home-tournaments" class="pb-20"></div>
+    <div id="home-shame" class="pb-20"></div>
   </div>
 </div>
 
@@ -407,7 +404,6 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div id="stats-rankings">
       <div class="chips">
         <button class="chip active" onclick="switchRanking('goals',this)">⚽ Buts</button>
-        <button class="chip" onclick="switchRanking('pinches',this)">🤏 Pinches</button>
         <button class="chip" onclick="switchRanking('saves',this)">🛡 Arrêts</button>
         <button class="chip" onclick="switchRanking('gamelles',this)">🎯 Cadrages</button>
         <button class="chip" onclick="switchRanking('ownGoals',this)">🤦 CSC</button>
@@ -423,8 +419,6 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
       <div class="card"><div class="chart-wrap"><canvas id="chart-gamelles"></canvas></div></div>
       <div class="section-header">Victoires cumulées</div>
       <div class="card"><div class="chart-wrap"><canvas id="chart-wins"></canvas></div></div>
-      <div class="section-header">Pinches par tournoi</div>
-      <div class="card"><div class="chart-wrap"><canvas id="chart-pinches"></canvas></div></div>
     </div>
     <div id="stats-badges" style="display:none">
       <div id="badges-list" class="badge-grid pb-20"></div>
@@ -508,21 +502,17 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
         </div>
       </div>
     </div>
-    <div class="card card-sm mb-8 flex-center gap-8">
-      <span class="text-muted text-sm">🟡 Arbitre :</span>
-      <span id="match-referee" class="font-bold text-sm" style="color:var(--orange-400)">—</span>
-    </div>
     <div class="tabs">
       <button class="tab-btn active" id="tab-ma-btn" onclick="switchMatchTeam('a')">Éq. A</button>
       <button class="tab-btn"        id="tab-mb-btn" onclick="switchMatchTeam('b')">Éq. B</button>
     </div>
     <div id="match-stats-a">
-      <div class="info-box">💡 <span><strong>Cadrage</strong> (gamelle) = tir bien cadré qui ne rentre pas. <strong>Pinch</strong> = coincer la balle contre le bord → tir rapide avec effet.</span></div>
+      <div class="info-box">💡 <span><strong>Cadrage</strong> (gamelle) = tir bien cadré qui ne rentre pas.</span></div>
       <div class="card mb-8"><div class="card-header"><div class="card-title" id="sa-att-name">Attaquant</div><span class="pill pill-red">ATT</span></div><div id="sa-att-counters"></div></div>
       <div class="card">    <div class="card-header"><div class="card-title" id="sa-def-name">Défenseur</div><span class="pill pill-blue">DEF</span></div><div id="sa-def-counters"></div></div>
     </div>
     <div id="match-stats-b" style="display:none">
-      <div class="info-box">💡 <span><strong>Cadrage</strong> (gamelle) = tir bien cadré qui ne rentre pas. <strong>Pinch</strong> = coincer la balle contre le bord → tir rapide avec effet.</span></div>
+      <div class="info-box">💡 <span><strong>Cadrage</strong> (gamelle) = tir bien cadré qui ne rentre pas.</span></div>
       <div class="card mb-8"><div class="card-header"><div class="card-title" id="sb-att-name">Attaquant</div><span class="pill pill-red">ATT</span></div><div id="sb-att-counters"></div></div>
       <div class="card">    <div class="card-header"><div class="card-title" id="sb-def-name">Défenseur</div><span class="pill pill-blue">DEF</span></div><div id="sb-def-counters"></div></div>
     </div>
@@ -556,14 +546,6 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
   </div>
 </div>
 
-<!-- ── FRIENDLY MATCHES ── -->
-<div id="page-friendly" class="page">
-  <div class="header"><span class="header-title">Matchs amicaux</span><button class="btn btn-primary btn-sm" onclick="openModal('modal-new-friendly')">+ Amical</button></div>
-  <div class="container">
-    <div id="friendly-list" class="mt-12 pb-20"></div>
-  </div>
-</div>
-
 <!-- ── COMPARE ── -->
 <div id="page-admin" class="page">
   <div class="header"><span class="header-title">⚙️ Admin</span></div>
@@ -579,12 +561,15 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div class="section-header">📥 Import données</div>
     <div class="admin-tool">
       <div class="admin-tool-title">Importer un JSON</div>
-      <div class="admin-tool-desc">Colle un JSON valide au format <code>babystats_v2</code>. Les données actuelles seront <strong>remplacées</strong>.</div>
+      <div class="admin-tool-desc">Colle un JSON valide au format <code>babystats_v2</code>.</div>
       <div class="form-group">
         <label class="form-label">JSON à importer</label>
-        <textarea id="admin-import-json" class="form-input" rows="5" placeholder='{"version":1,"players":[],"teams":[],"tournaments":[],"friendlyMatches":[]}'></textarea>
+        <textarea id="admin-import-json" class="form-input" rows="5" placeholder='{"version":1,"players":[],"teams":[],"tournaments":[]}'></textarea>
       </div>
-      <button class="btn btn-warn btn-full" onclick="adminImportData()">⬆️ Importer et remplacer</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-danger btn-full" onclick="adminImportData('replace')">🔄 Remplacer</button>
+        <button class="btn btn-blue btn-full" onclick="adminImportData('merge')">➕ Fusionner</button>
+      </div>
     </div>
 
     <div class="section-header">🐛 Debug</div>
@@ -674,9 +659,6 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
           <option value="replay">Match d'appui</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">Arbitre</label>
-        <select id="nto-referee" class="form-input form-select"><option value="">— Aucun —</option></select>
-      </div>
       <div class="form-group">
         <label class="form-label">Équipes <span id="nto-count" class="pill pill-orange" style="margin-left:4px">0</span></label>
         <div id="nto-teams-list" style="max-height:220px;overflow-y:auto;border:1.5px solid var(--beige-300);border-radius:var(--radius-sm);padding:4px 8px;background:var(--beige-100)"></div>
@@ -728,23 +710,6 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
   </div>
 </div>
 
-<!-- New Friendly Match -->
-<div id="modal-new-friendly" class="modal-overlay">
-  <div class="modal"><div class="modal-handle"></div>
-    <div class="modal-title">Match amical</div>
-    <div class="modal-body">
-      <div class="form-group"><label class="form-label">Équipe A</label><select id="nf-team-a" class="form-input form-select"></select></div>
-      <div class="form-group"><label class="form-label">Équipe B</label><select id="nf-team-b" class="form-input form-select"></select></div>
-      <div class="form-group"><label class="form-label">Durée (min)</label><input id="nf-duration" class="form-input" type="number" value="5" min="1" max="90"></div>
-      <div class="form-group"><label class="form-label">Sorties pour 1 but adverse</label><input id="nf-sorties" class="form-input" type="number" value="3" min="1" max="20"></div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary btn-full" onclick="closeModal('modal-new-friendly')">Annuler</button>
-      <button class="btn btn-primary btn-full" onclick="startFriendlyMatch()">▶ Jouer</button>
-    </div>
-  </div>
-</div>
-
 <!-- Edit Stats Modal -->
 <div id="modal-edit-stats" class="modal-overlay">
   <div class="modal"><div class="modal-handle"></div>
@@ -784,26 +749,34 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 <!-- confirm import modal -->
 <div id="modal-confirm-import" class="modal-overlay">
   <div class="modal"><div class="modal-handle"></div>
-    <div class="modal-title">Confirmer l'import</div>
+    <div class="modal-title" id="confirm-import-title">Confirmer l'import</div>
     <div class="modal-body">
-      <p class="text-sm">Les données actuelles (joueurs, équipes, tournois, matchs) seront <strong>définitivement remplacées</strong> par le JSON importé.</p>
+      <p class="text-sm" id="confirm-import-text"></p>
+      <div id="confirm-import-export-btn" style="display:none;margin-top:12px">
+        <button class="btn btn-secondary btn-full" onclick="adminExportMD()">💾 Exporter les données actuelles d'abord</button>
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary btn-full" onclick="closeModal('modal-confirm-import')">Annuler</button>
-      <button class="btn btn-danger btn-full" id="confirm-import-data">⬆️ Remplacer</button>
+      <button class="btn btn-danger btn-full" id="confirm-import-data">Confirmer</button>
     </div>
   </div>
 </div>
 
 <!-- BOTTOM NAV (mobile) -->
-<nav class="nav" style="grid-template-columns:repeat(6,1fr)">
+<nav class="nav">
   <button class="nav-btn active" id="nav-home"        onclick="showPage('home')">        <span class="nav-icon">🏠</span>Accueil</button>
   <button class="nav-btn"        id="nav-players"     onclick="showPage('players')">     <span class="nav-icon">👤</span>Joueurs</button>
   <button class="nav-btn"        id="nav-teams"       onclick="showPage('teams')">       <span class="nav-icon">👥</span>Équipes</button>
   <button class="nav-btn"        id="nav-tournaments" onclick="showPage('tournaments')"> <span class="nav-icon">🏆</span>Tournois</button>
   <button class="nav-btn"        id="nav-stats"       onclick="showPage('stats')">       <span class="nav-icon">📊</span>Stats</button>
-  <button class="nav-btn"        id="nav-admin"       onclick="showPage('admin')">       <span class="nav-icon">⚙️</span>Admin</button>
+  <button class="nav-btn"        id="nav-more"        onclick="toggleMoreMenu()">        <span class="nav-icon">⋯</span>Plus</button>
 </nav>
+<div id="nav-more-menu" style="display:none;position:fixed;bottom:calc(64px + env(safe-area-inset-bottom,0px));right:12px;z-index:300;background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;min-width:160px">
+  <button onclick="showPage('compare');closeMoreMenu()" style="display:flex;align-items:center;gap:10px;padding:14px 18px;width:100%;font-size:15px;font-weight:600;font-family:var(--font-display);color:var(--text-700);border-bottom:1px solid var(--beige-200)"><span>⚖️</span>Comparer</button>
+  <button onclick="showPage('admin');closeMoreMenu()"   style="display:flex;align-items:center;gap:10px;padding:14px 18px;width:100%;font-size:15px;font-weight:600;font-family:var(--font-display);color:var(--text-700)"><span>⚙️</span>Admin</button>
+</div>
+<div id="nav-more-backdrop" onclick="closeMoreMenu()" style="display:none;position:fixed;inset:0;z-index:299"></div>
 
 <script>
 /* ═══════════════════════════════════════
@@ -812,7 +785,7 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 const DB_KEY = 'babystats_v2';
 const DB_VERSION = 1;
 
-let db = { version: DB_VERSION, players: [], teams: [], tournaments: [], friendlyMatches: [] };
+let db = { version: DB_VERSION, players: [], teams: [], tournaments: [] };
 
 function dbSave() { db.version = DB_VERSION; localStorage.setItem(DB_KEY, JSON.stringify(db)); }
 
@@ -824,8 +797,6 @@ function dbLoad() {
     if (saved.players)         db.players         = saved.players;
     if (saved.teams)           db.teams           = saved.teams;
     if (saved.tournaments)     db.tournaments     = saved.tournaments;
-    if (saved.friendlyMatches) db.friendlyMatches = saved.friendlyMatches;
-    db.friendlyMatches = db.friendlyMatches || [];
     // Migrations
     db.tournaments.forEach(t => {
       if (!t.tiebreak)       t.tiebreak = 'goal_average';
@@ -845,7 +816,6 @@ function dbLoad() {
       if (m.sortiesB === undefined) m.sortiesB = 0;
     };
     db.tournaments.forEach(t => t.matches.forEach(fixMatch));
-    db.friendlyMatches.forEach(fixMatch);
   } catch(e) { console.warn('DB load error', e); }
 }
 
@@ -855,7 +825,24 @@ dbLoad();
 /* ═══════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════ */
-const MAIN_PAGES = ['home','players','teams','tournaments','stats','compare','admin'];
+function toggleMoreMenu() {
+  const open = document.getElementById('nav-more-menu').style.display !== 'none';
+  if (open) { closeMoreMenu(); } else {
+    document.getElementById('nav-more-menu').style.display = 'block';
+    document.getElementById('nav-more-backdrop').style.display = 'block';
+    document.getElementById('nav-more').classList.add('active');
+  }
+}
+function closeMoreMenu() {
+  const menu = document.getElementById('nav-more-menu');
+  const backdrop = document.getElementById('nav-more-backdrop');
+  const btn = document.getElementById('nav-more');
+  if (menu) menu.style.display = 'none';
+  if (backdrop) backdrop.style.display = 'none';
+  if (btn) btn.classList.remove('active');
+}
+
+const MAIN_PAGES = ['home','players','teams','tournaments','stats'];
 let currentPage = 'home';
 let currentTabStates = {};
 let currentTeamStatsId = null;
@@ -866,10 +853,16 @@ function showPage(name, data) {
   if (!el) return;
   el.classList.add('active');
   currentPage = name;
+  closeMoreMenu();
   MAIN_PAGES.forEach(p => {
     const mob  = document.getElementById('nav-'+p);
     const desk = document.getElementById('dn-'+p);
     if (mob)  mob.classList.toggle('active',  p === name);
+    if (desk) desk.classList.toggle('active', p === name);
+  });
+  // Update desktop nav for compare and admin too
+  ['compare','admin'].forEach(p => {
+    const desk = document.getElementById('dn-'+p);
     if (desk) desk.classList.toggle('active', p === name);
   });
   window.scrollTo(0,0);
@@ -882,7 +875,6 @@ function showPage(name, data) {
     'tournament-detail':() => renderTournamentDetail(data),
     'player-detail':    () => renderPlayerDetail(data),
     'team-stats':       () => renderTeamStatsPage(data),
-    friendly:           renderFriendly,
     compare:            renderCompare,
     admin:              renderAdmin,
     match:              () => {},
@@ -919,7 +911,6 @@ function switchTab(page, tab, btn) {
 function openModal(id) {
   if (id === 'modal-new-team')       populateTeamModal();
   if (id === 'modal-new-tournament') populateTournamentModal();
-  if (id === 'modal-new-friendly')   populateFriendlyModal();
   document.getElementById(id).classList.add('open');
 }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
@@ -1049,7 +1040,6 @@ function deleteTeam(id) {
 function getTeamStreak(teamId) {
   const all = [];
   db.tournaments.forEach(t => t.matches.filter(m=>m.finished&&(m.teamA===teamId||m.teamB===teamId)).forEach(m=>all.push(m)));
-  db.friendlyMatches.filter(m=>m.finished&&(m.teamA===teamId||m.teamB===teamId)).forEach(m=>all.push(m));
   all.sort((a,b)=>(a.finishedAt||0)-(b.finishedAt||0));
   let streak=0;
   for (let i=all.length-1;i>=0;i--) {
@@ -1138,13 +1128,6 @@ function renderTeamStatsPage(teamId) {
     else if (m.winner===null) totalDraws++;
     else totalLosses++;
   }));
-  db.friendlyMatches.filter(m=>m.finished&&(m.teamA===teamId||m.teamB===teamId)).forEach(m => {
-    totalMatches++;
-    const side = m.teamA===teamId?'a':'b';
-    if (m.winner===side) totalWins++;
-    else if (!m.winner) totalDraws++;
-    else totalLosses++;
-  });
   const finalesPlayed = db.tournaments.filter(t=>t.matches.some(m=>m.phase==='finale'&&m.finished&&(m.teamA===teamId||m.teamB===teamId))).length;
   const wratio = totalLosses===0 ? (totalWins>0?'∞':'—') : (totalWins/totalLosses).toFixed(2);
 
@@ -1199,7 +1182,6 @@ function renderTeamStatsPage(teamId) {
         <div class="stat-mini-grid" style="grid-template-columns:repeat(3,1fr)">
           <div class="stat-mini"><div class="stat-mini-val">${s.goals}</div><div class="stat-mini-lbl">⚽ Buts</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${s.saves}</div><div class="stat-mini-lbl">🛡 Arrêts</div></div>
-          <div class="stat-mini"><div class="stat-mini-val">${s.pinches}</div><div class="stat-mini-lbl">🤏 Pinches</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${s.gamelles}</div><div class="stat-mini-lbl">🎯 Cadrages</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${s.ownGoals}</div><div class="stat-mini-lbl">🤦 CSC</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${pr}</div><div class="stat-mini-lbl">📊 V/D</div></div>
@@ -1278,14 +1260,12 @@ function saveEditStats() {
     renderTeamStatsPage(editStatsContext.teamId);
   } else if (editStatsContext.type==='match') {
     const { tid, mid } = editStatsContext;
-    const m = tid
-      ? db.tournaments.find(x=>x.id===tid)?.matches.find(x=>x.id===mid)
-      : db.friendlyMatches.find(x=>x.id===mid);
+    const m = db.tournaments.find(x=>x.id===tid)?.matches.find(x=>x.id===mid);
     if (m) {
       ['a','b'].forEach(side => ['attacker','defender'].forEach(role => {
         const ps = m.stats[side]?.[role];
         if (!ps) return;
-        ['goals','pinches','saves','gamelles','ownGoals'].forEach(f => {
+        ['goals','saves','gamelles','ownGoals'].forEach(f => {
           const inp = document.getElementById(`es-${side}-${role}-${f}`);
           if (inp) ps[f] = Math.max(0, parseInt(inp.value)||0);
         });
@@ -1296,15 +1276,12 @@ function saveEditStats() {
     }
     dbSave(); closeModal('modal-edit-stats');
     if (tid && currentTournament) renderTournamentDetail(tid);
-    else renderFriendly();
   }
   toast('Stats mises à jour ✓');
 }
 
 function openEditMatchStats(mid, tid) {
-  const m = tid
-    ? db.tournaments.find(x=>x.id===tid)?.matches.find(x=>x.id===mid)
-    : db.friendlyMatches.find(x=>x.id===mid);
+  const m = db.tournaments.find(x=>x.id===tid)?.matches.find(x=>x.id===mid);
   if (!m) return;
   editStatsContext = { type:'match', mid, tid };
   let html='';
@@ -1318,9 +1295,9 @@ function openEditMatchStats(mid, tid) {
       html += `<div style="background:var(--beige-100);border-radius:8px;padding:10px;margin-bottom:8px">
         <div class="text-xs text-muted font-bold mb-8">${rl} : ${ps.name||'?'}</div>`;
       const fields = role==='attacker'
-        ? ['goals','pinches','gamelles','ownGoals']
-        : ['goals','saves','pinches','gamelles','ownGoals'];
-      const labels = {goals:'⚽ Buts',pinches:'🤏 Pinches',saves:'🛡 Arrêts',gamelles:'🎯 Cadrages',ownGoals:'🤦 CSC'};
+        ? ['goals','gamelles','ownGoals']
+        : ['goals','saves','gamelles','ownGoals'];
+      const labels = {goals:'⚽ Buts',saves:'🛡 Arrêts',gamelles:'🎯 Cadrages',ownGoals:'🤦 CSC'};
       fields.forEach(f => {
         html += `<div class="form-group" style="margin-bottom:8px"><label class="form-label">${labels[f]}</label>
           <input id="es-${side}-${role}-${f}" class="form-input" type="number" value="${ps[f]||0}" min="0"></div>`;
@@ -1391,8 +1368,6 @@ function populateTournamentModal() {
       </label>`;
     }).join('');
   }
-  const ref = document.getElementById('nto-referee');
-  ref.innerHTML = '<option value="">— Aucun arbitre —</option>' + db.players.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
   updateTournamentTeamCount();
 }
 function updateTournamentTeamCount() {
@@ -1402,12 +1377,11 @@ function saveTournament() {
   const name = document.getElementById('nto-name').value.trim();
   const duration = parseInt(document.getElementById('nto-duration').value)||5;
   const tiebreak = document.getElementById('nto-tiebreak').value;
-  const referee  = document.getElementById('nto-referee').value;
   const sortiesPerBut = parseInt(document.getElementById('nto-sorties').value)||3;
   if (!name) { toast('Donne un nom au tournoi !'); return; }
   const teams = [...document.querySelectorAll('#nto-teams-list input:checked')].map(c=>c.value);
   if (teams.length < 2) { toast('Sélectionne au moins 2 équipes !'); return; }
-  const t = { id:uid(), name, date:Date.now(), status:'active', teams, matches:[], matchDuration:duration, refereeId:referee, tiebreak, phase:'poule', sortiesPerBut, groups:[], knockoutRounds:[], specialMatches:{} };
+  const t = { id:uid(), name, date:Date.now(), status:'active', teams, matches:[], matchDuration:duration, tiebreak, phase:'poule', sortiesPerBut, groups:[], knockoutRounds:[], specialMatches:{} };
   generatePoules(t);
   db.tournaments.unshift(t);
   dbSave(); closeModal('modal-new-tournament');
@@ -1436,8 +1410,13 @@ function getTournamentExplanation(t) {
   return html;
 }
 
+function shuffle(arr) {
+  for (let i=arr.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]; }
+  return arr;
+}
+
 function generatePoules(t) {
-  const teams=[...t.teams], n=teams.length;
+  const teams=shuffle([...t.teams]), n=teams.length;
   if (n<=4)      t.groups=[{name:'Poule unique',teams:[...teams]}];
   else if (n<=9) { const h=Math.ceil(n/2); t.groups=[{name:'Poule A',teams:teams.slice(0,h)},{name:'Poule B',teams:teams.slice(h)}]; }
   else           { t.groups=[]; for(let i=0;i<Math.ceil(n/4);i++) t.groups.push({name:`Poule ${String.fromCharCode(65+i)}`,teams:teams.slice(i*4,i*4+4)}); }
@@ -1578,16 +1557,16 @@ function getTournamentMVP(t) {
   t.matches.filter(m=>m.finished).forEach(m=>{
     ['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{
       const ps=m.stats[side]?.[role]; if (!ps?.id) return;
-      if (!pStats[ps.id]) pStats[ps.id]={id:ps.id,goals:0,saves:0,pinches:0,gamelles:0,wins:0,matches:0};
+      if (!pStats[ps.id]) pStats[ps.id]={id:ps.id,goals:0,saves:0,gamelles:0,wins:0,matches:0};
       pStats[ps.id].goals+=ps.goals||0; pStats[ps.id].saves+=ps.saves||0;
-      pStats[ps.id].pinches+=ps.pinches||0; pStats[ps.id].gamelles+=ps.gamelles||0;
+      pStats[ps.id].gamelles+=ps.gamelles||0;
       pStats[ps.id].matches++;
       if (m.winner===side) pStats[ps.id].wins++;
     }));
   });
   const all=Object.values(pStats);
   if (!all.length) return null;
-  all.forEach(p=>{p.score=p.goals*3+p.saves*2+p.pinches+p.wins*4+p.gamelles*0.5;});
+  all.forEach(p=>{p.score=p.goals*3+p.saves*2+p.wins*4+p.gamelles*0.5;});
   all.sort((a,b)=>b.score-a.score);
   return {best:all[0],worst:all[all.length-1]};
 }
@@ -1645,7 +1624,6 @@ function renderTournamentMatches(t) {
 
 function renderMatchCard(m, t) {
   const na=teamName(m.teamA), nb=teamName(m.teamB);
-  const ref=t.refereeId?db.players.find(p=>p.id===t.refereeId):null;
   if (m.finished) {
     const wA=m.winner==='a', wB=m.winner==='b';
     return `<div class="card card-sm mb-8">
@@ -1666,7 +1644,6 @@ function renderMatchCard(m, t) {
       <span style="color:var(--beige-400);font-size:13px">vs</span>
       <span style="font-weight:700;font-size:14px">${nb} <span style="color:var(--blue-500)">●</span></span>
     </div>
-    ${ref?`<div class="text-xs text-muted mb-8">🟡 Arbitre : ${ref.name}</div>`:''}
     <button class="btn btn-primary btn-full btn-sm" onclick="startMatch('${m.id}','${t.id}')">▶ Jouer ce match</button>
   </div>`;
 }
@@ -1716,38 +1693,35 @@ function renderTournamentRanking(t) {
 /* ═══════════════════════════════════════
    MATCH — TIMER & STATS
 ═══════════════════════════════════════ */
-let currentMatchId=null, currentTournamentId=null, isFriendlyMatch=false;
+let currentMatchId=null, currentTournamentId=null;
 let timerInterval=null, timerSeconds=300, timerRunning=false, timerTotal=300;
 let currentSortiesA=0, currentSortiesB=0, currentSortiesPerBut=3;
 
 const STAT_DEFS = {
   attacker: [
     {key:'goals',    label:'⚽ Buts',      desc:'Buts marqués'},
-    {key:'pinches',  label:'🤏 Pinches',   desc:'Tir en bande pincée'},
     {key:'gamelles', label:'🎯 Cadrages',  desc:'Tir bien cadré, non rentrant'},
     {key:'ownGoals', label:'🤦 CSC',       desc:'Contre son camp'},
   ],
   defender: [
     {key:'goals',    label:'⚽ Buts',      desc:'Buts de la défense'},
     {key:'saves',    label:'🛡 Arrêts',    desc:'Arrêts gardien'},
-    {key:'pinches',  label:'🤏 Pinches',   desc:'Tir en bande pincée'},
     {key:'gamelles', label:'🎯 Cadrages',  desc:'Tir bien cadré, non rentrant'},
     {key:'ownGoals', label:'🤦 CSC',       desc:'Contre son camp'},
   ]
 };
 
-function startMatch(matchId, tournamentId, friendly) {
-  isFriendlyMatch=!!friendly;
-  const t=friendly?null:db.tournaments.find(x=>x.id===tournamentId);
-  const ml=friendly?db.friendlyMatches:t?.matches||[];
+function startMatch(matchId, tournamentId) {
+  const t=db.tournaments.find(x=>x.id===tournamentId);
+  const ml=t?.matches||[];
   const m=ml.find(x=>x.id===matchId);
   if (!m) return;
   currentMatchId=matchId; currentTournamentId=tournamentId; currentTournament=t;
-  currentSortiesPerBut=t?.sortiesPerBut||m.sortiesPerBut||3;
+  currentSortiesPerBut=t?.sortiesPerBut||3;
   const tA=db.teams.find(x=>x.id===m.teamA), tB=db.teams.find(x=>x.id===m.teamB);
   const atkA=db.players.find(p=>p.id===tA?.attackerId), defA=db.players.find(p=>p.id===tA?.defenderId);
   const atkB=db.players.find(p=>p.id===tB?.attackerId), defB=db.players.find(p=>p.id===tB?.defenderId);
-  const mkS=(atk,def)=>({attacker:{id:atk?.id,name:atk?.name,goals:0,pinches:0,gamelles:0,saves:0,ownGoals:0},defender:{id:def?.id,name:def?.name,goals:0,pinches:0,gamelles:0,saves:0,ownGoals:0}});
+  const mkS=(atk,def)=>({attacker:{id:atk?.id,name:atk?.name,goals:0,gamelles:0,saves:0,ownGoals:0},defender:{id:def?.id,name:def?.name,goals:0,gamelles:0,saves:0,ownGoals:0}});
   if (!m.stats.a) m.stats.a=mkS(atkA,defA);
   if (!m.stats.b) m.stats.b=mkS(atkB,defB);
   if (m.sortiesA===undefined) m.sortiesA=0;
@@ -1764,15 +1738,13 @@ function startMatch(matchId, tournamentId, friendly) {
   document.getElementById('timer-display').className='timer-display';
   updateTimerDisplay();
   document.getElementById('match-header-title').textContent=`${tA?.name||'?'} vs ${tB?.name||'?'}`;
-  document.getElementById('match-phase-pill').innerHTML=`<div class="phase-pill">${friendly?'Match amical':phaseName(m.phase)}</div>`;
+  document.getElementById('match-phase-pill').innerHTML=`<div class="phase-pill">${phaseName(m.phase)}</div>`;
   document.getElementById('match-score-a').textContent=m.scoreA;
   document.getElementById('match-score-b').textContent=m.scoreB;
   document.getElementById('match-name-a').textContent=tA?.name||'?';
   document.getElementById('match-name-b').textContent=tB?.name||'?';
   document.getElementById('tab-ma-btn').textContent=tA?.name||'Éq. A';
   document.getElementById('tab-mb-btn').textContent=tB?.name||'Éq. B';
-  const ref=t?.refereeId?db.players.find(p=>p.id===t.refereeId):null;
-  document.getElementById('match-referee').textContent=ref?.name||'—';
   renderMatchStatPanel('a',m); renderMatchStatPanel('b',m);
   switchMatchTeam('a');
   showPage('match');
@@ -1797,7 +1769,7 @@ function renderMatchStatPanel(side, m) {
   });
 }
 
-function getMatchList() { return isFriendlyMatch?db.friendlyMatches:db.tournaments.find(x=>x.id===currentTournamentId)?.matches||[]; }
+function getMatchList() { return db.tournaments.find(x=>x.id===currentTournamentId)?.matches||[]; }
 
 function updateStat(side, role, key, delta) {
   const m=getMatchList().find(x=>x.id===currentMatchId);
@@ -1842,14 +1814,12 @@ function toggleTimer() {
   } else {
     timerRunning=true;
     document.getElementById('timer-btn').textContent='⏸ Pause';
-    document.getElementById('timer-display').classList.add('running','');
+    document.getElementById('timer-display').classList.add('running');
     document.getElementById('timer-display').classList.remove('overtime');
     timerInterval=setInterval(()=>{
       timerSeconds--;
       updateTimerDisplay();
-      if (timerSeconds<=0) {
-        clearInterval(timerInterval); timerRunning=false;
-        document.getElementById('timer-btn').textContent='▶ Reprendre';
+      if (timerSeconds===0) {
         document.getElementById('timer-display').classList.remove('running');
         document.getElementById('timer-display').classList.add('overtime');
         toast('⏰ Temps écoulé !');
@@ -1890,8 +1860,8 @@ function confirmFinishMatch() {
   if (!m) return;
   m.finished=true; m.finishedAt=Date.now();
   m.winner=m.scoreA>m.scoreB?'a':m.scoreB>m.scoreA?'b':null;
-  if (!isFriendlyMatch) {
-    const t=db.tournaments.find(x=>x.id===currentTournamentId);
+  const t=db.tournaments.find(x=>x.id===currentTournamentId);
+  if (t) {
     const phase=m.phase;
     const pm=t.matches.filter(x=>x.phase===phase);
     if (pm.every(x=>x.finished)) {
@@ -1901,69 +1871,12 @@ function confirmFinishMatch() {
     }
   }
   dbSave(); closeModal('modal-match-result');
-  if (isFriendlyMatch) { renderFriendly(); showPage('friendly'); }
-  else showPage('tournament-detail', currentTournamentId);
+  showPage('tournament-detail', currentTournamentId);
 }
 
 function backFromMatch() {
-  if (isFriendlyMatch)          showPage('friendly');
-  else if (currentTournamentId) showPage('tournament-detail', currentTournamentId);
+  if (currentTournamentId) showPage('tournament-detail', currentTournamentId);
   else showPage('tournaments');
-}
-
-/* ═══════════════════════════════════════
-   FRIENDLY
-═══════════════════════════════════════ */
-function populateFriendlyModal() {
-  ['nf-team-a','nf-team-b'].forEach(id=>{
-    const s=document.getElementById(id);
-    s.innerHTML='<option value="">— Choisir —</option>'+db.teams.map(t=>`<option value="${t.id}">${t.name}</option>`).join('');
-  });
-}
-function startFriendlyMatch() {
-  const ta=document.getElementById('nf-team-a').value, tb=document.getElementById('nf-team-b').value;
-  const dur=parseInt(document.getElementById('nf-duration').value)||5;
-  const spb=parseInt(document.getElementById('nf-sorties').value)||3;
-  if (!ta||!tb) { toast('Choisis 2 équipes !'); return; }
-  if (ta===tb)  { toast('Équipes différentes !'); return; }
-  const m={id:uid(),teamA:ta,teamB:tb,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,matchDuration:dur,sortiesPerBut:spb,date:Date.now(),sortiesA:0,sortiesB:0};
-  db.friendlyMatches.unshift(m); dbSave(); closeModal('modal-new-friendly');
-  startMatch(m.id,null,true);
-}
-function deleteFriendly(id) {
-  confirmDelete('Supprimer ce match amical ?',()=>{
-    db.friendlyMatches=db.friendlyMatches.filter(x=>x.id!==id);
-    dbSave(); renderFriendly(); toast('Match supprimé');
-  });
-}
-function renderFriendly() {
-  const el=document.getElementById('friendly-list');
-  if (!db.friendlyMatches.length) { el.innerHTML=`<div class="empty"><div class="empty-icon">🤝</div><div class="empty-title">Aucun match amical</div></div>`; return; }
-  el.innerHTML=db.friendlyMatches.map(m=>{
-    const na=teamName(m.teamA), nb=teamName(m.teamB);
-    if (m.finished) {
-      const wA=m.winner==='a', wB=m.winner==='b';
-      return `<div class="card card-sm mb-8">
-        <div class="flex-between">
-          <span style="font-weight:${wA?800:500};color:${wA?'var(--green-500)':'var(--text-900)'}">${na}${wA?' ✓':''}</span>
-          <span style="font-family:var(--font-display);font-size:18px;font-weight:800;padding:0 10px">${m.scoreA}–${m.scoreB}</span>
-          <span style="font-weight:${wB?800:500};color:${wB?'var(--green-500)':'var(--text-900)'}">${wB?'✓ ':''}${nb}</span>
-        </div>
-        <div class="text-xs text-muted mt-8">${new Date(m.date).toLocaleDateString('fr-FR')} · 🤝 Amical</div>
-        <div class="action-row" style="margin-top:6px">
-          <button class="btn btn-xs btn-warn" onclick="openEditMatchStats('${m.id}',null)">✏️</button>
-          <button class="btn btn-xs btn-danger" onclick="deleteFriendly('${m.id}')">🗑</button>
-        </div>
-      </div>`;
-    }
-    return `<div class="card mb-8">
-      <div class="flex-between mb-8"><span style="font-weight:700">${na}</span><span class="text-muted">vs</span><span style="font-weight:700">${nb}</span></div>
-      <div class="action-row">
-        <button class="btn btn-primary btn-full btn-sm" onclick="startMatch('${m.id}',null,true)">▶ Jouer</button>
-        <button class="btn btn-danger btn-sm" onclick="deleteFriendly('${m.id}')">🗑</button>
-      </div>
-    </div>`;
-  }).join('');
 }
 
 /* ═══════════════════════════════════════
@@ -1973,22 +1886,16 @@ function getAllMatchesForPlayer(pid) {
   const res=[];
   db.tournaments.forEach(t=>t.matches.filter(m=>m.finished).forEach(m=>{
     ['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{
-      if (m.stats[side]?.[role]?.id===pid) res.push({m,t,side,role,ps:m.stats[side][role],friendly:false});
+      if (m.stats[side]?.[role]?.id===pid) res.push({m,t,side,role,ps:m.stats[side][role]});
     }));
   }));
-  db.friendlyMatches.filter(m=>m.finished).forEach(m=>{
-    ['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{
-      if (m.stats[side]?.[role]?.id===pid) res.push({m,t:null,side,role,ps:m.stats[side][role],friendly:true});
-    }));
-  });
   return res;
 }
 
 function getPlayerStats(pid) {
-  let goals=0,pinches=0,saves=0,gamelles=0,wins=0,losses=0,draws=0,ownGoals=0;
+  let goals=0,saves=0,gamelles=0,wins=0,losses=0,draws=0,ownGoals=0;
   getAllMatchesForPlayer(pid).forEach(({m,side,ps})=>{
     goals    += ps.goals    ||0;
-    pinches  += ps.pinches  ||0;
     saves    += ps.saves    ||0;
     gamelles += ps.gamelles ||0;
     ownGoals += ps.ownGoals ||0;
@@ -1997,23 +1904,23 @@ function getPlayerStats(pid) {
     else losses++;
   });
   const winRatio = losses===0 ? (wins>0?wins:0) : parseFloat((wins/losses).toFixed(2));
-  return { goals, pinches, saves, gamelles, wins, losses, draws, ownGoals, winRatio };
+  return { goals, saves, gamelles, wins, losses, draws, ownGoals, winRatio };
 }
 
 function getPlayerStatsByTournament(pid) {
   return db.tournaments.map(t=>{
-    let goals=0,pinches=0,saves=0,gamelles=0,wins=0,ownGoals=0,matches=0;
+    let goals=0,saves=0,gamelles=0,wins=0,ownGoals=0,matches=0;
     t.matches.filter(m=>m.finished).forEach(m=>{
       ['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{
         if (m.stats[side]?.[role]?.id!==pid) return;
         const ps=m.stats[side][role];
-        goals+=ps.goals||0; pinches+=ps.pinches||0; saves+=ps.saves||0;
+        goals+=ps.goals||0; saves+=ps.saves||0;
         gamelles+=ps.gamelles||0; ownGoals+=ps.ownGoals||0; matches++;
         if (m.winner===side) wins++;
       }));
     });
     if (!matches) return null;
-    return {tournament:t,goals,pinches,saves,gamelles,wins,ownGoals,matches};
+    return {tournament:t,goals,saves,gamelles,wins,ownGoals,matches};
   }).filter(Boolean);
 }
 
@@ -2023,10 +1930,6 @@ function getTeamWins(teamId) {
     if (m.winner==='a'&&m.teamA===teamId) w++;
     if (m.winner==='b'&&m.teamB===teamId) w++;
   }));
-  db.friendlyMatches.filter(m=>m.finished).forEach(m=>{
-    if (m.winner==='a'&&m.teamA===teamId) w++;
-    if (m.winner==='b'&&m.teamB===teamId) w++;
-  });
   return w;
 }
 
@@ -2035,14 +1938,14 @@ function getTeamWins(teamId) {
 ═══════════════════════════════════════ */
 function getPlayerMVPScore(pid) {
   const s=getPlayerStats(pid);
-  return s.goals*3+s.saves*2+s.pinches+s.wins*4+s.gamelles*0.5-s.ownGoals;
+  return s.goals*3+s.saves*2+s.wins*4+s.gamelles*0.5-s.ownGoals;
 }
 
 // Only 3 home badges: Ballon d'Or, Soulier d'Or, Master of Defence
 const HOME_BADGE_DEFS = [
   {
     id:'ballon_or', name:"Ballon d'Or", icon:'🥇',
-    desc:'Meilleur joueur overall (buts, arrêts, pinches, victoires, cadrages)',
+    desc:'Meilleur joueur overall (buts, arrêts, victoires, cadrages)',
     isMain:true,
     getWinner:()=>{
       if (!db.players.length) return null;
@@ -2068,7 +1971,6 @@ const HOME_BADGE_DEFS = [
       <div class="stat-mini-grid">
         <div class="stat-mini"><div class="stat-mini-val">${s.goals}</div><div class="stat-mini-lbl">⚽ Buts</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.saves}</div><div class="stat-mini-lbl">🛡 Arrêts</div></div>
-        <div class="stat-mini"><div class="stat-mini-val">${s.pinches}</div><div class="stat-mini-lbl">🤏 Pinches</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.wins}</div><div class="stat-mini-lbl">🏆 Victoires</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.gamelles}</div><div class="stat-mini-lbl">🎯 Cadrages</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.winRatio}</div><div class="stat-mini-lbl">V/D</div></div>
@@ -2136,7 +2038,6 @@ const HOME_BADGE_DEFS = [
 
 // Extra badges only shown in Stats > Badges
 const EXTRA_BADGE_DEFS = [
-  { id:'master_pinch', name:'Master of Pinch', icon:'🤏', desc:'Plus de pinches', getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).pinches})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
   { id:'csc_king', name:'Roi du CSC', icon:'🤦', desc:'Plus de buts contre son camp', shame:true, getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).ownGoals})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
 ];
 
@@ -2185,7 +2086,7 @@ function renderRanking(type) {
   const el=document.getElementById('ranking-list');
   const data=db.players.map(p=>({player:p,...getPlayerStats(p.id)}));
   const sortFns={
-    goals:(a,b)=>b.goals-a.goals, pinches:(a,b)=>b.pinches-a.pinches,
+    goals:(a,b)=>b.goals-a.goals,
     saves:(a,b)=>b.saves-a.saves, gamelles:(a,b)=>b.gamelles-a.gamelles,
     ownGoals:(a,b)=>b.ownGoals-a.ownGoals, wins:(a,b)=>b.wins-a.wins,
     winRatio:(a,b)=>{
@@ -2195,7 +2096,7 @@ function renderRanking(type) {
     },
   };
   data.sort(sortFns[type]||sortFns.goals);
-  const labels={goals:'buts',pinches:'pinches',saves:'arrêts',gamelles:'cadrages',ownGoals:'CSC',wins:'victoires',winRatio:'V/D ratio'};
+  const labels={goals:'buts',saves:'arrêts',gamelles:'cadrages',ownGoals:'CSC',wins:'victoires',winRatio:'V/D ratio'};
   if (!data.length) { el.innerHTML='<div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Aucune stat</div></div>'; return; }
   el.innerHTML=`<div class="card">${data.map((d,i)=>{
     const raw=d[type]??0;
@@ -2238,7 +2139,7 @@ function renderCharts() {
     });
   }
   if (!labels.length) return;
-  [['chart-goals','goals','Buts cumulés'],['chart-gamelles','gamelles','Cadrages cumulés'],['chart-wins','wins','Victoires cumulées'],['chart-pinches','pinches','Pinches cumulées']].forEach(([id,key,label])=>{
+  [['chart-goals','goals','Buts cumulés'],['chart-gamelles','gamelles','Cadrages cumulés'],['chart-wins','wins','Victoires cumulées']].forEach(([id,key,label])=>{
     destroyChart(id);
     const canvas=document.getElementById(id); if (!canvas) return;
     chartInstances[id]=new Chart(canvas,{type:'line',data:{labels,datasets:makeDatasets(key)},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12,padding:10}}},scales:{x:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11}}},y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11},stepSize:1},title:{display:true,text:label,font:{size:10}}}}}});
@@ -2260,8 +2161,8 @@ function renderPlayerDetail(pid) {
   document.getElementById('pd-badges').innerHTML=badges.map(b=>`<span class="pill pill-gold">${b.icon} ${b.name}</span>`).join('');
   document.getElementById('pd-edit-btn').onclick=()=>openEditPlayer(p.id);
   document.getElementById('pd-stat-grid').innerHTML=[
-    {label:'⚽ Buts',val:s.goals},{label:'🤏 Pinches',val:s.pinches},
-    {label:'🛡 Arrêts',val:s.saves},{label:'🎯 Cadrages',val:s.gamelles},
+    {label:'⚽ Buts',val:s.goals},{label:'🛡 Arrêts',val:s.saves},
+    {label:'🎯 Cadrages',val:s.gamelles},
     {label:'🏆 Victoires',val:s.wins},{label:'🤦 CSC',val:s.ownGoals},
     {label:'📊 V/D',val:wrDisplay},{label:'🏅 Tournois',val:countPlayerTournamentsWon(p.id)},
     {label:'🎮 Matchs',val:getAllMatchesForPlayer(p.id).length},
@@ -2280,7 +2181,7 @@ function renderPlayerDetail(pid) {
   // Stats par tournoi
   const tStats=getPlayerStatsByTournament(p.id);
   document.getElementById('pd-tournament-stats').innerHTML=tStats.length
-    ?`<div class="card">${tStats.map(ts=>`<div class="list-item"><div class="list-info"><div class="list-name text-sm">${ts.tournament.name}</div><div class="list-sub">⚽${ts.goals} 🤏${ts.pinches} 🛡${ts.saves} 🎯${ts.gamelles} 🤦${ts.ownGoals} · 🏆${ts.wins}V/${ts.matches}M</div></div></div>`).join('')}</div>`
+    ?`<div class="card">${tStats.map(ts=>`<div class="list-item"><div class="list-info"><div class="list-name text-sm">${ts.tournament.name}</div><div class="list-sub">⚽${ts.goals} 🛡${ts.saves} 🎯${ts.gamelles} 🤦${ts.ownGoals} · 🏆${ts.wins}V/${ts.matches}M</div></div></div>`).join('')}</div>`
     :'<div class="text-muted text-sm text-center" style="padding:16px">Aucun tournoi joué</div>';
 
   // Match history
@@ -2292,7 +2193,7 @@ function renderPlayerDetail(pid) {
       const res=my>opp_?'✓':my<opp_?'✗':'=';
       const col=my>opp_?'var(--green-500)':my<opp_?'var(--red-500)':'var(--text-400)';
       return `<div class="list-item"><div style="width:20px;font-weight:800;color:${col}">${res}</div>
-        <div class="list-info"><div class="list-name text-sm">vs ${opp}</div><div class="list-sub">${friendly?'🤝 Amical':t?.name||'?'} · ${my}–${opp_} · ⚽${ps.goals} 🎯${ps.gamelles} 🤦${ps.ownGoals}</div></div></div>`;
+        <div class="list-info"><div class="list-name text-sm">vs ${opp}</div><div class="list-sub">${t?.name||'?'} · ${my}–${opp_} · ⚽${ps.goals} 🎯${ps.gamelles} 🤦${ps.ownGoals}</div></div></div>`;
     }).join('')}</div>`
     :'<div class="text-muted text-sm text-center" style="padding:20px">Aucun match joué</div>';
 }
@@ -2315,7 +2216,7 @@ function renderComparison() {
   const pA=db.players.find(x=>x.id===pidA), pB=db.players.find(x=>x.id===pidB);
   const sA=getPlayerStats(pidA), sB=getPlayerStats(pidB);
   const stats=[
-    {key:'goals',label:'⚽ Buts'},{key:'pinches',label:'🤏 Pinches'},
+    {key:'goals',label:'⚽ Buts'},
     {key:'saves',label:'🛡 Arrêts'},{key:'gamelles',label:'🎯 Cadrages'},
     {key:'ownGoals',label:'🤦 CSC'},{key:'wins',label:'🏆 Victoires'},
     {key:'winRatio',label:'📊 V/D'},
@@ -2363,12 +2264,11 @@ function renderHome() {
       <div class="hero-progress"><div class="hero-progress-fill" style="width:${pct}%"></div></div>
       <div class="hero-actions">
         <button class="btn btn-sm" style="background:rgba(255,255,255,.9);color:var(--orange-400);font-weight:700" onclick="showPage('tournament-detail','${active.id}')">Voir le tournoi →</button>
-        <button class="btn btn-sm" style="background:rgba(255,255,255,.6);color:var(--orange-500);font-weight:700" onclick="openModal('modal-new-friendly')">🤝 Amical</button>
       </div>
     </div>`;
   } else {
     heroEl.innerHTML=`<div class="hero"><div class="hero-title">Bienvenue ! ⚽</div><div class="hero-sub">Aucun tournoi en cours. Lance le premier !</div>
-      <div class="hero-actions"><button class="btn btn-sm" style="background:rgba(255,255,255,.9);color:var(--orange-400);font-weight:700" onclick="openModal('modal-new-friendly')">🤝 Match amical</button></div>
+      <div class="hero-actions"><button class="btn btn-sm" style="background:rgba(255,255,255,.9);color:var(--orange-400);font-weight:700" onclick="openModal('modal-new-tournament')">+ Nouveau tournoi</button></div>
     </div>`;
   }
 
@@ -2489,15 +2389,6 @@ function adminExportMD() {
   });
   if (!db.tournaments.length) md += `_Aucun tournoi._\n`;
 
-  md += `\n## Matchs amicaux (${db.friendlyMatches.length})\n\n`;
-  if (db.friendlyMatches.length) {
-    md += `| Date | Équipe A | Sc.A | Sc.B | Équipe B |\n|---|---|---|---|---|\n`;
-    db.friendlyMatches.forEach(m => {
-      const d = m.date ? new Date(m.date).toLocaleDateString('fr-FR') : '—';
-      md += `| ${d} | ${teamName(m.teamA)} | ${m.scoreA||0} | ${m.scoreB||0} | ${teamName(m.teamB)} |\n`;
-    });
-  } else { md += `_Aucun match amical._\n`; }
-
   md += `\n---\n\n## JSON brut\n\n\`\`\`json\n${JSON.stringify(db, null, 2)}\n\`\`\`\n`;
 
   const blob = new Blob([md], { type: 'text/markdown' });
@@ -2510,23 +2401,53 @@ function adminExportMD() {
   toast('Export téléchargé !');
 }
 
-function adminImportData() {
+function adminImportData(mode) {
   const raw = document.getElementById('admin-import-json').value.trim();
   if (!raw) { toast('Colle du JSON d\'abord'); return; }
   let parsed;
   try { parsed = JSON.parse(raw); }
   catch(e) { toast('JSON invalide : ' + e.message); return; }
   if (typeof parsed !== 'object' || !parsed.version) { toast('Format invalide — version manquante'); return; }
+
+  const titleEl = document.getElementById('confirm-import-title');
+  const textEl  = document.getElementById('confirm-import-text');
+  const exportBtn = document.getElementById('confirm-import-export-btn');
+  const confirmBtn = document.getElementById('confirm-import-data');
+
+  if (mode === 'replace') {
+    titleEl.textContent = '🔄 Remplacer les données';
+    textEl.innerHTML = 'Les données actuelles (joueurs, équipes, tournois) seront <strong>définitivement remplacées</strong> par le JSON importé.<br><br>Tu peux exporter les données actuelles avant de continuer.';
+    exportBtn.style.display = 'block';
+    confirmBtn.textContent = '🔄 Remplacer';
+    confirmBtn.onclick = () => {
+      localStorage.setItem(DB_KEY, raw);
+      dbLoad(); closeModal('modal-confirm-import');
+      document.getElementById('admin-import-json').value = '';
+      adminRefreshDebug(); renderHome();
+      toast('Données remplacées !');
+    };
+  } else {
+    titleEl.textContent = '➕ Fusionner les données';
+    const newP = (parsed.players||[]).length, newT = (parsed.teams||[]).length, newTo = (parsed.tournaments||[]).length;
+    textEl.innerHTML = `Fusion de <strong>${newP} joueur(s)</strong>, <strong>${newT} équipe(s)</strong>, <strong>${newTo} tournoi(s)</strong> avec les données existantes.<br><br>Les doublons (même ID) seront ignorés.`;
+    exportBtn.style.display = 'none';
+    confirmBtn.textContent = '➕ Fusionner';
+    confirmBtn.onclick = () => {
+      const existingIds = {
+        players: new Set(db.players.map(x=>x.id)),
+        teams:   new Set(db.teams.map(x=>x.id)),
+        tournaments: new Set(db.tournaments.map(x=>x.id)),
+      };
+      (parsed.players||[]).forEach(x=>{ if(!existingIds.players.has(x.id)) db.players.push(x); });
+      (parsed.teams||[]).forEach(x=>{ if(!existingIds.teams.has(x.id)) db.teams.push(x); });
+      (parsed.tournaments||[]).forEach(x=>{ if(!existingIds.tournaments.has(x.id)) db.tournaments.push(x); });
+      dbSave(); closeModal('modal-confirm-import');
+      document.getElementById('admin-import-json').value = '';
+      adminRefreshDebug(); renderHome();
+      toast('Données fusionnées !');
+    };
+  }
   openModal('modal-confirm-import');
-  document.getElementById('confirm-import-data').onclick = () => {
-    localStorage.setItem(DB_KEY, raw);
-    dbLoad();
-    closeModal('modal-confirm-import');
-    document.getElementById('admin-import-json').value = '';
-    adminRefreshDebug();
-    renderHome();
-    toast('Données importées !');
-  };
 }
 
 const _adminErrors = [];
@@ -2552,7 +2473,6 @@ function adminRefreshDebug() {
     ['Équipes', db.teams.length],
     ['Tournois', db.tournaments.length],
     ['Matchs tournoi', totalMatches],
-    ['Matchs amicaux', db.friendlyMatches.length],
     ['Version DB', db.version],
     ['Taille localStorage', sizeKB + ' KB'],
     ['Clé', DB_KEY],
