@@ -50,7 +50,7 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 
 /* NAV */
 .nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--beige-50);border-top:1px solid var(--beige-300);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -2px 16px rgba(26,18,8,.07)}
-.nav-btn{display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;gap:3px;color:var(--text-400);font-size:10px;font-weight:600;font-family:var(--font-display);letter-spacing:.02em;transition:color .15s}
+.nav-btn{display:flex;flex-direction:column;align-items:center;padding:10px 2px 8px;gap:3px;color:var(--text-400);font-size:9px;font-weight:600;font-family:var(--font-display);letter-spacing:.01em;transition:color .15s}
 .nav-btn .nav-icon{font-size:20px;line-height:1;transition:transform .15s}
 .nav-btn.active{color:var(--orange-400)}
 .nav-btn.active .nav-icon{transform:scale(1.15)}
@@ -119,10 +119,10 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .form-checkbox{width:20px;height:20px;accent-color:var(--orange-400);cursor:pointer;flex-shrink:0}
 
 /* MODALS */
-.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(26,18,8,.45);align-items:flex-end;justify-content:center}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(26,18,8,.45);align-items:flex-end;justify-content:center;cursor:pointer}
 .modal-overlay.open{display:flex}
 @media(min-width:768px){.modal-overlay{align-items:center}.modal{border-radius:var(--radius-xl)!important;max-width:520px;width:100%}}
-.modal{background:var(--beige-50);width:100%;max-height:92vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 20px);animation:slideUp .22s cubic-bezier(.32,.72,0,1)}
+.modal{background:var(--beige-50);width:100%;max-height:92vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 20px);animation:slideUp .22s cubic-bezier(.32,.72,0,1);cursor:default}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal-handle{width:36px;height:4px;border-radius:2px;background:var(--beige-300);margin:12px auto 16px}
 .modal-title{font-family:var(--font-display);font-size:19px;font-weight:800;padding:0 20px 14px}
@@ -309,6 +309,31 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .w-full{width:100%}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
+/* ELO RANKS */
+.elo-rank{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;font-family:var(--font-display)}
+.elo-rank-bois    {background:#F5EFE6;color:#8B6B45;border:1.5px solid #D9CCBA}
+.elo-rank-bronze  {background:#FFF0E8;color:#B05A30;border:1.5px solid #FFD0B0}
+.elo-rank-argent  {background:#F4F4F4;color:#5A5A5A;border:1.5px solid #C8C8C8}
+.elo-rank-or      {background:var(--gold-50);color:var(--gold-500);border:1.5px solid #F5D88A}
+.elo-rank-platine {background:#EFF8FF;color:#0369A1;border:1.5px solid #BAE6FD}
+.elo-rank-diamant {background:#F0FDFF;color:#0891B2;border:1.5px solid #A5F3FC}
+.elo-rank-maitre  {background:var(--purple-50);color:var(--purple-500);border:1.5px solid #DDD6FE}
+.elo-rank-legende {background:#FFF3EB;color:var(--orange-400);border:1.5px solid var(--orange-200)}
+.elo-badge-big{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius-md);margin-bottom:10px}
+
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.ach-card{background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-md);padding:10px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .15s;opacity:.45}
+.ach-card.unlocked{opacity:1;border-color:var(--orange-300);background:var(--orange-50)}
+.ach-card .ach-icon{font-size:26px;margin-bottom:4px}
+.ach-card .ach-name{font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--text-900)}
+.ach-card .ach-desc{font-size:10px;color:var(--text-400);margin-top:2px;line-height:1.3}
+
+/* COMPARE TEAMS */
+.compare-mode-tabs{display:flex;gap:3px;padding:4px;background:var(--beige-200);border-radius:12px;margin-bottom:14px}
+.compare-mode-btn{flex:1;padding:8px 6px;border-radius:9px;font-size:13px;font-weight:700;color:var(--text-500);font-family:var(--font-display);transition:all .15s}
+.compare-mode-btn.active{background:var(--beige-50);color:var(--text-900);box-shadow:var(--shadow-sm)}
+
 /* ADMIN */
 .admin-tool{background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-md);padding:18px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
 .admin-tool-title{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--text-900);margin-bottom:4px}
@@ -413,6 +438,7 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
         <button class="chip" onclick="switchRanking('ownGoals',this)">🤦 CSC</button>
         <button class="chip" onclick="switchRanking('winRatio',this)">📊 V/D ratio</button>
         <button class="chip" onclick="switchRanking('wins',this)">🏆 Victoires</button>
+        <button class="chip" onclick="switchRanking('elo',this)">⚡ ELO</button>
       </div>
       <div id="ranking-list"></div>
     </div>
@@ -551,6 +577,8 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div class="card"><div class="chart-wrap"><canvas id="pd-chart"></canvas></div></div>
     <div class="section-header">Stats par tournoi</div>
     <div id="pd-tournament-stats" class="mb-12"></div>
+    <div class="section-header">Achievements</div>
+    <div id="pd-achievements" class="ach-grid mb-12"></div>
     <div class="section-header">Historique des matchs</div>
     <div id="pd-matches" class="pb-20"></div>
   </div>
@@ -568,6 +596,43 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 <div id="page-admin" class="page">
   <div class="header"><span class="header-title">⚙️ Admin</span></div>
   <div class="container">
+
+    <div class="section-header">📋 Changelog</div>
+    <div class="admin-tool" style="border-color:var(--orange-200);background:var(--orange-50)">
+      <div class="admin-tool-title" style="display:flex;align-items:center;gap:8px">v1.2 — Ranks &amp; Achievements <span class="pill pill-orange" style="font-size:10px">Actuelle</span></div>
+      <div class="admin-tool-desc" style="line-height:1.9;margin-bottom:0">
+        ⚡ Système ELO pondéré (K-factor variable selon rang)<br>
+        🏅 8 Rangs : Bois → Bronze → Argent → Or → Platine → Diamant → Maître → Légende<br>
+        🎖 10 nouveaux badges : Terroriste, Touriste, Série All Time, Finaliste né, Iceman, GOAT, Goleador, Le Déchu, Master of Pinch, Roi du CSC<br>
+        🏆 20 Achievements permanents débloquables sur chaque profil<br>
+        ⚖️ Comparaison par équipes (nouvel onglet)<br>
+        📱 Outil de comparaison accessible sur iPhone (nav mobile)<br>
+        🎲 Attribution des côtés rouge/bleu totalement aléatoire en match<br>
+        📊 Classement ELO dans les statistiques
+      </div>
+    </div>
+    <div class="admin-tool" style="background:var(--beige-100)">
+      <div class="admin-tool-title">v1.1 — Amicaux &amp; Stats avancées</div>
+      <div class="admin-tool-desc" style="line-height:1.8;margin-bottom:0">
+        🤝 Matchs amicaux · 📊 Page stats joueur · 🔄 Inversion des rôles · 🏅 Ballon d'Or, Soulier d'Or, Master of Defence
+      </div>
+    </div>
+    <div class="admin-tool" style="background:var(--beige-100)">
+      <div class="admin-tool-title">v1.0 — Lancement</div>
+      <div class="admin-tool-desc" style="margin-bottom:0">Joueurs, équipes, tournois, poules et phases finales, scoreboard temps réel.</div>
+    </div>
+
+    <div class="section-header">⚡ ELO &amp; Achievements</div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">Recalculer l'ELO</div>
+      <div class="admin-tool-desc">Recalcule l'ELO de tous les joueurs depuis le début. À utiliser après un import de données.</div>
+      <button class="btn btn-blue btn-full" onclick="adminRecalcELO()">⚡ Recalculer l'ELO complet</button>
+    </div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">Vérifier les achievements</div>
+      <div class="admin-tool-desc">Attribue rétroactivement tous les achievements manquants en analysant l'historique.</div>
+      <button class="btn btn-purple btn-full" onclick="adminCheckAchievements()">🏆 Attribuer les achievements</button>
+    </div>
 
     <div class="section-header">📄 Export données</div>
     <div class="admin-tool">
@@ -606,15 +671,32 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 </div>
 
 <div id="page-compare" class="page">
-  <div class="header"><span class="header-title">Comparer des joueurs</span></div>
+  <div class="header"><span class="header-title">⚖️ Comparer</span></div>
   <div class="container">
-    <div class="card mt-12 mb-12">
-      <div class="grid2">
-        <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur A</label><select id="compare-player-a" class="form-input form-select" onchange="renderComparison()"><option value="">— Choisir —</option></select></div>
-        <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur B</label><select id="compare-player-b" class="form-input form-select" onchange="renderComparison()"><option value="">— Choisir —</option></select></div>
-      </div>
+    <div class="compare-mode-tabs mt-12">
+      <button class="compare-mode-btn active" id="cmp-btn-players" onclick="switchCompareMode('players',this)">👤 Joueurs</button>
+      <button class="compare-mode-btn" id="cmp-btn-teams" onclick="switchCompareMode('teams',this)">👥 Équipes</button>
     </div>
-    <div id="compare-result" class="pb-20"></div>
+    <!-- Joueurs -->
+    <div id="compare-players-panel">
+      <div class="card mb-12">
+        <div class="grid2">
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur A</label><select id="compare-player-a" class="form-input form-select" onchange="renderComparison()" oninput="renderComparison()"><option value="">— Choisir —</option></select></div>
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur B</label><select id="compare-player-b" class="form-input form-select" onchange="renderComparison()" oninput="renderComparison()"><option value="">— Choisir —</option></select></div>
+        </div>
+      </div>
+      <div id="compare-result" class="pb-20"></div>
+    </div>
+    <!-- Équipes -->
+    <div id="compare-teams-panel" style="display:none">
+      <div class="card mb-12">
+        <div class="grid2">
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Équipe A</label><select id="compare-team-a" class="form-input form-select" onchange="renderTeamComparison()" oninput="renderTeamComparison()"><option value="">— Choisir —</option></select></div>
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Équipe B</label><select id="compare-team-b" class="form-input form-select" onchange="renderTeamComparison()" oninput="renderTeamComparison()"><option value="">— Choisir —</option></select></div>
+        </div>
+      </div>
+      <div id="compare-teams-result" class="pb-20"></div>
+    </div>
   </div>
 </div>
 
@@ -796,12 +878,13 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 </div>
 
 <!-- BOTTOM NAV (mobile) -->
-<nav class="nav" style="grid-template-columns:repeat(6,1fr)">
+<nav class="nav" style="grid-template-columns:repeat(7,1fr)">
   <button class="nav-btn active" id="nav-home"        onclick="showPage('home')">        <span class="nav-icon">🏠</span>Accueil</button>
   <button class="nav-btn"        id="nav-players"     onclick="showPage('players')">     <span class="nav-icon">👤</span>Joueurs</button>
   <button class="nav-btn"        id="nav-teams"       onclick="showPage('teams')">       <span class="nav-icon">👥</span>Équipes</button>
   <button class="nav-btn"        id="nav-tournaments" onclick="showPage('tournaments')"> <span class="nav-icon">🏆</span>Tournois</button>
   <button class="nav-btn"        id="nav-stats"       onclick="showPage('stats')">       <span class="nav-icon">📊</span>Stats</button>
+  <button class="nav-btn"        id="nav-compare"     onclick="showPage('compare')">     <span class="nav-icon">⚖️</span>Comparer</button>
   <button class="nav-btn"        id="nav-admin"       onclick="showPage('admin')">       <span class="nav-icon">⚙️</span>Admin</button>
 </nav>
 
@@ -827,6 +910,11 @@ function dbLoad() {
     if (saved.friendlyMatches) db.friendlyMatches = saved.friendlyMatches;
     db.friendlyMatches = db.friendlyMatches || [];
     // Migrations
+    // Player migrations
+    db.players.forEach(p => {
+      if (p.elo === undefined)    p.elo = 1000;
+      if (!p.achievements)        p.achievements = [];
+    });
     db.tournaments.forEach(t => {
       if (!t.tiebreak)       t.tiebreak = 'goal_average';
       if (!t.specialMatches) t.specialMatches = {};
@@ -923,9 +1011,10 @@ function openModal(id) {
   document.getElementById(id).classList.add('open');
 }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-overlay').forEach(el =>
-  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); })
-);
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click',      e => { if (e.target === el) el.classList.remove('open'); });
+  el.addEventListener('touchstart', e => { if (e.target === el) el.classList.remove('open'); }, { passive: true });
+});
 function confirmDelete(text, onConfirm) {
   document.getElementById('confirm-delete-text').textContent = text;
   document.getElementById('confirm-delete-btn').onclick = () => { closeModal('modal-confirm-delete'); onConfirm(); };
@@ -1479,8 +1568,11 @@ function generateKnockout(t) {
   const n=bSeeds.length;
   const fr=n>=8?'quart':n>=4?'demi':'finale';
   t.knockoutRounds=fr==='quart'?['quart','demi','finale']:fr==='demi'?['demi','finale']:['finale'];
-  for (let i=0;i<Math.floor(n/2);i++)
-    t.matches.push({id:uid(),phase:fr,teamA:bSeeds[i*2]||null,teamB:bSeeds[i*2+1]||null,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  for (let i=0;i<Math.floor(n/2);i++){
+    const coin=Math.random()<.5;
+    const tA=bSeeds[i*2]||null, tB=bSeeds[i*2+1]||null;
+    t.matches.push({id:uid(),phase:fr,teamA:coin?tA:tB,teamB:coin?tB:tA,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  }
   t.phase=fr; dbSave();
 }
 
@@ -1492,10 +1584,14 @@ function advanceKnockout(t, phase) {
   const losers=pm.map(m=>m.winner==='a'?m.teamB:m.teamA);
   const next=order[idx+1];
   if (next&&winners.length>=2&&!t.matches.some(m=>m.phase===next))
-    for (let i=0;i<Math.floor(winners.length/2);i++)
-      t.matches.push({id:uid(),phase:next,teamA:winners[i*2],teamB:winners[i*2+1],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
-  if (phase==='demi'&&losers.length>=2&&!t.matches.some(m=>m.phase==='petit_finale'))
-    t.matches.push({id:uid(),phase:'petit_finale',teamA:losers[0],teamB:losers[1],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+    for (let i=0;i<Math.floor(winners.length/2);i++){
+      const coin=Math.random()<.5;
+      t.matches.push({id:uid(),phase:next,teamA:coin?winners[i*2]:winners[i*2+1],teamB:coin?winners[i*2+1]:winners[i*2],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+    }
+  if (phase==='demi'&&losers.length>=2&&!t.matches.some(m=>m.phase==='petit_finale')){
+    const coin=Math.random()<.5;
+    t.matches.push({id:uid(),phase:'petit_finale',teamA:coin?losers[0]:losers[1],teamB:coin?losers[1]:losers[0],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  }
   if (phase==='finale') t.status='finished';
   t.phase=next||'finale'; dbSave();
 }
@@ -1602,7 +1698,8 @@ function renderTournamentMatches(t) {
     t.groups.forEach((g,gi)=>getGroupStandings(t,gi).slice(0,t.groups.length>1?2:Math.ceil(getGroupStandings(t,gi).length/2)).forEach(s=>qualified.add(s.teamId)));
     const galaTeams=t.teams.filter(tid=>!qualified.has(tid));
     if (galaTeams.length>=2&&!t.matches.some(m=>m.phase==='gala')) {
-      t.matches.push({id:uid(),phase:'gala',teamA:galaTeams[0],teamB:galaTeams[1],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+      const coin=Math.random()<.5;
+      t.matches.push({id:uid(),phase:'gala',teamA:coin?galaTeams[0]:galaTeams[1],teamB:coin?galaTeams[1]:galaTeams[0],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
       dbSave();
     }
   }
@@ -1900,7 +1997,21 @@ function confirmFinishMatch() {
       else if (['quart','demi'].includes(phase)) { advanceKnockout(t,phase); toast(`${phaseName(phase)} terminée !`); }
     }
   }
-  dbSave(); closeModal('modal-match-result');
+  dbSave();
+  // Recalculate ELO from scratch and check achievements
+  recalcAllELO();
+  const newAch = checkAllAchievements();
+  dbSave();
+  // Toast new achievements (max 2 to avoid spam)
+  let achCount = 0;
+  Object.entries(newAch).forEach(([pid, achs]) => {
+    const p = db.players.find(x => x.id === pid);
+    achs.slice(0, 2 - achCount).forEach(a => {
+      toast(`🎖 ${p?.name} : ${a.icon} ${a.name} !`);
+      achCount++;
+    });
+  });
+  closeModal('modal-match-result');
   if (isFriendlyMatch) { renderFriendly(); showPage('friendly'); }
   else showPage('tournament-detail', currentTournamentId);
 }
@@ -1926,7 +2037,8 @@ function startFriendlyMatch() {
   const spb=parseInt(document.getElementById('nf-sorties').value)||3;
   if (!ta||!tb) { toast('Choisis 2 équipes !'); return; }
   if (ta===tb)  { toast('Équipes différentes !'); return; }
-  const m={id:uid(),teamA:ta,teamB:tb,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,matchDuration:dur,sortiesPerBut:spb,date:Date.now(),sortiesA:0,sortiesB:0};
+  const coin=Math.random()<.5;
+  const m={id:uid(),teamA:coin?ta:tb,teamB:coin?tb:ta,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,matchDuration:dur,sortiesPerBut:spb,date:Date.now(),sortiesA:0,sortiesB:0};
   db.friendlyMatches.unshift(m); dbSave(); closeModal('modal-new-friendly');
   startMatch(m.id,null,true);
 }
@@ -2028,6 +2140,67 @@ function getTeamWins(teamId) {
     if (m.winner==='b'&&m.teamB===teamId) w++;
   });
   return w;
+}
+
+/* ═══════════════════════════════════════
+   ELO SYSTEM
+═══════════════════════════════════════ */
+function getKFactor(elo) {
+  if (elo < 1000) return 40;
+  if (elo < 1200) return 32;
+  if (elo < 1400) return 24;
+  return 16;
+}
+
+function getELORank(elo) {
+  if (elo >= 1600) return { name:'Légende', icon:'🐐', cls:'legende' };
+  if (elo >= 1500) return { name:'Maître',  icon:'👑', cls:'maitre'  };
+  if (elo >= 1400) return { name:'Diamant', icon:'💎', cls:'diamant' };
+  if (elo >= 1300) return { name:'Platine', icon:'💠', cls:'platine' };
+  if (elo >= 1200) return { name:'Or',      icon:'🥇', cls:'or'      };
+  if (elo >= 1100) return { name:'Argent',  icon:'🥈', cls:'argent'  };
+  if (elo >= 1000) return { name:'Bronze',  icon:'🔶', cls:'bronze'  };
+  return                   { name:'Bois',   icon:'🪵', cls:'bois'    };
+}
+
+function getPlayerELO(pid) {
+  return db.players.find(p => p.id === pid)?.elo ?? 1000;
+}
+
+function recalcAllELO() {
+  db.players.forEach(p => { p.elo = 1000; });
+  const allMatches = [];
+  db.tournaments.forEach(t => {
+    t.matches.filter(m => m.finished).forEach(m => allMatches.push({ m, ts: m.finishedAt || m.date || 0 }));
+  });
+  db.friendlyMatches.filter(m => m.finished).forEach(m => allMatches.push({ m, ts: m.finishedAt || m.date || 0 }));
+  allMatches.sort((a, b) => a.ts - b.ts);
+
+  allMatches.forEach(({ m }) => {
+    if (!m.winner) return;
+    const ws = m.winner, ls = ws === 'a' ? 'b' : 'a';
+    const wPids = ['attacker','defender'].map(r => m.stats[ws]?.[r]?.id).filter(Boolean);
+    const lPids = ['attacker','defender'].map(r => m.stats[ls]?.[r]?.id).filter(Boolean);
+    if (!wPids.length || !lPids.length) return;
+    const avgW = wPids.reduce((s, id) => s + getPlayerELO(id), 0) / wPids.length;
+    const avgL = lPids.reduce((s, id) => s + getPlayerELO(id), 0) / lPids.length;
+    const expW = 1 / (1 + Math.pow(10, (avgL - avgW) / 400));
+    const expL = 1 - expW;
+    wPids.forEach(pid => {
+      const p = db.players.find(x => x.id === pid);
+      if (p) p.elo = Math.max(100, Math.round((p.elo||1000) + getKFactor(p.elo||1000) * (1 - expW)));
+    });
+    lPids.forEach(pid => {
+      const p = db.players.find(x => x.id === pid);
+      if (p) p.elo = Math.max(100, Math.round((p.elo||1000) + getKFactor(p.elo||1000) * (0 - expL)));
+    });
+  });
+  dbSave();
+}
+
+function eloRankBadge(elo) {
+  const r = getELORank(elo);
+  return `<span class="elo-rank elo-rank-${r.cls}">${r.icon} ${r.name} · ${elo}</span>`;
 }
 
 /* ═══════════════════════════════════════
@@ -2134,10 +2307,107 @@ const HOME_BADGE_DEFS = [
   },
 ];
 
-// Extra badges only shown in Stats > Badges
+// Extra badges shown in Stats > Badges
 const EXTRA_BADGE_DEFS = [
-  { id:'master_pinch', name:'Master of Pinch', icon:'🤏', desc:'Plus de pinches', getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).pinches})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
-  { id:'csc_king', name:'Roi du CSC', icon:'🤦', desc:'Plus de buts contre son camp', shame:true, getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).ownGoals})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
+  { id:'master_pinch', name:'Master of Pinch', icon:'🤏', desc:'Plus de pinches',
+    getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).pinches})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
+  { id:'csc_king', name:'Roi du CSC', icon:'🤦', desc:'Plus de buts contre son camp', shame:true,
+    getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).ownGoals})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
+  { id:'terroriste', name:'Terroriste', icon:'💣', desc:'Plus de sorties totales', shame:true,
+    getWinner:()=>{
+      const all=db.players.map(p=>{
+        let v=0;
+        db.tournaments.forEach(t=>t.matches.filter(m=>m.finished).forEach(m=>{
+          ['a','b'].forEach(side=>{
+            const st=m.stats[side]; if(!st) return;
+            if(st.attacker?.id===p.id||st.defender?.id===p.id) v+=(side==='a'?m.sortiesA:m.sortiesB)||0;
+          });
+        }));
+        db.friendlyMatches.filter(m=>m.finished).forEach(m=>{
+          ['a','b'].forEach(side=>{
+            const st=m.stats[side]; if(!st) return;
+            if(st.attacker?.id===p.id||st.defender?.id===p.id) v+=(side==='a'?m.sortiesA:m.sortiesB)||0;
+          });
+        });
+        return {id:p.id,val:v};
+      });
+      const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null;
+      return all.find(s=>s.val===max)?.id||null;
+    }
+  },
+  { id:'touriste', name:'Touriste', icon:'📉', desc:'Pire ratio Victoire/Défaite', shame:true,
+    getWinner:()=>{
+      const elig=db.players.filter(p=>{ const s=getPlayerStats(p.id); return s.losses>1; });
+      if(!elig.length) return null;
+      elig.sort((a,b)=>getPlayerStats(a.id).winRatio-getPlayerStats(b.id).winRatio);
+      return elig[0]?.id||null;
+    }
+  },
+  { id:'serie_alltime', name:'Série All Time', icon:'📈', desc:'Record de série de victoires consécutives',
+    getWinner:()=>{
+      let bestPid=null,bestStreak=0;
+      db.players.forEach(p=>{
+        let streak=0,best=0;
+        getAllMatchesForPlayer(p.id).forEach(({m,side})=>{ if(m.winner===side){streak++;if(streak>best)best=streak;}else streak=0; });
+        if(best>bestStreak){bestStreak=best;bestPid=p.id;}
+      });
+      return bestStreak>0?bestPid:null;
+    }
+  },
+  { id:'finaliste_ne', name:'Finaliste né', icon:'👑', desc:'A joué le plus de finales',
+    getWinner:()=>{
+      const all=db.players.map(p=>{
+        let v=0;
+        db.tournaments.forEach(t=>t.matches.filter(m=>m.phase==='finale'&&m.finished).forEach(m=>{
+          ['a','b'].forEach(side=>['attacker','defender'].forEach(r=>{ if(m.stats[side]?.[r]?.id===p.id) v++; }));
+        }));
+        return {id:p.id,val:v};
+      });
+      const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null;
+      return all.find(s=>s.val===max)?.id||null;
+    }
+  },
+  { id:'iceman', name:'Iceman', icon:'🧊', desc:'Meilleur ratio V/D en finale vs poule',
+    getWinner:()=>{
+      let bestPid=null,bestRatio=-Infinity;
+      db.players.forEach(p=>{
+        let fW=0,fM=0,pW=0,pM=0;
+        db.tournaments.forEach(t=>t.matches.filter(m=>m.finished).forEach(m=>{
+          ['a','b'].forEach(side=>['attacker','defender'].forEach(r=>{
+            if(m.stats[side]?.[r]?.id!==p.id) return;
+            if(m.phase==='finale'){fM++;if(m.winner===side)fW++;}
+            else if(m.phase==='poule'){pM++;if(m.winner===side)pW++;}
+          }));
+        }));
+        if(fM<1||pM<1) return;
+        const ratio=(fW/fM)-(pW/pM);
+        if(ratio>bestRatio){bestRatio=ratio;bestPid=p.id;}
+      });
+      return bestPid;
+    }
+  },
+  { id:'goat', name:'GOAT', icon:'🐐', desc:'Plus grand nombre de tournois gagnés',
+    getWinner:()=>{
+      const all=db.players.map(p=>({id:p.id,val:countPlayerTournamentsWon(p.id)}));
+      const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null;
+      return all.find(s=>s.val===max)?.id||null;
+    }
+  },
+  { id:'goleador', name:'Goleador', icon:'⚡', desc:'Plus de buts sur un seul match',
+    getWinner:()=>{
+      let bestPid=null,bestG=0;
+      db.players.forEach(p=>{ getAllMatchesForPlayer(p.id).forEach(({ps})=>{ const g=ps.goals||0; if(g>bestG){bestG=g;bestPid=p.id;} }); });
+      return bestG>0?bestPid:null;
+    }
+  },
+  { id:'le_dechu', name:'Le Déchu', icon:'💀', desc:"Joueur avec le moins d'ELO", shame:true,
+    getWinner:()=>{
+      const elig=db.players.filter(p=>getAllMatchesForPlayer(p.id).length>0);
+      if(!elig.length) return null;
+      const minElo=Math.min(...elig.map(p=>p.elo||1000));
+      return elig.find(p=>(p.elo||1000)===minElo)?.id||null;
+    }
+  },
 ];
 
 function getPlayerBadges(pid) {
@@ -2175,6 +2445,123 @@ function renderBadgesPage() {
 }
 
 /* ═══════════════════════════════════════
+   ACHIEVEMENTS
+═══════════════════════════════════════ */
+const ACHIEVEMENT_DEFS = [
+  { id:'first_goal',       icon:'🩸', name:'Premier but',          desc:'Marquer son tout premier but',
+    check:(pid)=>getPlayerStats(pid).goals>=1 },
+  { id:'hat_trick',        icon:'🎩', name:'Hat-trick',             desc:'3+ buts dans un seul match',
+    check:(pid)=>getAllMatchesForPlayer(pid).some(({ps})=>(ps.goals||0)>=3) },
+  { id:'demi_centurion',   icon:'🌗', name:'Demi-Centurion',        desc:'50 buts au total',
+    check:(pid)=>getPlayerStats(pid).goals>=50 },
+  { id:'centurion',        icon:'💯', name:'Centurion',             desc:'100 buts au total',
+    check:(pid)=>getPlayerStats(pid).goals>=100 },
+  { id:'demi_rempart',     icon:'🌗', name:'Demi-Rempart',          desc:'50 arrêts au total',
+    check:(pid)=>getPlayerStats(pid).saves>=50 },
+  { id:'centurion_arrets', icon:'🏰', name:'Centurion des Arrêts',  desc:'100 arrêts au total',
+    check:(pid)=>getPlayerStats(pid).saves>=100 },
+  { id:'veteran',          icon:'🎮', name:'Vétéran',               desc:'50 matchs joués',
+    check:(pid)=>getAllMatchesForPlayer(pid).length>=50 },
+  { id:'elo_1200',         icon:'📈', name:'Montée en puissance',   desc:'Atteindre ELO 1200',
+    check:(pid)=>(db.players.find(p=>p.id===pid)?.elo||1000)>=1200 },
+  { id:'elo_1400',         icon:'🌟', name:'Légende ELO',           desc:'Atteindre ELO 1400',
+    check:(pid)=>(db.players.find(p=>p.id===pid)?.elo||1000)>=1400 },
+  { id:'le_mur',           icon:'🧱', name:'Le Mur',                desc:'Zéro but encaissé sur un match (défenseur)',
+    check:(pid)=>getAllMatchesForPlayer(pid).some(({m,side,role})=>{
+      if(role!=='defender'||!m.finished) return false;
+      const os=side==='a'?'b':'a';
+      return ((m.stats[os]?.attacker?.goals||0)+(m.stats[os]?.defender?.goals||0)+(m.stats[side]?.attacker?.ownGoals||0)+(m.stats[side]?.defender?.ownGoals||0))===0;
+    })
+  },
+  { id:'snipeur',          icon:'🎯', name:'Le Snipeur',            desc:'25 cadrages cumulés',
+    check:(pid)=>getPlayerStats(pid).gamelles>=25 },
+  { id:'match_parfait',    icon:'✨', name:'Match Parfait',          desc:'1 but + 1 arrêt + 0 CSC en un match',
+    check:(pid)=>getAllMatchesForPlayer(pid).some(({m,side})=>{
+      const sa=m.stats[side]; if(!sa) return false;
+      return (sa.attacker?.goals||0)+(sa.defender?.goals||0)>=1 &&
+             (sa.defender?.saves||0)>=1 &&
+             (sa.attacker?.ownGoals||0)+(sa.defender?.ownGoals||0)===0;
+    })
+  },
+  { id:'champion',         icon:'🏆', name:'Champion',              desc:'Gagner un tournoi',
+    check:(pid)=>countPlayerTournamentsWon(pid)>=1 },
+  { id:'serie_noire',      icon:'🔥', name:'Série Noire',           desc:'5 victoires consécutives',
+    check:(pid)=>{ let s=0; for(const {m,side} of getAllMatchesForPlayer(pid)){ if(m.winner===side){s++;if(s>=5)return true;}else s=0; } return false; }
+  },
+  { id:'polyvalent',       icon:'⚽', name:'Polyvalent',            desc:'10 matchs ATT et 10 matchs DEF',
+    check:(pid)=>{ const ms=getAllMatchesForPlayer(pid); return ms.filter(x=>x.role==='attacker').length>=10&&ms.filter(x=>x.role==='defender').length>=10; }
+  },
+  { id:'cameleon',         icon:'🎭', name:'Caméléon',              desc:'ATT et DEF dans le même tournoi',
+    check:(pid)=>db.tournaments.some(t=>{
+      let att=false,def=false;
+      t.matches.filter(m=>m.finished).forEach(m=>['a','b'].forEach(side=>{
+        if(m.stats[side]?.attacker?.id===pid) att=true;
+        if(m.stats[side]?.defender?.id===pid) def=true;
+      }));
+      return att&&def;
+    })
+  },
+  { id:'dominant',         icon:'👊', name:'Dominant',              desc:'Gagner un tournoi sans perdre',
+    check:(pid)=>db.tournaments.some(t=>{
+      const fin=t.matches.find(m=>m.phase==='finale'&&m.finished); if(!fin||!fin.winner) return false;
+      const wIds=['attacker','defender'].map(r=>fin.stats[fin.winner]?.[r]?.id);
+      if(!wIds.includes(pid)) return false;
+      return t.matches.filter(m=>m.finished).every(m=>{
+        const side=m.stats.a?.attacker?.id===pid||m.stats.a?.defender?.id===pid?'a':
+                   m.stats.b?.attacker?.id===pid||m.stats.b?.defender?.id===pid?'b':null;
+        if(!side) return true;
+        return m.winner!==( side==='a'?'b':'a' );
+      });
+    })
+  },
+  { id:'revenant',         icon:'🔄', name:'Revenant',              desc:'Ne pas finir 1er de poule et gagner la finale',
+    check:(pid)=>db.tournaments.some(t=>{
+      const fin=t.matches.find(m=>m.phase==='finale'&&m.finished); if(!fin||!fin.winner) return false;
+      const wIds=['attacker','defender'].map(r=>fin.stats[fin.winner]?.[r]?.id);
+      if(!wIds.includes(pid)) return false;
+      const winTeam=fin.winner==='a'?fin.teamA:fin.teamB;
+      return !t.groups.some((g,gi)=>getGroupStandings(t,gi)[0]?.teamId===winTeam);
+    })
+  },
+  { id:'ballon_or_ach',    icon:'🥇', name:'Ballon d\'Or',          desc:'Avoir détenu le Ballon d\'Or au moins une fois',
+    check:(pid)=>{ const p=db.players.find(x=>x.id===pid); return !!(p?.hadBallonOr); }
+  },
+  { id:'soulier_or_ach',   icon:'👟', name:'Soulier d\'Or',         desc:'Avoir détenu le Soulier d\'Or au moins une fois',
+    check:(pid)=>{ const p=db.players.find(x=>x.id===pid); return !!(p?.hadSoulierOr); }
+  },
+];
+
+function checkAndGrantAchievements(pid) {
+  const p=db.players.find(x=>x.id===pid); if(!p) return [];
+  if(!p.achievements) p.achievements=[];
+  const newOnes=[];
+  ACHIEVEMENT_DEFS.forEach(def=>{
+    if(!p.achievements.includes(def.id)&&def.check(pid)){
+      p.achievements.push(def.id);
+      newOnes.push(def);
+    }
+  });
+  return newOnes;
+}
+
+function checkAllAchievements() {
+  // Update badge achievement flags
+  const boWid=HOME_BADGE_DEFS[0].getWinner(), soWid=HOME_BADGE_DEFS[1].getWinner();
+  if(boWid){ const p=db.players.find(x=>x.id===boWid); if(p) p.hadBallonOr=true; }
+  if(soWid){ const p=db.players.find(x=>x.id===soWid); if(p) p.hadSoulierOr=true; }
+  const newByPlayer={};
+  db.players.forEach(p=>{ const n=checkAndGrantAchievements(p.id); if(n.length) newByPlayer[p.id]=n; });
+  if(Object.keys(newByPlayer).length) dbSave();
+  return newByPlayer;
+}
+
+function getPlayerAchievements(pid) {
+  const p=db.players.find(x=>x.id===pid);
+  if(!p||!p.achievements) return [];
+  return ACHIEVEMENT_DEFS.filter(d=>p.achievements.includes(d.id));
+}
+
+/* ═══════════════════════════════════════
    RANKINGS
 ═══════════════════════════════════════ */
 function switchRanking(type, btn) {
@@ -2188,6 +2575,7 @@ function renderRanking(type) {
     goals:(a,b)=>b.goals-a.goals, pinches:(a,b)=>b.pinches-a.pinches,
     saves:(a,b)=>b.saves-a.saves, gamelles:(a,b)=>b.gamelles-a.gamelles,
     ownGoals:(a,b)=>b.ownGoals-a.ownGoals, wins:(a,b)=>b.wins-a.wins,
+    elo:(a,b)=>(b.player.elo||1000)-(a.player.elo||1000),
     winRatio:(a,b)=>{
       const av=a.winRatio===Infinity?99999:a.winRatio||0;
       const bv=b.winRatio===Infinity?99999:b.winRatio||0;
@@ -2195,16 +2583,23 @@ function renderRanking(type) {
     },
   };
   data.sort(sortFns[type]||sortFns.goals);
-  const labels={goals:'buts',pinches:'pinches',saves:'arrêts',gamelles:'cadrages',ownGoals:'CSC',wins:'victoires',winRatio:'V/D ratio'};
+  const labels={goals:'buts',pinches:'pinches',saves:'arrêts',gamelles:'cadrages',ownGoals:'CSC',wins:'victoires',winRatio:'V/D ratio',elo:'ELO'};
   if (!data.length) { el.innerHTML='<div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Aucune stat</div></div>'; return; }
   el.innerHTML=`<div class="card">${data.map((d,i)=>{
-    const raw=d[type]??0;
-    const val=type==='winRatio'?(d.losses===0?(d.wins>0?'∞':'—'):raw):raw;
+    const elo=d.player.elo||1000;
+    const rank=getELORank(elo);
+    let val, sublabel;
+    if (type==='elo') { val=elo; sublabel=`${rank.icon} ${rank.name}`; }
+    else if (type==='winRatio') { val=d.losses===0?(d.wins>0?'∞':'—'):d.winRatio; sublabel=labels[type]; }
+    else { val=d[type]??0; sublabel=labels[type]; }
     return `<div class="list-item" onclick="showPage('player-detail','${d.player.id}')" style="cursor:pointer">
       <div class="rank-num ${['rank-1','rank-2','rank-3'][i]||''}">${i+1}</div>
       <div class="avatar avatar-sm">${initials(d.player.name)}</div>
-      <div class="list-info"><div class="list-name">${d.player.name}</div><div class="list-sub">${d.player.role==='attaquant'?'⚔️ ATT':d.player.role==='defenseur'?'🛡 DEF':'⚽ Poly'}</div></div>
-      <div class="list-right"><div class="list-stat">${val}</div><div class="list-stat-label">${labels[type]}</div></div>
+      <div class="list-info">
+        <div class="list-name">${d.player.name}</div>
+        <div class="list-sub">${d.player.role==='attaquant'?'⚔️ ATT':d.player.role==='defenseur'?'🛡 DEF':'⚽ Poly'}${type!=='elo'?` · ${rank.icon} ${rank.name}`:''}</div>
+      </div>
+      <div class="list-right"><div class="list-stat">${val}</div><div class="list-stat-label">${sublabel}</div></div>
     </div>`;
   }).join('')}</div>`;
 }
@@ -2257,7 +2652,11 @@ function renderPlayerDetail(pid) {
   document.getElementById('pd-fullname').textContent=p.name;
   document.getElementById('pd-avatar').textContent=initials(p.name);
   document.getElementById('pd-role').textContent=p.role==='attaquant'?'⚔️ Attaquant':p.role==='defenseur'?'🛡 Défenseur':'⚽ Polyvalent';
-  document.getElementById('pd-badges').innerHTML=badges.map(b=>`<span class="pill pill-gold">${b.icon} ${b.name}</span>`).join('');
+  const elo=p.elo||1000;
+  const eloRank=getELORank(elo);
+  document.getElementById('pd-badges').innerHTML=
+    `<span class="elo-rank elo-rank-${eloRank.cls}">${eloRank.icon} ${eloRank.name} · ${elo}</span>`+
+    badges.map(b=>`<span class="pill pill-gold">${b.icon} ${b.name}</span>`).join('');
   document.getElementById('pd-edit-btn').onclick=()=>openEditPlayer(p.id);
   document.getElementById('pd-stat-grid').innerHTML=[
     {label:'⚽ Buts',val:s.goals},{label:'🤏 Pinches',val:s.pinches},
@@ -2295,18 +2694,68 @@ function renderPlayerDetail(pid) {
         <div class="list-info"><div class="list-name text-sm">vs ${opp}</div><div class="list-sub">${friendly?'🤝 Amical':t?.name||'?'} · ${my}–${opp_} · ⚽${ps.goals} 🎯${ps.gamelles} 🤦${ps.ownGoals}</div></div></div>`;
     }).join('')}</div>`
     :'<div class="text-muted text-sm text-center" style="padding:20px">Aucun match joué</div>';
+
+  // Achievements
+  const achEl=document.getElementById('pd-achievements');
+  if (achEl) {
+    const unlockedIds=p.achievements||[];
+    achEl.innerHTML=ACHIEVEMENT_DEFS.map(a=>{
+      const unlocked=unlockedIds.includes(a.id);
+      return `<div class="ach-card ${unlocked?'unlocked':''}">
+        <div class="ach-icon">${a.icon}</div>
+        <div class="ach-name">${a.name}</div>
+        <div class="ach-desc">${a.desc}</div>
+      </div>`;
+    }).join('');
+  }
 }
 
 /* ═══════════════════════════════════════
    COMPARE
 ═══════════════════════════════════════ */
+let _compareMode = 'players';
+
+function switchCompareMode(mode, btn) {
+  _compareMode = mode;
+  document.querySelectorAll('.compare-mode-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('compare-players-panel').style.display = mode==='players' ? '' : 'none';
+  document.getElementById('compare-teams-panel').style.display   = mode==='teams'   ? '' : 'none';
+  if (mode==='teams') {
+    ['compare-team-a','compare-team-b'].forEach(id=>{
+      const sel=document.getElementById(id), cur=sel.value;
+      sel.innerHTML='<option value="">— Choisir —</option>'+db.teams.map(t=>`<option value="${t.id}" ${t.id===cur?'selected':''}>${t.name}</option>`).join('');
+    });
+    renderTeamComparison();
+  }
+}
+
 function renderCompare() {
   ['compare-player-a','compare-player-b'].forEach(id=>{
     const sel=document.getElementById(id), cur=sel.value;
     sel.innerHTML='<option value="">— Choisir —</option>'+db.players.map(p=>`<option value="${p.id}" ${p.id===cur?'selected':''}>${p.name}</option>`).join('');
   });
+  ['compare-team-a','compare-team-b'].forEach(id=>{
+    const sel=document.getElementById(id), cur=sel.value;
+    sel.innerHTML='<option value="">— Choisir —</option>'+db.teams.map(t=>`<option value="${t.id}" ${t.id===cur?'selected':''}>${t.name}</option>`).join('');
+  });
   renderComparison();
 }
+
+function _compareBarRow(label, vA, vB) {
+  const total=vA+vB;
+  const pctA=total?Math.round(vA/total*100):50, pctB=100-pctA;
+  return `<div class="compare-stat-label">${label}</div>
+    <div class="compare-bar-row">
+      <div class="compare-label" style="color:var(--red-500)">${vA}</div>
+      <div class="compare-bar-wrap">
+        <div class="compare-bar-a" style="width:${pctA}%">${pctA>15?pctA+'%':''}</div>
+        <div class="compare-bar-b" style="width:${pctB}%">${pctB>15?pctB+'%':''}</div>
+      </div>
+      <div class="compare-label" style="text-align:left;color:var(--blue-500)">${vB}</div>
+    </div>`;
+}
+
 function renderComparison() {
   const pidA=document.getElementById('compare-player-a').value;
   const pidB=document.getElementById('compare-player-b').value;
@@ -2314,6 +2763,8 @@ function renderComparison() {
   if (!pidA||!pidB) { el.innerHTML='<div class="empty"><div class="empty-icon">⚖️</div><div class="empty-title">Choisis 2 joueurs</div></div>'; return; }
   const pA=db.players.find(x=>x.id===pidA), pB=db.players.find(x=>x.id===pidB);
   const sA=getPlayerStats(pidA), sB=getPlayerStats(pidB);
+  const eloA=pA?.elo||1000, eloB=pB?.elo||1000;
+  const rkA=getELORank(eloA), rkB=getELORank(eloB);
   const stats=[
     {key:'goals',label:'⚽ Buts'},{key:'pinches',label:'🤏 Pinches'},
     {key:'saves',label:'🛡 Arrêts'},{key:'gamelles',label:'🎯 Cadrages'},
@@ -2321,29 +2772,74 @@ function renderComparison() {
     {key:'winRatio',label:'📊 V/D'},
   ];
   let html=`<div class="card mb-12">
-    <div class="flex-between mb-12">
-      <div class="flex-center gap-8"><div class="avatar avatar-sm" style="background:var(--red-50);border-color:var(--red-400);color:var(--red-500)">${initials(pA?.name||'?')}</div><span style="font-weight:700">${pA?.name}</span></div>
+    <div class="flex-between mb-8">
+      <div class="flex-center gap-8"><div class="avatar avatar-sm" style="background:var(--red-50);border-color:var(--red-400);color:var(--red-500)">${initials(pA?.name||'?')}</div><div><div style="font-weight:700">${pA?.name}</div><div class="text-xs text-muted">${rkA.icon} ${rkA.name} · ${eloA}</div></div></div>
       <span style="font-size:18px;color:var(--beige-400)">vs</span>
-      <div class="flex-center gap-8"><span style="font-weight:700">${pB?.name}</span><div class="avatar avatar-sm" style="background:var(--blue-50);border-color:var(--blue-400);color:var(--blue-500)">${initials(pB?.name||'?')}</div></div>
-    </div>`;
+      <div class="flex-center gap-8"><div><div style="font-weight:700;text-align:right">${pB?.name}</div><div class="text-xs text-muted text-right">${rkB.icon} ${rkB.name} · ${eloB}</div></div><div class="avatar avatar-sm" style="background:var(--blue-50);border-color:var(--blue-400);color:var(--blue-500)">${initials(pB?.name||'?')}</div></div>
+    </div>
+    ${_compareBarRow('⚡ ELO', eloA, eloB)}`;
   stats.forEach(({key,label})=>{
     const vA=parseFloat(sA[key])||0, vB=parseFloat(sB[key])||0;
-    const total=vA+vB;
-    const pctA=total?Math.round(vA/total*100):50, pctB=100-pctA;
-    html+=`<div class="compare-stat-label">${label}</div>
-      <div class="compare-bar-row">
-        <div class="compare-label" style="color:var(--red-500)">${vA}</div>
-        <div class="compare-bar-wrap">
-          <div class="compare-bar-a" style="width:${pctA}%">${pctA>15?pctA+'%':''}</div>
-          <div class="compare-bar-b" style="width:${pctB}%">${pctB>15?pctB+'%':''}</div>
-        </div>
-        <div class="compare-label" style="text-align:left;color:var(--blue-500)">${vB}</div>
-      </div>`;
+    html+=_compareBarRow(label, vA, vB);
   });
   const sc=getPlayerMVPScore(pidA), sb=getPlayerMVPScore(pidB);
   const winner=sc>sb?pA:sb>sc?pB:null;
   if (winner) html+=`<div class="text-center mt-12" style="padding:10px;background:var(--gold-50);border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:800;color:var(--gold-500)">🏆 Meilleur overall : ${winner.name}</div>`;
   html+='</div>';
+  el.innerHTML=html;
+}
+
+function renderTeamComparison() {
+  const tAid=document.getElementById('compare-team-a').value;
+  const tBid=document.getElementById('compare-team-b').value;
+  const el=document.getElementById('compare-teams-result');
+  if (!tAid||!tBid) { el.innerHTML='<div class="empty"><div class="empty-icon">⚖️</div><div class="empty-title">Choisis 2 équipes</div></div>'; return; }
+  const tA=db.teams.find(x=>x.id===tAid), tB=db.teams.find(x=>x.id===tBid);
+
+  function teamStats(tid) {
+    let matches=0,wins=0,losses=0,draws=0,goals=0,goalsAgainst=0,tournoiWins=0;
+    db.tournaments.forEach(t=>t.matches.filter(m=>m.finished&&(m.teamA===tid||m.teamB===tid)).forEach(m=>{
+      const side=m.teamA===tid?'a':'b';
+      matches++; goals+=side==='a'?m.scoreA:m.scoreB; goalsAgainst+=side==='a'?m.scoreB:m.scoreA;
+      if(m.winner===side) wins++; else if(!m.winner) draws++; else losses++;
+    }));
+    db.friendlyMatches.filter(m=>m.finished&&(m.teamA===tid||m.teamB===tid)).forEach(m=>{
+      const side=m.teamA===tid?'a':'b'; matches++;
+      if(m.winner===side) wins++; else if(!m.winner) draws++; else losses++;
+    });
+    tournoiWins=getTeamTournamentsWon(tid);
+    const streak=getTeamStreak(tid);
+    const winRatio=losses===0?(wins>0?wins:0):parseFloat((wins/losses).toFixed(2));
+    return {matches,wins,losses,draws,goals,goalsAgainst,tournoiWins,streak,winRatio};
+  }
+
+  // Head-to-head
+  let h2hWA=0,h2hWB=0,h2hD=0;
+  [...db.tournaments.flatMap(t=>t.matches),...db.friendlyMatches]
+    .filter(m=>m.finished&&((m.teamA===tAid&&m.teamB===tBid)||(m.teamA===tBid&&m.teamB===tAid)))
+    .forEach(m=>{
+      const sA=m.teamA===tAid?'a':'b';
+      if(m.winner===sA) h2hWA++; else if(!m.winner) h2hD++; else h2hWB++;
+    });
+
+  const sA=teamStats(tAid), sB=teamStats(tBid);
+  const atkA=db.players.find(p=>p.id===tA?.attackerId), defA=db.players.find(p=>p.id===tA?.defenderId);
+  const atkB=db.players.find(p=>p.id===tB?.attackerId), defB=db.players.find(p=>p.id===tB?.defenderId);
+
+  let html=`<div class="card mb-12">
+    <div class="flex-between mb-12">
+      <div class="flex-center gap-8"><div class="avatar avatar-sm" style="background:var(--red-50);border-color:var(--red-400);color:var(--red-500)">${initials(tA?.name||'?')}</div><div><div style="font-weight:700">${tA?.name}</div><div class="text-xs text-muted">⚔️ ${atkA?.name||'?'} · 🛡 ${defA?.name||'?'}</div></div></div>
+      <span style="font-size:18px;color:var(--beige-400)">vs</span>
+      <div class="flex-center gap-8"><div><div style="font-weight:700;text-align:right">${tB?.name}</div><div class="text-xs text-muted text-right">⚔️ ${atkB?.name||'?'} · 🛡 ${defB?.name||'?'}</div></div><div class="avatar avatar-sm" style="background:var(--blue-50);border-color:var(--blue-400);color:var(--blue-500)">${initials(tB?.name||'?')}</div></div>
+    </div>
+    ${h2hWA+h2hWB+h2hD>0?`<div style="text-align:center;padding:8px;background:var(--beige-200);border-radius:8px;margin-bottom:12px;font-size:13px;font-weight:700">⚔️ Face à face : <span style="color:var(--red-500)">${h2hWA}V</span> · ${h2hD}N · <span style="color:var(--blue-500)">${h2hWB}V</span></div>`:''}
+    ${_compareBarRow('🎮 Matchs', sA.matches, sB.matches)}
+    ${_compareBarRow('🏆 Victoires', sA.wins, sB.wins)}
+    ${_compareBarRow('📊 Ratio V/D', parseFloat(sA.winRatio)||0, parseFloat(sB.winRatio)||0)}
+    ${_compareBarRow('⚽ Buts', sA.goals, sB.goals)}
+    ${_compareBarRow('🏅 Tournois', sA.tournoiWins, sB.tournoiWins)}
+    ${_compareBarRow('🔥 Série', sA.streak, sB.streak)}
+  </div>`;
   el.innerHTML=html;
 }
 
@@ -2572,6 +3068,21 @@ function adminRefreshDebug() {
   rawEl.textContent = JSON.stringify(db, null, 2);
 }
 
+function adminRecalcELO() {
+  recalcAllELO();
+  toast('⚡ ELO recalculé pour tous les joueurs !');
+  adminRefreshDebug();
+}
+
+function adminCheckAchievements() {
+  recalcAllELO();
+  const newByPlayer = checkAllAchievements();
+  dbSave();
+  const total = Object.values(newByPlayer).reduce((s, a) => s + a.length, 0);
+  toast(total > 0 ? `🏆 ${total} achievement(s) attribué(s) !` : '✓ Tous les achievements sont à jour');
+  adminRefreshDebug();
+}
+
 function renderAdmin() {
   adminRefreshDebug();
 }
@@ -2580,6 +3091,12 @@ function renderAdmin() {
    INIT
 ═══════════════════════════════════════ */
 renderHome();
+// Retroactive ELO + achievements for existing data (all functions now defined)
+(function() {
+  const hasMatches = db.tournaments.some(t=>t.matches.some(m=>m.finished)) ||
+                     db.friendlyMatches.some(m=>m.finished);
+  if (hasMatches) { recalcAllELO(); checkAllAchievements(); dbSave(); }
+})();
 </script>
 </body>
 </html>
