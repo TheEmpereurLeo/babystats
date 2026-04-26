@@ -49,8 +49,8 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .header-back:active{background:var(--orange-50)}
 
 /* NAV */
-.nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--beige-50);border-top:1px solid var(--beige-300);display:grid;grid-template-columns:repeat(6,1fr);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -2px 16px rgba(26,18,8,.07)}
-.nav-btn{display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;gap:3px;color:var(--text-400);font-size:10px;font-weight:600;font-family:var(--font-display);letter-spacing:.02em;transition:color .15s}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--beige-50);border-top:1px solid var(--beige-300);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -2px 16px rgba(26,18,8,.07)}
+.nav-btn{display:flex;flex-direction:column;align-items:center;padding:10px 2px 8px;gap:3px;color:var(--text-400);font-size:9px;font-weight:600;font-family:var(--font-display);letter-spacing:.01em;transition:color .15s}
 .nav-btn .nav-icon{font-size:20px;line-height:1;transition:transform .15s}
 .nav-btn.active{color:var(--orange-400)}
 .nav-btn.active .nav-icon{transform:scale(1.15)}
@@ -119,10 +119,10 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .form-checkbox{width:20px;height:20px;accent-color:var(--orange-400);cursor:pointer;flex-shrink:0}
 
 /* MODALS */
-.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(26,18,8,.45);align-items:flex-end;justify-content:center}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(26,18,8,.45);align-items:flex-end;justify-content:center;cursor:pointer}
 .modal-overlay.open{display:flex}
 @media(min-width:768px){.modal-overlay{align-items:center}.modal{border-radius:var(--radius-xl)!important;max-width:520px;width:100%}}
-.modal{background:var(--beige-50);width:100%;max-height:92vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 20px);animation:slideUp .22s cubic-bezier(.32,.72,0,1)}
+.modal{background:var(--beige-50);width:100%;max-height:92vh;border-radius:var(--radius-xl) var(--radius-xl) 0 0;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 20px);animation:slideUp .22s cubic-bezier(.32,.72,0,1);cursor:default}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal-handle{width:36px;height:4px;border-radius:2px;background:var(--beige-300);margin:12px auto 16px}
 .modal-title{font-family:var(--font-display);font-size:19px;font-weight:800;padding:0 20px 14px}
@@ -309,6 +309,48 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .w-full{width:100%}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
+/* ELO RANKS */
+.elo-rank{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;font-family:var(--font-display)}
+.elo-rank-bois    {background:#F5EFE6;color:#8B6B45;border:1.5px solid #D9CCBA}
+.elo-rank-bronze  {background:#FFF0E8;color:#B05A30;border:1.5px solid #FFD0B0}
+.elo-rank-argent  {background:#F4F4F4;color:#5A5A5A;border:1.5px solid #C8C8C8}
+.elo-rank-or      {background:var(--gold-50);color:var(--gold-500);border:1.5px solid #F5D88A}
+.elo-rank-platine {background:#EFF8FF;color:#0369A1;border:1.5px solid #BAE6FD}
+.elo-rank-diamant {background:#F0FDFF;color:#0891B2;border:1.5px solid #A5F3FC}
+.elo-rank-maitre  {background:var(--purple-50);color:var(--purple-500);border:1.5px solid #DDD6FE}
+.elo-rank-legende {background:#FFF3EB;color:var(--orange-400);border:1.5px solid var(--orange-200)}
+.elo-badge-big{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius-md);margin-bottom:10px}
+
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.ach-card{background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-md);padding:10px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .15s;opacity:.45}
+.ach-card.unlocked{opacity:1;border-color:var(--orange-300);background:var(--orange-50)}
+.ach-card .ach-icon{font-size:26px;margin-bottom:4px}
+.ach-card .ach-name{font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--text-900)}
+.ach-card .ach-desc{font-size:10px;color:var(--text-400);margin-top:2px;line-height:1.3}
+
+/* COMPARE TEAMS */
+.compare-mode-tabs{display:flex;gap:3px;padding:4px;background:var(--beige-200);border-radius:12px;margin-bottom:14px}
+.compare-mode-btn{flex:1;padding:8px 6px;border-radius:9px;font-size:13px;font-weight:700;color:var(--text-500);font-family:var(--font-display);transition:all .15s}
+.compare-mode-btn.active{background:var(--beige-50);color:var(--text-900);box-shadow:var(--shadow-sm)}
+
+/* TOURNAMENT MODE CARDS */
+.nto-mode-card{border:2px solid var(--beige-300);border-radius:var(--radius-sm);padding:10px 6px;text-align:center;font-size:22px;background:var(--beige-100);transition:all .15s}
+.nto-mode-card.active{border-color:var(--orange-400);background:var(--orange-50)}
+input[type=radio]:checked+.nto-mode-card{border-color:var(--orange-400);background:var(--orange-50)}
+
+/* KOT */
+.kot-table-card{background:linear-gradient(135deg,var(--orange-50),var(--gold-50));border:2px solid var(--orange-300);border-radius:var(--radius-lg);padding:20px;margin-bottom:14px;text-align:center}
+.kot-queue{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.kot-queue-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-sm)}
+.kot-queue-item.on-table{background:var(--orange-50);border-color:var(--orange-300)}
+.kot-queue-pos{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:var(--beige-200);color:var(--text-500);flex-shrink:0}
+.kot-queue-pos.crown{background:var(--gold-50);color:var(--gold-500);border:1.5px solid #F5D88A}
+
+/* SWISS */
+.swiss-round{margin-bottom:14px}
+.swiss-round-header{font-family:var(--font-display);font-size:13px;font-weight:800;color:var(--blue-500);padding:8px 12px;background:var(--blue-50);border-radius:var(--radius-sm);margin-bottom:8px}
+
 /* ADMIN */
 .admin-tool{background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-md);padding:18px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
 .admin-tool-title{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--text-900);margin-bottom:4px}
@@ -319,6 +361,42 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 .debug-stat-val{font-family:var(--font-display);font-weight:700;color:var(--text-900)}
 .debug-raw{background:#1A1208;color:#E8D8C0;font-family:monospace;font-size:11px;padding:14px;border-radius:var(--radius-sm);max-height:300px;overflow-y:auto;white-space:pre-wrap;word-break:break-all;line-height:1.5;margin-top:10px}
 .debug-error{background:var(--red-50);border:1px solid #FFC5BF;border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--red-500);font-family:monospace;margin-top:8px;white-space:pre-wrap;word-break:break-all}
+
+/* ROLE TABS */
+.role-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.role-tab{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;font-family:var(--font-display);background:var(--beige-200);color:var(--text-500);cursor:pointer;border:none;transition:all .15s}
+.role-tab.active{background:var(--orange-400);color:#fff}
+.role-tab:active{transform:scale(.95)}
+
+/* MATCH MAP */
+.match-map{display:flex;flex-wrap:wrap;gap:5px;padding:4px}
+.match-dot{width:16px;height:16px;border-radius:4px;flex-shrink:0;cursor:default}
+.match-dot.win{background:var(--green-500)}
+.match-dot.loss{background:var(--red-400)}
+.match-dot.draw{background:var(--beige-400)}
+
+/* PREDICTION CARD */
+.predict-card{background:var(--purple-50);border:1px solid #DDD6FE;border-radius:var(--radius-md);padding:14px;margin-bottom:10px}
+.predict-title{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--purple-500);margin-bottom:10px}
+.predict-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:12px}
+.predict-bar-wrap{flex:1;height:6px;background:var(--beige-300);border-radius:3px;overflow:hidden}
+.predict-bar{height:100%;border-radius:3px;background:var(--purple-500)}
+.predict-form{display:flex;gap:3px;flex-wrap:wrap}
+.form-dot{width:10px;height:10px;border-radius:50%}
+.form-dot.W{background:var(--green-500)}.form-dot.L{background:var(--red-400)}.form-dot.D{background:var(--beige-400)}
+
+/* RECORD ITEM */
+.record-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--beige-200)}
+.record-row:last-child{border-bottom:none}
+.record-val{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange-400)}
+.record-lbl{font-size:12px;color:var(--text-500);margin-top:2px}
+
+/* WHEEL */
+.wheel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:300px;overflow-y:auto;padding:2px}
+.wheel-pcard{background:var(--beige-100);border:2px solid var(--beige-300);border-radius:var(--radius-sm);padding:10px 6px;cursor:pointer;transition:all .15s;text-align:center;font-size:13px;font-weight:600;line-height:1.4}
+.wheel-pcard.selected{border-color:var(--orange-300);background:var(--orange-50);color:var(--orange-500)}
+.wheel-pcard:active{transform:scale(.96)}
+.wheel-team-row{background:var(--beige-100);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
 </style>
 </head>
 <body>
@@ -347,7 +425,8 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div class="section-header">Trophées</div>
     <div id="home-badges" class="home-badges-wrap"></div>
     <div class="section-header">Hall of Shame 🔥</div>
-    <div id="home-shame" class="pb-20"></div>
+    <div id="home-shame"></div>
+    <div style="height:20px"></div>
   </div>
 </div>
 
@@ -400,15 +479,92 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
       <button class="tab-btn active" onclick="switchTab('stats','rankings',this)">Classements</button>
       <button class="tab-btn" onclick="switchTab('stats','graphs',this)">Graphiques</button>
       <button class="tab-btn" onclick="switchTab('stats','badges',this)">Badges</button>
+      <button class="tab-btn" onclick="switchTab('stats','history',this)">Historique</button>
     </div>
     <div id="stats-rankings">
+      <details style="margin-bottom:12px">
+        <summary style="cursor:pointer;font-family:var(--font-display);font-size:12px;font-weight:800;color:var(--text-400);text-transform:uppercase;letter-spacing:.06em;padding:4px 0;list-style:none;display:flex;align-items:center;gap:6px">⚡ Niveaux ELO <span style="font-size:10px;opacity:.6;font-weight:500;text-transform:none;letter-spacing:0">(cliquer pour afficher)</span></summary>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+          <div style="background:#F5EFE6;border:1.5px solid #D9CCBA;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">🪵</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:#8B6B45">Bois</span></div>
+            <div style="font-size:11px;font-weight:700;color:#B0A090;background:rgba(139,107,69,.08);border-radius:6px;padding:2px 7px;width:fit-content">0 – 999</div>
+          </div>
+          <div style="background:#FFF0E8;border:1.5px solid #FFD0B0;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">🔶</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:#B05A30">Bronze</span></div>
+            <div style="font-size:11px;font-weight:700;color:#B05A30;background:rgba(176,90,48,.1);border-radius:6px;padding:2px 7px;width:fit-content">1000 – 1099</div>
+          </div>
+          <div style="background:#F4F4F4;border:1.5px solid #C8C8C8;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">🥈</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:#5A5A5A">Argent</span></div>
+            <div style="font-size:11px;font-weight:700;color:#5A5A5A;background:rgba(90,90,90,.08);border-radius:6px;padding:2px 7px;width:fit-content">1100 – 1199</div>
+          </div>
+          <div style="background:var(--gold-50);border:1.5px solid #F5D88A;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">🥇</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:var(--gold-500)">Or</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--gold-500);background:rgba(212,148,10,.1);border-radius:6px;padding:2px 7px;width:fit-content">1200 – 1299</div>
+          </div>
+          <div style="background:#EFF8FF;border:1.5px solid #BAE6FD;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">💠</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:#0369A1">Platine</span></div>
+            <div style="font-size:11px;font-weight:700;color:#0369A1;background:rgba(3,105,161,.08);border-radius:6px;padding:2px 7px;width:fit-content">1300 – 1399</div>
+          </div>
+          <div style="background:#F0FDFF;border:1.5px solid #A5F3FC;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">💎</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:#0891B2">Diamant</span></div>
+            <div style="font-size:11px;font-weight:700;color:#0891B2;background:rgba(8,145,178,.08);border-radius:6px;padding:2px 7px;width:fit-content">1400 – 1499</div>
+          </div>
+          <div style="background:var(--purple-50);border:1.5px solid #DDD6FE;border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">👑</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:var(--purple-500)">Maître</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--purple-500);background:rgba(124,58,237,.08);border-radius:6px;padding:2px 7px;width:fit-content">1500 – 1599</div>
+          </div>
+          <div style="background:#FFF3EB;border:1.5px solid var(--orange-200);border-radius:var(--radius-md);padding:10px 12px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px">🐐</span><span style="font-family:var(--font-display);font-size:13px;font-weight:800;color:var(--orange-400)">Légende</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--orange-400);background:rgba(212,98,26,.1);border-radius:6px;padding:2px 7px;width:fit-content">1600 +</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;background:var(--beige-50);border:1.5px solid var(--beige-300);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:var(--font-display);font-size:11px;font-weight:800;color:var(--text-400);text-transform:uppercase;letter-spacing:.06em">Comment est calculé l'ELO ?</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--text-700);line-height:1.5">
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="font-size:15px;flex-shrink:0">🚀</span>
+              <span><strong>Départ à 1000</strong> — chaque joueur commence avec un ELO de 1000.</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="font-size:15px;flex-shrink:0">🤝</span>
+              <span><strong>ELO d'équipe</strong> — la force d'une équipe = moyenne des ELO de ses 2 joueurs.</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="font-size:15px;flex-shrink:0">📐</span>
+              <span><strong>Score attendu</strong> — probabilité de victoire calculée : <span style="font-family:monospace;background:var(--beige-200);padding:1px 5px;border-radius:4px;font-size:11px">E = 1 / (1 + 10^((Adv−Toi)/400))</span></span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="font-size:15px;flex-shrink:0">⚡</span>
+              <span><strong>Gain / perte</strong> — <span style="font-family:monospace;background:var(--beige-200);padding:1px 5px;border-radius:4px;font-size:11px">K × (résultat − E)</span> où résultat = 1 (victoire) ou 0 (défaite).</span>
+            </div>
+            <div style="background:#FFF3EB;border:1.5px solid var(--orange-200);border-radius:var(--radius-sm);padding:8px 10px">
+              <div style="font-size:11px;font-weight:800;color:var(--orange-400);margin-bottom:4px">🚀 Phase Boost — Tournois 1 à 5</div>
+              <div style="font-size:11px;color:var(--text-700);line-height:1.5">
+                <div><strong>K = 150</strong> (très volatile, progression rapide)</div>
+                <div style="margin-top:2px">Gagnant → delta normal <strong>+ 15 pts bonus</strong></div>
+                <div>Perdant → delta normal <strong>+ 5 pts consolation</strong></div>
+              </div>
+            </div>
+            <div style="background:var(--beige-200);border-radius:var(--radius-sm);padding:8px 10px">
+              <div style="font-size:11px;font-weight:700;color:var(--text-500);margin-bottom:4px">⚖️ Mode Classique — Tournoi 6+</div>
+              <div style="font-size:11px;color:var(--text-700)"><strong>K = 50</strong> · Somme nulle standard (pas d'injection de points)</div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:flex-start">
+              <span style="font-size:15px;flex-shrink:0">💡</span>
+              <span style="color:var(--text-500)">Battre un adversaire plus fort rapporte plus de points. L'ELO minimum est fixé à <strong>100</strong>.</span>
+            </div>
+          </div>
+        </div>
+      </details>
       <div class="chips">
         <button class="chip active" onclick="switchRanking('goals',this)">⚽ Buts</button>
         <button class="chip" onclick="switchRanking('saves',this)">🛡 Arrêts</button>
+        <button class="chip" onclick="switchRanking('cleanSheets',this)">🔒 Cage inv.</button>
         <button class="chip" onclick="switchRanking('gamelles',this)">🎯 Cadrages</button>
         <button class="chip" onclick="switchRanking('ownGoals',this)">🤦 CSC</button>
         <button class="chip" onclick="switchRanking('winRatio',this)">📊 V/D ratio</button>
         <button class="chip" onclick="switchRanking('wins',this)">🏆 Victoires</button>
+        <button class="chip" onclick="switchRanking('elo',this)">⚡ ELO</button>
       </div>
       <div id="ranking-list"></div>
     </div>
@@ -419,9 +575,14 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
       <div class="card"><div class="chart-wrap"><canvas id="chart-gamelles"></canvas></div></div>
       <div class="section-header">Victoires cumulées</div>
       <div class="card"><div class="chart-wrap"><canvas id="chart-wins"></canvas></div></div>
+      <div class="section-header">Sorties par tournoi</div>
+      <div class="card"><div class="chart-wrap"><canvas id="chart-sorties"></canvas></div></div>
     </div>
     <div id="stats-badges" style="display:none">
       <div id="badges-list" class="badge-grid pb-20"></div>
+    </div>
+    <div id="stats-history" style="display:none">
+      <div id="stats-history-content" class="pb-20"></div>
     </div>
   </div>
 </div>
@@ -476,43 +637,22 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
       </div>
     </div>
     <div class="card card-sm mb-8" style="background:var(--blue-50);border-color:var(--blue-400)">
-      <div class="flex-between">
-        <div>
-          <div class="font-bold text-sm" style="color:var(--blue-500)">🚪 Sorties (règle 3→1 but)</div>
-          <div class="text-xs text-muted" id="sorties-rule-label">3 sorties = 1 but adversaire</div>
-        </div>
-        <div class="flex-center gap-8">
-          <div>
-            <div class="text-xs text-muted text-center" id="match-sorties-a-label">Éq. A</div>
-            <div class="counter-row" style="justify-content:center">
-              <button class="counter-btn counter-minus" style="width:30px;height:30px;font-size:18px" onclick="updateSorties('a',-1)">−</button>
-              <div class="counter-val" id="sorties-val-a" style="font-size:18px;min-width:24px">0</div>
-              <button class="counter-btn counter-plus" style="width:30px;height:30px;font-size:18px" onclick="updateSorties('a',1)">+</button>
-            </div>
-          </div>
-          <div style="font-size:20px;color:var(--beige-400)">|</div>
-          <div>
-            <div class="text-xs text-muted text-center" id="match-sorties-b-label">Éq. B</div>
-            <div class="counter-row" style="justify-content:center">
-              <button class="counter-btn counter-minus" style="width:30px;height:30px;font-size:18px" onclick="updateSorties('b',-1)">−</button>
-              <div class="counter-val" id="sorties-val-b" style="font-size:18px;min-width:24px">0</div>
-              <button class="counter-btn counter-plus" style="width:30px;height:30px;font-size:18px" onclick="updateSorties('b',1)">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="font-bold text-sm" style="color:var(--blue-500)">🚪 Sorties → <span id="sorties-rule-label">3 sorties = 1 but adversaire</span></div>
+      <div class="text-xs text-muted mt-4" id="sorties-live-score"></div>
     </div>
     <div class="tabs">
       <button class="tab-btn active" id="tab-ma-btn" onclick="switchMatchTeam('a')">Éq. A</button>
       <button class="tab-btn"        id="tab-mb-btn" onclick="switchMatchTeam('b')">Éq. B</button>
     </div>
     <div id="match-stats-a">
-      <div class="info-box">💡 <span><strong>Cadrage</strong> (gamelle) = tir bien cadré qui ne rentre pas.</span></div>
+      <div class="info-box">💡 <span><strong>Cadrage</strong> = tir bien cadré qui ne rentre pas. <strong>Sortie</strong> = ballon sorti du terrain (règle : N sorties = 1 but adversaire).</span></div>
+      <div id="match-predict-a"></div>
       <div class="card mb-8"><div class="card-header"><div class="card-title" id="sa-att-name">Attaquant</div><span class="pill pill-red">ATT</span></div><div id="sa-att-counters"></div></div>
       <div class="card">    <div class="card-header"><div class="card-title" id="sa-def-name">Défenseur</div><span class="pill pill-blue">DEF</span></div><div id="sa-def-counters"></div></div>
     </div>
     <div id="match-stats-b" style="display:none">
-      <div class="info-box">💡 <span><strong>Cadrage</strong> (gamelle) = tir bien cadré qui ne rentre pas.</span></div>
+      <div class="info-box">💡 <span><strong>Cadrage</strong> = tir bien cadré qui ne rentre pas. <strong>Sortie</strong> = ballon sorti du terrain (règle : N sorties = 1 but adversaire).</span></div>
+      <div id="match-predict-b"></div>
       <div class="card mb-8"><div class="card-header"><div class="card-title" id="sb-att-name">Attaquant</div><span class="pill pill-red">ATT</span></div><div id="sb-att-counters"></div></div>
       <div class="card">    <div class="card-header"><div class="card-title" id="sb-def-name">Défenseur</div><span class="pill pill-blue">DEF</span></div><div id="sb-def-counters"></div></div>
     </div>
@@ -536,13 +676,42 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
       <div class="text-muted mt-8" id="pd-role"></div>
       <div id="pd-badges" style="margin-top:10px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap"></div>
     </div>
-    <div id="pd-stat-grid" class="stat-mini-grid mb-12"></div>
-    <div class="section-header">Évolution des buts par tournoi</div>
-    <div class="card"><div class="chart-wrap"><canvas id="pd-chart"></canvas></div></div>
-    <div class="section-header">Stats par tournoi</div>
-    <div id="pd-tournament-stats" class="mb-12"></div>
-    <div class="section-header">Historique des matchs</div>
-    <div id="pd-matches" class="pb-20"></div>
+    <div class="role-tabs">
+      <button class="role-tab active" data-tab="overview" onclick="switchPDTab('overview',currentPid)">📊 Global</button>
+      <button class="role-tab" data-tab="attacker" onclick="switchPDTab('attacker',currentPid)">⚔️ Attaquant</button>
+      <button class="role-tab" data-tab="defender" onclick="switchPDTab('defender',currentPid)">🛡 Défenseur</button>
+      <button class="role-tab" data-tab="records" onclick="switchPDTab('records',currentPid)">🏆 Records</button>
+      <button class="role-tab" data-tab="achievements" onclick="switchPDTab('achievements',currentPid)">🎖 Achievements</button>
+    </div>
+    <!-- Global tab -->
+    <div id="pd-tab-overview">
+      <div id="pd-stat-grid" class="stat-mini-grid mb-12"></div>
+      <div class="section-header">Carte des matchs</div>
+      <div class="card mb-12"><div id="pd-match-map" class="match-map"></div><div class="text-xs text-muted mt-8" style="padding:0 4px">🟢 Victoire · 🔴 Défaite · ⬜ Nul (du plus récent au plus ancien)</div></div>
+      <div class="section-header">Évolution des buts par tournoi</div>
+      <div class="card mb-12"><div class="chart-wrap"><canvas id="pd-chart"></canvas></div></div>
+      <div id="pd-opponents"></div>
+      <div class="section-header">Stats par tournoi</div>
+      <div id="pd-tournament-stats" class="mb-12"></div>
+      <div class="section-header">Historique des matchs</div>
+      <div id="pd-matches" class="pb-20"></div>
+    </div>
+    <!-- ATT tab -->
+    <div id="pd-tab-attacker" style="display:none">
+      <div id="pd-stat-grid-att" class="stat-mini-grid mb-12"></div>
+    </div>
+    <!-- DEF tab -->
+    <div id="pd-tab-defender" style="display:none">
+      <div id="pd-stat-grid-def" class="stat-mini-grid mb-12"></div>
+    </div>
+    <!-- Records tab -->
+    <div id="pd-tab-records" style="display:none">
+      <div id="pd-records-body" class="pb-20"></div>
+    </div>
+    <!-- Achievements tab -->
+    <div id="pd-tab-achievements" style="display:none">
+      <div id="pd-achievements" class="ach-grid pb-20"></div>
+    </div>
   </div>
 </div>
 
@@ -550,6 +719,71 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 <div id="page-admin" class="page">
   <div class="header"><span class="header-title">⚙️ Admin</span></div>
   <div class="container">
+
+    <div class="section-header">📋 Changelog</div>
+    <div class="admin-tool" style="border-color:var(--orange-200);background:var(--orange-50)">
+      <div class="admin-tool-title" style="display:flex;align-items:center;gap:8px">v1.4.1 — ELO Boost <span class="pill pill-orange" style="font-size:10px">Actuelle</span></div>
+      <div class="admin-tool-desc" style="line-height:1.9;margin-bottom:0">
+        ⚡ Système ELO revu : phase Boost sur les 5 premiers tournois (K=150, +15/+5 pts)<br>
+        ⚖️ Mode Classique dès le 6e tournoi (K=50, somme nulle)<br>
+        🧱 Badge "Mur de Berlin" : joueur avec le plus de cages inviolées en défense<br>
+        📊 Classement complet des joueurs dans le détail de chaque badge<br>
+        🥇 Ballon d'Or : cage inv. × 3 ajoutée, buts passés de ×3 à ×5<br>
+        🛡 Master of Defence : score composite (arrêts × 2 + cage inv. × 3 − CSC × 2)<br>
+        👟 Soulier d'Or : buts nets (buts − CSC)<br>
+      </div>
+    </div>
+    <div class="admin-tool" style="border-color:var(--orange-200);background:var(--orange-50);opacity:.7">
+      <div class="admin-tool-title" style="display:flex;align-items:center;gap:8px">v1.4 — Modes &amp; Stats+</div>
+      <div class="admin-tool-desc" style="line-height:1.9;margin-bottom:0">
+        🏆 3 modes de tournoi : Classique, Swiss System 🔄, King of the Table 👑<br>
+        🔒 Cage Inviolée : stat défenseur (matchs sans but encaissé)<br>
+        👑 Badge "À jamais les 1ers" corrigé (requiert Isayan ET Léo ensemble)<br>
+        📅 Historique des matchs trié par date (plus récent en premier)<br>
+        🔥 Comparaison équipes : série all-time (record) et non série actuelle<br>
+        ↺ Bouton "Rejouer" pour remettre un match à zéro<br>
+        📲 Navigation par glissement (swipe) entre les pages sur iPhone<br>
+        🎰 Roue de la fortune : enregistrer les équipes générées<br>
+        🎖 Badges &amp; achievements cliquables avec stats détaillées<br>
+        ⚡ Tableau des niveaux ELO dans Stats &gt; Classements<br>
+        ⚔️ Meilleure victime &amp; bête noire dans le profil joueur et équipe<br>
+        📊 Onglet Historique dans Stats : tous les matchs par tournoi avec couleurs
+      </div>
+    </div>
+    <div class="admin-tool" style="background:var(--beige-100)">
+      <div class="admin-tool-title">v1.3 — Le Grand Ménage</div>
+      <div class="admin-tool-desc" style="line-height:1.8;margin-bottom:0">
+        🚪 Sorties par joueur · ⏱ Timer négatif · 🎲 Poules aléatoires · 🎰 Roue · 🔮 Prédictions · 📊 Stats ATT/DEF · 🗺 Carte des matchs · 🏆 Records · 📥 Import fusionner
+      </div>
+    </div>
+    <div class="admin-tool" style="background:var(--beige-100)">
+      <div class="admin-tool-title">v1.2 — Ranks &amp; Achievements</div>
+      <div class="admin-tool-desc" style="line-height:1.8;margin-bottom:0">
+        ⚡ ELO pondéré · 🏅 8 Rangs · 🎖 10 badges · 🏆 20 achievements · ⚖️ Comparaison équipes
+      </div>
+    </div>
+    <div class="admin-tool" style="background:var(--beige-100)">
+      <div class="admin-tool-title">v1.1 — Stats avancées</div>
+      <div class="admin-tool-desc" style="line-height:1.8;margin-bottom:0">
+        📊 Page stats joueur · 🔄 Inversion des rôles · 🏅 Ballon d'Or, Soulier d'Or, Master of Defence
+      </div>
+    </div>
+    <div class="admin-tool" style="background:var(--beige-100)">
+      <div class="admin-tool-title">v1.0 — Lancement</div>
+      <div class="admin-tool-desc" style="margin-bottom:0">Joueurs, équipes, tournois, poules et phases finales, scoreboard temps réel.</div>
+    </div>
+
+    <div class="section-header">⚡ ELO &amp; Achievements</div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">Recalculer l'ELO</div>
+      <div class="admin-tool-desc">Recalcule l'ELO de tous les joueurs depuis le début. À utiliser après un import de données.</div>
+      <button class="btn btn-blue btn-full" onclick="adminRecalcELO()">⚡ Recalculer l'ELO complet</button>
+    </div>
+    <div class="admin-tool">
+      <div class="admin-tool-title">Vérifier les achievements</div>
+      <div class="admin-tool-desc">Attribue rétroactivement tous les achievements manquants en analysant l'historique.</div>
+      <button class="btn btn-purple btn-full" onclick="adminCheckAchievements()">🏆 Attribuer les achievements</button>
+    </div>
 
     <div class="section-header">📄 Export données</div>
     <div class="admin-tool">
@@ -561,13 +795,13 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div class="section-header">📥 Import données</div>
     <div class="admin-tool">
       <div class="admin-tool-title">Importer un JSON</div>
-      <div class="admin-tool-desc">Colle un JSON valide au format <code>babystats_v2</code>.</div>
+      <div class="admin-tool-desc">Colle un JSON valide au format <code>babystats_v2</code>. Choisis le mode d'import.</div>
       <div class="form-group">
         <label class="form-label">JSON à importer</label>
         <textarea id="admin-import-json" class="form-input" rows="5" placeholder='{"version":1,"players":[],"teams":[],"tournaments":[]}'></textarea>
       </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-danger btn-full" onclick="adminImportData('replace')">🔄 Remplacer</button>
+      <div class="action-row">
+        <button class="btn btn-warn btn-full" onclick="adminImportData('replace')">🔄 Remplacer</button>
         <button class="btn btn-blue btn-full" onclick="adminImportData('merge')">➕ Fusionner</button>
       </div>
     </div>
@@ -591,15 +825,32 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 </div>
 
 <div id="page-compare" class="page">
-  <div class="header"><span class="header-title">Comparer des joueurs</span></div>
+  <div class="header"><span class="header-title">⚖️ Comparer</span></div>
   <div class="container">
-    <div class="card mt-12 mb-12">
-      <div class="grid2">
-        <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur A</label><select id="compare-player-a" class="form-input form-select" onchange="renderComparison()"><option value="">— Choisir —</option></select></div>
-        <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur B</label><select id="compare-player-b" class="form-input form-select" onchange="renderComparison()"><option value="">— Choisir —</option></select></div>
-      </div>
+    <div class="compare-mode-tabs mt-12">
+      <button class="compare-mode-btn active" id="cmp-btn-players" onclick="switchCompareMode('players',this)">👤 Joueurs</button>
+      <button class="compare-mode-btn" id="cmp-btn-teams" onclick="switchCompareMode('teams',this)">👥 Équipes</button>
     </div>
-    <div id="compare-result" class="pb-20"></div>
+    <!-- Joueurs -->
+    <div id="compare-players-panel">
+      <div class="card mb-12">
+        <div class="grid2">
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur A</label><select id="compare-player-a" class="form-input form-select" onchange="renderComparison()" oninput="renderComparison()"><option value="">— Choisir —</option></select></div>
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Joueur B</label><select id="compare-player-b" class="form-input form-select" onchange="renderComparison()" oninput="renderComparison()"><option value="">— Choisir —</option></select></div>
+        </div>
+      </div>
+      <div id="compare-result" class="pb-20"></div>
+    </div>
+    <!-- Équipes -->
+    <div id="compare-teams-panel" style="display:none">
+      <div class="card mb-12">
+        <div class="grid2">
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Équipe A</label><select id="compare-team-a" class="form-input form-select" onchange="renderTeamComparison()" oninput="renderTeamComparison()"><option value="">— Choisir —</option></select></div>
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Équipe B</label><select id="compare-team-b" class="form-input form-select" onchange="renderTeamComparison()" oninput="renderTeamComparison()"><option value="">— Choisir —</option></select></div>
+        </div>
+      </div>
+      <div id="compare-teams-result" class="pb-20"></div>
+    </div>
   </div>
 </div>
 
@@ -650,24 +901,75 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
     <div class="modal-title" id="modal-tournament-title">Nouveau tournoi</div>
     <div class="modal-body">
       <input type="hidden" id="nto-id">
-      <div class="form-group"><label class="form-label">Nom du tournoi</label><input id="nto-name" class="form-input" placeholder="ex: Tournoi du Vendredi"></div>
-      <div class="form-group"><label class="form-label">Durée par match (min)</label><input id="nto-duration" class="form-input" type="number" value="5" min="1" max="90"></div>
-      <div class="form-group"><label class="form-label">Sorties pour 1 but adverse</label><input id="nto-sorties" class="form-input" type="number" value="3" min="1" max="20"></div>
-      <div class="form-group"><label class="form-label">Égalité en poule</label>
-        <select id="nto-tiebreak" class="form-input form-select">
-          <option value="goal_average">Goal average</option>
-          <option value="replay">Match d'appui</option>
-        </select>
-      </div>
       <div class="form-group">
-        <label class="form-label">Équipes <span id="nto-count" class="pill pill-orange" style="margin-left:4px">0</span></label>
-        <div id="nto-teams-list" style="max-height:220px;overflow-y:auto;border:1.5px solid var(--beige-300);border-radius:var(--radius-sm);padding:4px 8px;background:var(--beige-100)"></div>
+        <label class="form-label">Mode de tournoi</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:4px">
+          <label style="cursor:pointer">
+            <input type="radio" name="nto-mode" value="classique" checked style="display:none" onchange="toggleTournamentMode()">
+            <div class="nto-mode-card active" id="nto-mode-classique">🏆<div style="font-size:11px;font-weight:700;margin-top:3px">Classique</div></div>
+          </label>
+          <label style="cursor:pointer">
+            <input type="radio" name="nto-mode" value="kot" style="display:none" onchange="toggleTournamentMode()">
+            <div class="nto-mode-card" id="nto-mode-kot">👑<div style="font-size:11px;font-weight:700;margin-top:3px">King Table</div></div>
+          </label>
+          <label style="cursor:pointer">
+            <input type="radio" name="nto-mode" value="swiss" style="display:none" onchange="toggleTournamentMode()">
+            <div class="nto-mode-card" id="nto-mode-swiss">🔄<div style="font-size:11px;font-weight:700;margin-top:3px">Swiss</div></div>
+          </label>
+        </div>
+        <div id="nto-mode-desc" class="info-box" style="font-size:11px">🏆 Poules + phases finales classiques.</div>
+      </div>
+      <div id="nto-classique-fields">
+        <div class="form-group"><label class="form-label">Nom du tournoi</label><input id="nto-name" class="form-input" placeholder="ex: Tournoi du Vendredi"></div>
+        <div class="form-group"><label class="form-label">Durée par match (min)</label><input id="nto-duration" class="form-input" type="number" value="5" min="1" max="90"></div>
+        <div class="form-group"><label class="form-label">Sorties pour 1 but adverse</label><input id="nto-sorties" class="form-input" type="number" value="3" min="1" max="20"></div>
+        <div class="form-group"><label class="form-label">Égalité en poule</label>
+          <select id="nto-tiebreak" class="form-input form-select">
+            <option value="goal_average">Goal average</option>
+            <option value="replay">Match d'appui</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" style="display:flex;align-items:center;gap:8px">Équipes <span id="nto-count" class="pill pill-orange">0</span><button type="button" class="btn btn-secondary btn-xs" onclick="openModal('modal-wheel')" style="margin-left:auto;font-size:11px;padding:3px 8px">🎰 Roue</button></label>
+          <div id="nto-teams-list" style="max-height:200px;overflow-y:auto;border:1.5px solid var(--beige-300);border-radius:var(--radius-sm);padding:4px 8px;background:var(--beige-100)"></div>
+        </div>
+      </div>
+      <div id="nto-swiss-fields" style="display:none">
+        <div class="form-group"><label class="form-label">Nom du tournoi</label><input id="nto-swiss-name" class="form-input" placeholder="ex: Swiss du Vendredi"></div>
+        <div class="form-group"><label class="form-label">Nombre de rounds</label><input id="nto-swiss-rounds" class="form-input" type="number" value="5" min="3" max="10"></div>
+        <div class="form-group"><label class="form-label">Durée par match (min)</label><input id="nto-swiss-duration" class="form-input" type="number" value="5" min="1" max="90"></div>
+        <div class="form-group"><label class="form-label">Sorties pour 1 but adverse</label><input id="nto-swiss-sorties" class="form-input" type="number" value="3" min="1" max="20"></div>
+        <div class="form-group">
+          <label class="form-label">Équipes <span id="nto-swiss-count" class="pill pill-blue" style="margin-left:4px">0</span></label>
+          <div id="nto-swiss-teams-list" style="max-height:200px;overflow-y:auto;border:1.5px solid var(--beige-300);border-radius:var(--radius-sm);padding:4px 8px;background:var(--beige-100)"></div>
+        </div>
+      </div>
+      <div id="nto-kot-fields" style="display:none">
+        <div class="form-group"><label class="form-label">Nom de la session</label><input id="nto-kot-name" class="form-input" placeholder="ex: KotT Vendredi"></div>
+        <div class="form-group"><label class="form-label">Buts pour gagner (seuil)</label><input id="nto-kot-goals" class="form-input" type="number" value="3" min="1" max="20"></div>
+        <div class="form-group"><label class="form-label">Sorties pour 1 but adverse</label><input id="nto-kot-sorties" class="form-input" type="number" value="3" min="1" max="20"></div>
+        <div class="form-group">
+          <label class="form-label">Équipes participantes <span id="nto-kot-count" class="pill pill-purple" style="margin-left:4px">0</span></label>
+          <div id="nto-kot-teams-list" style="max-height:200px;overflow-y:auto;border:1.5px solid var(--beige-300);border-radius:var(--radius-sm);padding:4px 8px;background:var(--beige-100)"></div>
+        </div>
       </div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary btn-full" onclick="closeModal('modal-new-tournament')">Annuler</button>
-      <button class="btn btn-primary btn-full" onclick="saveTournament()">Créer</button>
+      <button class="btn btn-primary btn-full" id="nto-submit-btn" onclick="saveTournament()">Créer</button>
     </div>
+  </div>
+</div>
+
+<!-- King of the Table Session Page -->
+<div id="page-kot" class="page">
+  <div class="header">
+    <button class="header-back" onclick="showPage('home')">← Retour</button>
+    <span class="header-title" id="kot-title">King of the Table</span>
+    <span class="pill pill-purple" id="kot-status-pill">En cours</span>
+  </div>
+  <div class="container" style="padding-top:16px">
+    <div id="kot-content" class="pb-20"></div>
   </div>
 </div>
 
@@ -740,8 +1042,10 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 <div id="modal-badge-detail" class="modal-overlay">
   <div class="modal"><div class="modal-handle"></div>
     <div class="modal-body" id="badge-detail-body"></div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary btn-full" onclick="closeModal('modal-badge-detail')">Fermer</button>
+    <div id="badge-leaderboard" style="display:none;padding:0 16px 8px"></div>
+    <div class="modal-footer" style="gap:8px">
+      <button class="btn btn-secondary" id="badge-lb-btn" onclick="toggleBadgeLeaderboard()" style="flex:1">📊 Classement</button>
+      <button class="btn btn-secondary" onclick="closeModal('modal-badge-detail')" style="flex:1">Fermer</button>
     </div>
   </div>
 </div>
@@ -749,34 +1053,43 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 <!-- confirm import modal -->
 <div id="modal-confirm-import" class="modal-overlay">
   <div class="modal"><div class="modal-handle"></div>
-    <div class="modal-title" id="confirm-import-title">Confirmer l'import</div>
+    <div class="modal-title">Confirmer l'import</div>
     <div class="modal-body">
-      <p class="text-sm" id="confirm-import-text"></p>
-      <div id="confirm-import-export-btn" style="display:none;margin-top:12px">
-        <button class="btn btn-secondary btn-full" onclick="adminExportMD()">💾 Exporter les données actuelles d'abord</button>
-      </div>
+      <p class="text-sm" id="confirm-import-text">Les données actuelles seront <strong>définitivement remplacées</strong> par le JSON importé.</p>
     </div>
     <div class="modal-footer">
       <button class="btn btn-secondary btn-full" onclick="closeModal('modal-confirm-import')">Annuler</button>
-      <button class="btn btn-danger btn-full" id="confirm-import-data">Confirmer</button>
+      <button class="btn btn-danger btn-full" id="confirm-import-data">⬆️ Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<!-- Wheel of Fortune modal -->
+<div id="modal-wheel" class="modal-overlay">
+  <div class="modal"><div class="modal-handle"></div>
+    <div class="modal-title">🎰 Roue de la Fortune</div>
+    <div class="modal-body">
+      <p class="text-sm text-muted mb-12">Sélectionne les joueurs présents, puis génère des équipes aléatoires.</p>
+      <div id="wheel-players" class="wheel-grid"></div>
+      <div id="wheel-result"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary btn-full" onclick="closeModal('modal-wheel')">Fermer</button>
+      <button class="btn btn-primary btn-full" onclick="spinWheel()">🎲 Générer les équipes</button>
     </div>
   </div>
 </div>
 
 <!-- BOTTOM NAV (mobile) -->
-<nav class="nav">
+<nav class="nav" style="grid-template-columns:repeat(7,1fr)">
   <button class="nav-btn active" id="nav-home"        onclick="showPage('home')">        <span class="nav-icon">🏠</span>Accueil</button>
   <button class="nav-btn"        id="nav-players"     onclick="showPage('players')">     <span class="nav-icon">👤</span>Joueurs</button>
   <button class="nav-btn"        id="nav-teams"       onclick="showPage('teams')">       <span class="nav-icon">👥</span>Équipes</button>
   <button class="nav-btn"        id="nav-tournaments" onclick="showPage('tournaments')"> <span class="nav-icon">🏆</span>Tournois</button>
   <button class="nav-btn"        id="nav-stats"       onclick="showPage('stats')">       <span class="nav-icon">📊</span>Stats</button>
-  <button class="nav-btn"        id="nav-more"        onclick="toggleMoreMenu()">        <span class="nav-icon">⋯</span>Plus</button>
+  <button class="nav-btn"        id="nav-compare"     onclick="showPage('compare')">     <span class="nav-icon">⚖️</span>Comparer</button>
+  <button class="nav-btn"        id="nav-admin"       onclick="showPage('admin')">       <span class="nav-icon">⚙️</span>Admin</button>
 </nav>
-<div id="nav-more-menu" style="display:none;position:fixed;bottom:calc(64px + env(safe-area-inset-bottom,0px));right:12px;z-index:300;background:var(--beige-50);border:1px solid var(--beige-300);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;min-width:160px">
-  <button onclick="showPage('compare');closeMoreMenu()" style="display:flex;align-items:center;gap:10px;padding:14px 18px;width:100%;font-size:15px;font-weight:600;font-family:var(--font-display);color:var(--text-700);border-bottom:1px solid var(--beige-200)"><span>⚖️</span>Comparer</button>
-  <button onclick="showPage('admin');closeMoreMenu()"   style="display:flex;align-items:center;gap:10px;padding:14px 18px;width:100%;font-size:15px;font-weight:600;font-family:var(--font-display);color:var(--text-700)"><span>⚙️</span>Admin</button>
-</div>
-<div id="nav-more-backdrop" onclick="closeMoreMenu()" style="display:none;position:fixed;inset:0;z-index:299"></div>
 
 <script>
 /* ═══════════════════════════════════════
@@ -785,7 +1098,7 @@ input,select,textarea{font-family:var(--font-body);font-size:16px}
 const DB_KEY = 'babystats_v2';
 const DB_VERSION = 1;
 
-let db = { version: DB_VERSION, players: [], teams: [], tournaments: [] };
+let db = { version: DB_VERSION, players: [], teams: [], tournaments: [], kotSessions: [] };
 
 function dbSave() { db.version = DB_VERSION; localStorage.setItem(DB_KEY, JSON.stringify(db)); }
 
@@ -794,21 +1107,26 @@ function dbLoad() {
     const raw = localStorage.getItem(DB_KEY);
     if (!raw) return;
     const saved = JSON.parse(raw);
-    if (saved.players)         db.players         = saved.players;
-    if (saved.teams)           db.teams           = saved.teams;
-    if (saved.tournaments)     db.tournaments     = saved.tournaments;
+    if (saved.players)     db.players     = saved.players;
+    if (saved.teams)       db.teams       = saved.teams;
+    if (saved.tournaments) db.tournaments = saved.tournaments;
+    if (saved.kotSessions) db.kotSessions = saved.kotSessions; else db.kotSessions = [];
     // Migrations
+    db.players.forEach(p => {
+      if (p.elo === undefined) p.elo = 1000;
+      if (!p.achievements)    p.achievements = [];
+    });
     db.tournaments.forEach(t => {
       if (!t.tiebreak)       t.tiebreak = 'goal_average';
       if (!t.specialMatches) t.specialMatches = {};
       if (!t.sortiesPerBut)  t.sortiesPerBut = 3;
     });
-    // Add missing fields to match stats
     const fixMatch = m => {
       ['a','b'].forEach(side => {
         if (m.stats[side]) ['attacker','defender'].forEach(role => {
           if (m.stats[side][role]) {
             if (m.stats[side][role].ownGoals === undefined) m.stats[side][role].ownGoals = 0;
+            if (m.stats[side][role].sorties  === undefined) m.stats[side][role].sorties  = 0;
           }
         });
       });
@@ -825,24 +1143,7 @@ dbLoad();
 /* ═══════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════ */
-function toggleMoreMenu() {
-  const open = document.getElementById('nav-more-menu').style.display !== 'none';
-  if (open) { closeMoreMenu(); } else {
-    document.getElementById('nav-more-menu').style.display = 'block';
-    document.getElementById('nav-more-backdrop').style.display = 'block';
-    document.getElementById('nav-more').classList.add('active');
-  }
-}
-function closeMoreMenu() {
-  const menu = document.getElementById('nav-more-menu');
-  const backdrop = document.getElementById('nav-more-backdrop');
-  const btn = document.getElementById('nav-more');
-  if (menu) menu.style.display = 'none';
-  if (backdrop) backdrop.style.display = 'none';
-  if (btn) btn.classList.remove('active');
-}
-
-const MAIN_PAGES = ['home','players','teams','tournaments','stats'];
+const MAIN_PAGES = ['home','players','teams','tournaments','stats','compare','admin'];
 let currentPage = 'home';
 let currentTabStates = {};
 let currentTeamStatsId = null;
@@ -853,16 +1154,10 @@ function showPage(name, data) {
   if (!el) return;
   el.classList.add('active');
   currentPage = name;
-  closeMoreMenu();
   MAIN_PAGES.forEach(p => {
     const mob  = document.getElementById('nav-'+p);
     const desk = document.getElementById('dn-'+p);
     if (mob)  mob.classList.toggle('active',  p === name);
-    if (desk) desk.classList.toggle('active', p === name);
-  });
-  // Update desktop nav for compare and admin too
-  ['compare','admin'].forEach(p => {
-    const desk = document.getElementById('dn-'+p);
     if (desk) desk.classList.toggle('active', p === name);
   });
   window.scrollTo(0,0);
@@ -878,6 +1173,7 @@ function showPage(name, data) {
     compare:            renderCompare,
     admin:              renderAdmin,
     match:              () => {},
+    kot:                () => renderKotPage(),
   };
   if (renders[name]) renders[name]();
 }
@@ -888,12 +1184,13 @@ function switchTab(page, tab, btn) {
   btn.classList.add('active');
   if (page === 'players') renderPlayers(tab);
   else if (page === 'stats') {
-    ['rankings','graphs','badges'].forEach(t => {
+    ['rankings','graphs','badges','history'].forEach(t => {
       const el = document.getElementById('stats-'+t);
       if (el) el.style.display = t===tab ? '' : 'none';
     });
     if (tab === 'graphs')  renderCharts();
     if (tab === 'badges')  renderBadgesPage();
+    if (tab === 'history') renderHistoryPage();
   } else if (page === 'td') {
     ['matches','bracket','equipes','ranking'].forEach(t => {
       const el = document.getElementById('td-'+t);
@@ -911,12 +1208,14 @@ function switchTab(page, tab, btn) {
 function openModal(id) {
   if (id === 'modal-new-team')       populateTeamModal();
   if (id === 'modal-new-tournament') populateTournamentModal();
+  if (id === 'modal-wheel')          populateWheelModal();
   document.getElementById(id).classList.add('open');
 }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.modal-overlay').forEach(el =>
-  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); })
-);
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click',      e => { if (e.target === el) el.classList.remove('open'); });
+  el.addEventListener('touchstart', e => { if (e.target === el) el.classList.remove('open'); }, { passive: true });
+});
 function confirmDelete(text, onConfirm) {
   document.getElementById('confirm-delete-text').textContent = text;
   document.getElementById('confirm-delete-btn').onclick = () => { closeModal('modal-confirm-delete'); onConfirm(); };
@@ -935,7 +1234,7 @@ function toast(msg) {
 ═══════════════════════════════════════ */
 function initials(name) { return (name||'?').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
 function teamName(id) { return db.teams.find(t=>t.id===id)?.name || '?'; }
-function phaseName(p) { return {poule:'Poule',quart:'Quart de finale',demi:'Demi-finale',finale:'Finale',petit_finale:'Petite finale',gala:'Match de gala'}[p]||p; }
+function phaseName(p) { return {poule:'Poule',quart:'Quart de finale',demi:'Demi-finale',finale:'Finale',petit_finale:'Petite finale',gala:'Match de gala',swiss:'Swiss',finished:'Terminé'}[p]||p; }
 function playerName(id) { return db.players.find(p=>p.id===id)?.name||'?'; }
 
 /* ═══════════════════════════════════════
@@ -1048,6 +1347,17 @@ function getTeamStreak(teamId) {
   }
   return streak;
 }
+function getTeamBestStreak(teamId) {
+  const all = [];
+  db.tournaments.forEach(t => t.matches.filter(m=>m.finished&&(m.teamA===teamId||m.teamB===teamId)).forEach(m=>all.push(m)));
+  all.sort((a,b)=>(a.finishedAt||0)-(b.finishedAt||0));
+  let cur=0, best=0;
+  all.forEach(m => {
+    const side=m.teamA===teamId?'a':'b';
+    if (m.winner===side) { cur++; if(cur>best) best=cur; } else cur=0;
+  });
+  return best;
+}
 function getTeamTournamentsWon(teamId) {
   return db.tournaments.filter(t => {
     const finale = t.matches.find(m=>m.phase==='finale'&&m.finished);
@@ -1089,13 +1399,13 @@ function renderTeams() {
 
 /* ─── Is "À jamais les 1ers" team? ─── */
 function isForeverFirstTeam(team) {
-  // Hard-coded: team named Isayan-Léo (or containing both names) OR manually flagged
   if (team.foreverFirst) return true;
-  const n = (team.name||'').toLowerCase();
   const atk = db.players.find(p=>p.id===team.attackerId);
   const def = db.players.find(p=>p.id===team.defenderId);
-  const names = [atk?.name||'', def?.name||'', team.name||''].map(s=>s.toLowerCase()).join(' ');
-  return names.includes('isayan') || names.includes('léo') || names.includes('leo');
+  const playerNames = [atk?.name||'', def?.name||''].map(s=>s.toLowerCase()).join(' ');
+  const hasIsayan = playerNames.includes('isayan');
+  const hasLeo = playerNames.includes('léo') || playerNames.includes('leo');
+  return hasIsayan && hasLeo;
 }
 
 /* ═══════════════════════════════════════
@@ -1150,10 +1460,11 @@ function renderTeamStatsPage(teamId) {
         <div class="stat-mini"><div class="stat-mini-val">${teamTournois}</div><div class="stat-mini-lbl">Tournois 🏆</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${finalesPlayed}</div><div class="stat-mini-lbl">Finales</div></div>
       </div>
-      <div class="stat-mini-grid" style="grid-template-columns:repeat(3,1fr);margin-top:8px">
+      <div class="stat-mini-grid" style="grid-template-columns:repeat(4,1fr);margin-top:8px">
         <div class="stat-mini"><div class="stat-mini-val">${totalWins}V/${totalDraws}N/${totalLosses}D</div><div class="stat-mini-lbl">Bilan</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${wratio}</div><div class="stat-mini-lbl">Ratio V/D</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${streak>=2?'🔥'+streak:'—'}</div><div class="stat-mini-lbl">Série</div></div>
+        <div class="stat-mini"><div class="stat-mini-val">${getTeamCleanSheets(teamId)}</div><div class="stat-mini-lbl">🔒 Cage inv.</div></div>
       </div>
     </div>
 
@@ -1182,6 +1493,7 @@ function renderTeamStatsPage(teamId) {
         <div class="stat-mini-grid" style="grid-template-columns:repeat(3,1fr)">
           <div class="stat-mini"><div class="stat-mini-val">${s.goals}</div><div class="stat-mini-lbl">⚽ Buts</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${s.saves}</div><div class="stat-mini-lbl">🛡 Arrêts</div></div>
+          <div class="stat-mini"><div class="stat-mini-val">${s.sorties||0}</div><div class="stat-mini-lbl">🚪 Sorties</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${s.gamelles}</div><div class="stat-mini-lbl">🎯 Cadrages</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${s.ownGoals}</div><div class="stat-mini-lbl">🤦 CSC</div></div>
           <div class="stat-mini"><div class="stat-mini-val">${pr}</div><div class="stat-mini-lbl">📊 V/D</div></div>
@@ -1193,6 +1505,9 @@ function renderTeamStatsPage(teamId) {
         </div>
       </div>`;
     }).join('')}
+
+    <!-- Best/Worst opponents for this team -->
+    ${renderBestWorstOpponent(getTeamBestWorstOpponent(teamId),'⚔️ Adversaires')}
 
     <!-- Tournaments list for this team -->
     <div class="section-header">Tournois joués</div>
@@ -1265,13 +1580,13 @@ function saveEditStats() {
       ['a','b'].forEach(side => ['attacker','defender'].forEach(role => {
         const ps = m.stats[side]?.[role];
         if (!ps) return;
-        ['goals','saves','gamelles','ownGoals'].forEach(f => {
+        ['goals','sorties','saves','gamelles','ownGoals'].forEach(f => {
           const inp = document.getElementById(`es-${side}-${role}-${f}`);
           if (inp) ps[f] = Math.max(0, parseInt(inp.value)||0);
         });
       }));
-      m.scoreA = (m.stats.a?.attacker?.goals||0)+(m.stats.a?.defender?.goals||0)+(m.stats.b?.attacker?.ownGoals||0)+(m.stats.b?.defender?.ownGoals||0)+Math.floor((m.sortiesB||0)/currentSortiesPerBut);
-      m.scoreB = (m.stats.b?.attacker?.goals||0)+(m.stats.b?.defender?.goals||0)+(m.stats.a?.attacker?.ownGoals||0)+(m.stats.a?.defender?.ownGoals||0)+Math.floor((m.sortiesA||0)/currentSortiesPerBut);
+      const {sA,sB}=calcMatchScores(m);
+      m.scoreA=sA; m.scoreB=sB;
       m.winner = m.scoreA>m.scoreB?'a':m.scoreB>m.scoreA?'b':null;
     }
     dbSave(); closeModal('modal-edit-stats');
@@ -1295,9 +1610,9 @@ function openEditMatchStats(mid, tid) {
       html += `<div style="background:var(--beige-100);border-radius:8px;padding:10px;margin-bottom:8px">
         <div class="text-xs text-muted font-bold mb-8">${rl} : ${ps.name||'?'}</div>`;
       const fields = role==='attacker'
-        ? ['goals','gamelles','ownGoals']
-        : ['goals','saves','gamelles','ownGoals'];
-      const labels = {goals:'⚽ Buts',saves:'🛡 Arrêts',gamelles:'🎯 Cadrages',ownGoals:'🤦 CSC'};
+        ? ['goals','sorties','gamelles','ownGoals']
+        : ['goals','saves','sorties','gamelles','ownGoals'];
+      const labels = {goals:'⚽ Buts',sorties:'🚪 Sorties',saves:'🛡 Arrêts',gamelles:'🎯 Cadrages',ownGoals:'🤦 CSC'};
       fields.forEach(f => {
         html += `<div class="form-group" style="margin-bottom:8px"><label class="form-label">${labels[f]}</label>
           <input id="es-${side}-${role}-${f}" class="form-input" type="number" value="${ps[f]||0}" min="0"></div>`;
@@ -1357,23 +1672,58 @@ function populateTournamentModal() {
   document.getElementById('nto-tiebreak').value = 'goal_average';
   document.getElementById('nto-sorties').value = '3';
   document.getElementById('modal-tournament-title').textContent = 'Nouveau tournoi';
-  const tEl = document.getElementById('nto-teams-list');
-  if (!db.teams.length) { tEl.innerHTML='<div class="text-sm text-muted" style="padding:10px">Aucune équipe. Crée d\'abord des équipes.</div>'; }
-  else {
-    tEl.innerHTML = db.teams.map(t => {
-      const atk=db.players.find(p=>p.id===t.attackerId), def=db.players.find(p=>p.id===t.defenderId);
-      return `<label class="form-checkbox-row">
-        <input type="checkbox" class="form-checkbox" value="${t.id}" onchange="updateTournamentTeamCount()">
-        <div><div style="font-weight:600;font-size:14px">${t.name}</div><div class="text-xs text-muted">⚔️ ${atk?.name||'?'} · 🛡 ${def?.name||'?'}</div></div>
-      </label>`;
-    }).join('');
-  }
+  // Reset mode to classique
+  document.querySelector('input[name="nto-mode"][value="classique"]').checked = true;
+  toggleTournamentMode();
+  const teamRowsHtml = db.teams.length
+    ? db.teams.map(t => {
+        const atk=db.players.find(p=>p.id===t.attackerId), def=db.players.find(p=>p.id===t.defenderId);
+        return `<label class="form-checkbox-row">
+          <input type="checkbox" class="form-checkbox" value="${t.id}" onchange="updateTournamentTeamCount()">
+          <div><div style="font-weight:600;font-size:14px">${t.name}</div><div class="text-xs text-muted">⚔️ ${atk?.name||'?'} · 🛡 ${def?.name||'?'}</div></div>
+        </label>`;
+      }).join('')
+    : '<div class="text-sm text-muted" style="padding:10px">Aucune équipe. Crée d\'abord des équipes.</div>';
+  document.getElementById('nto-teams-list').innerHTML = teamRowsHtml;
+  document.getElementById('nto-swiss-teams-list').innerHTML = db.teams.length
+    ? db.teams.map(t => { const atk=db.players.find(p=>p.id===t.attackerId),def=db.players.find(p=>p.id===t.defenderId);
+        return `<label class="form-checkbox-row"><input type="checkbox" class="form-checkbox" value="${t.id}" onchange="updateTournamentTeamCount()"><div><div style="font-weight:600;font-size:14px">${t.name}</div><div class="text-xs text-muted">⚔️ ${atk?.name||'?'} · 🛡 ${def?.name||'?'}</div></div></label>`;}).join('')
+    : '<div class="text-sm text-muted" style="padding:10px">Aucune équipe.</div>';
+  document.getElementById('nto-kot-teams-list').innerHTML = db.teams.length
+    ? db.teams.map(t => { const atk=db.players.find(p=>p.id===t.attackerId),def=db.players.find(p=>p.id===t.defenderId);
+        return `<label class="form-checkbox-row"><input type="checkbox" class="form-checkbox" value="${t.id}" onchange="updateTournamentTeamCount()"><div><div style="font-weight:600;font-size:14px">${t.name}</div><div class="text-xs text-muted">⚔️ ${atk?.name||'?'} · 🛡 ${def?.name||'?'}</div></div></label>`;}).join('')
+    : '<div class="text-sm text-muted" style="padding:10px">Aucune équipe.</div>';
   updateTournamentTeamCount();
 }
+
+function toggleTournamentMode() {
+  const mode = document.querySelector('input[name="nto-mode"]:checked')?.value || 'classique';
+  ['classique','swiss','kot'].forEach(m => {
+    document.getElementById('nto-'+m+'-fields').style.display = m===mode ? '' : 'none';
+    document.getElementById('nto-mode-'+m).classList.toggle('active', m===mode);
+  });
+  const descs = {
+    classique:'🏆 Poules + phases finales classiques.',
+    swiss:'🔄 Rounds suisses — toutes les équipes jouent sans élimination. Appariement par points.',
+    kot:"👑 King of the Table — l'équipe gagnante reste en jeu, la perdante retourne en file d'attente."
+  };
+  document.getElementById('nto-mode-desc').textContent = descs[mode];
+  const btnLabels = {classique:'Créer le tournoi',swiss:'Lancer le Swiss',kot:'Démarrer la session'};
+  document.getElementById('nto-submit-btn').textContent = btnLabels[mode];
+}
+
 function updateTournamentTeamCount() {
   document.getElementById('nto-count').textContent = document.querySelectorAll('#nto-teams-list input:checked').length;
+  const swissCount = document.querySelectorAll('#nto-swiss-teams-list input:checked').length;
+  const kotCount = document.querySelectorAll('#nto-kot-teams-list input:checked').length;
+  if(document.getElementById('nto-swiss-count')) document.getElementById('nto-swiss-count').textContent = swissCount;
+  if(document.getElementById('nto-kot-count')) document.getElementById('nto-kot-count').textContent = kotCount;
 }
 function saveTournament() {
+  const mode = document.querySelector('input[name="nto-mode"]:checked')?.value || 'classique';
+  if (mode === 'kot') { saveKotSession(); return; }
+  if (mode === 'swiss') { saveSwissTournament(); return; }
+  // Classique
   const name = document.getElementById('nto-name').value.trim();
   const duration = parseInt(document.getElementById('nto-duration').value)||5;
   const tiebreak = document.getElementById('nto-tiebreak').value;
@@ -1381,7 +1731,7 @@ function saveTournament() {
   if (!name) { toast('Donne un nom au tournoi !'); return; }
   const teams = [...document.querySelectorAll('#nto-teams-list input:checked')].map(c=>c.value);
   if (teams.length < 2) { toast('Sélectionne au moins 2 équipes !'); return; }
-  const t = { id:uid(), name, date:Date.now(), status:'active', teams, matches:[], matchDuration:duration, tiebreak, phase:'poule', sortiesPerBut, groups:[], knockoutRounds:[], specialMatches:{} };
+  const t = { id:uid(), name, date:Date.now(), status:'active', mode:'classique', teams, matches:[], matchDuration:duration, tiebreak, phase:'poule', sortiesPerBut, groups:[], knockoutRounds:[], specialMatches:{} };
   generatePoules(t);
   db.tournaments.unshift(t);
   dbSave(); closeModal('modal-new-tournament');
@@ -1410,13 +1760,11 @@ function getTournamentExplanation(t) {
   return html;
 }
 
-function shuffle(arr) {
-  for (let i=arr.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]; }
-  return arr;
-}
-
 function generatePoules(t) {
-  const teams=shuffle([...t.teams]), n=teams.length;
+  const teams=[...t.teams];
+  // Fisher-Yates shuffle for truly random group assignment
+  for (let i=teams.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[teams[i],teams[j]]=[teams[j],teams[i]];}
+  const n=teams.length;
   if (n<=4)      t.groups=[{name:'Poule unique',teams:[...teams]}];
   else if (n<=9) { const h=Math.ceil(n/2); t.groups=[{name:'Poule A',teams:teams.slice(0,h)},{name:'Poule B',teams:teams.slice(h)}]; }
   else           { t.groups=[]; for(let i=0;i<Math.ceil(n/4);i++) t.groups.push({name:`Poule ${String.fromCharCode(65+i)}`,teams:teams.slice(i*4,i*4+4)}); }
@@ -1458,8 +1806,11 @@ function generateKnockout(t) {
   const n=bSeeds.length;
   const fr=n>=8?'quart':n>=4?'demi':'finale';
   t.knockoutRounds=fr==='quart'?['quart','demi','finale']:fr==='demi'?['demi','finale']:['finale'];
-  for (let i=0;i<Math.floor(n/2);i++)
-    t.matches.push({id:uid(),phase:fr,teamA:bSeeds[i*2]||null,teamB:bSeeds[i*2+1]||null,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  for (let i=0;i<Math.floor(n/2);i++){
+    const coin=Math.random()<.5;
+    const tA=bSeeds[i*2]||null, tB=bSeeds[i*2+1]||null;
+    t.matches.push({id:uid(),phase:fr,teamA:coin?tA:tB,teamB:coin?tB:tA,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  }
   t.phase=fr; dbSave();
 }
 
@@ -1471,10 +1822,14 @@ function advanceKnockout(t, phase) {
   const losers=pm.map(m=>m.winner==='a'?m.teamB:m.teamA);
   const next=order[idx+1];
   if (next&&winners.length>=2&&!t.matches.some(m=>m.phase===next))
-    for (let i=0;i<Math.floor(winners.length/2);i++)
-      t.matches.push({id:uid(),phase:next,teamA:winners[i*2],teamB:winners[i*2+1],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
-  if (phase==='demi'&&losers.length>=2&&!t.matches.some(m=>m.phase==='petit_finale'))
-    t.matches.push({id:uid(),phase:'petit_finale',teamA:losers[0],teamB:losers[1],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+    for (let i=0;i<Math.floor(winners.length/2);i++){
+      const coin=Math.random()<.5;
+      t.matches.push({id:uid(),phase:next,teamA:coin?winners[i*2]:winners[i*2+1],teamB:coin?winners[i*2+1]:winners[i*2],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+    }
+  if (phase==='demi'&&losers.length>=2&&!t.matches.some(m=>m.phase==='petit_finale')){
+    const coin=Math.random()<.5;
+    t.matches.push({id:uid(),phase:'petit_finale',teamA:coin?losers[0]:losers[1],teamB:coin?losers[1]:losers[0],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  }
   if (phase==='finale') t.status='finished';
   t.phase=next||'finale'; dbSave();
 }
@@ -1491,7 +1846,13 @@ function renderTournamentDetail(tid) {
   document.getElementById('td-title').textContent = t.name;
   document.getElementById('td-status').innerHTML = t.status==='finished'
     ? '<span class="pill pill-green">Terminé</span>'
+    : t.mode==='swiss' ? '<span class="pill pill-blue">Swiss 🔄</span>'
     : '<span class="pill pill-orange">En cours</span>';
+  if (t.mode==='swiss') {
+    document.getElementById('td-explain').innerHTML='';
+    renderSwissTournamentDetail(t);
+    return;
+  }
   document.getElementById('td-explain').innerHTML = getTournamentExplanation(t);
   const pouleMatches=t.matches.filter(m=>m.phase==='poule');
   if (pouleMatches.length&&pouleMatches.every(m=>m.finished)&&!t.matches.some(m=>m.phase!=='poule')) generateKnockout(t);
@@ -1557,16 +1918,16 @@ function getTournamentMVP(t) {
   t.matches.filter(m=>m.finished).forEach(m=>{
     ['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{
       const ps=m.stats[side]?.[role]; if (!ps?.id) return;
-      if (!pStats[ps.id]) pStats[ps.id]={id:ps.id,goals:0,saves:0,gamelles:0,wins:0,matches:0};
+      if (!pStats[ps.id]) pStats[ps.id]={id:ps.id,goals:0,saves:0,sorties:0,gamelles:0,wins:0,matches:0};
       pStats[ps.id].goals+=ps.goals||0; pStats[ps.id].saves+=ps.saves||0;
-      pStats[ps.id].gamelles+=ps.gamelles||0;
+      pStats[ps.id].sorties+=ps.sorties||0; pStats[ps.id].gamelles+=ps.gamelles||0;
       pStats[ps.id].matches++;
       if (m.winner===side) pStats[ps.id].wins++;
     }));
   });
   const all=Object.values(pStats);
   if (!all.length) return null;
-  all.forEach(p=>{p.score=p.goals*3+p.saves*2+p.wins*4+p.gamelles*0.5;});
+  all.forEach(p=>{p.score=p.goals*3+p.saves*2+p.wins*4+p.gamelles*0.5-p.sorties*0.5;});
   all.sort((a,b)=>b.score-a.score);
   return {best:all[0],worst:all[all.length-1]};
 }
@@ -1581,7 +1942,8 @@ function renderTournamentMatches(t) {
     t.groups.forEach((g,gi)=>getGroupStandings(t,gi).slice(0,t.groups.length>1?2:Math.ceil(getGroupStandings(t,gi).length/2)).forEach(s=>qualified.add(s.teamId)));
     const galaTeams=t.teams.filter(tid=>!qualified.has(tid));
     if (galaTeams.length>=2&&!t.matches.some(m=>m.phase==='gala')) {
-      t.matches.push({id:uid(),phase:'gala',teamA:galaTeams[0],teamB:galaTeams[1],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+      const coin=Math.random()<.5;
+      t.matches.push({id:uid(),phase:'gala',teamA:coin?galaTeams[0]:galaTeams[1],teamB:coin?galaTeams[1]:galaTeams[0],stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
       dbSave();
     }
   }
@@ -1622,6 +1984,29 @@ function renderTournamentMatches(t) {
   el.innerHTML=html||'<div class="empty"><div class="empty-icon">⚽</div><div class="empty-title">Aucun match</div></div>';
 }
 
+function replayMatch(mid, tid) {
+  confirmDelete('Rejouer ce match ? Les stats seront remises à zéro.', () => {
+    const t = db.tournaments.find(x=>x.id===tid);
+    const m = t?.matches.find(x=>x.id===mid);
+    if (!m) return;
+    m.finished = false; m.finishedAt = null; m.winner = null;
+    m.scoreA = 0; m.scoreB = 0; m.sortiesA = 0; m.sortiesB = 0;
+    m.stats = { a: null, b: null };
+    // If this was a knockout match that advanced others, remove those matches
+    const order = ['poule','quart','demi','petit_finale','finale'];
+    const phaseIdx = order.indexOf(m.phase);
+    if (phaseIdx > 0) {
+      // Remove all later-phase matches that haven't been played yet
+      const laterPhases = order.slice(phaseIdx + 1);
+      t.matches = t.matches.filter(x => x.finished || !laterPhases.includes(x.phase));
+      if (t.status === 'finished') { t.status = 'active'; t.phase = m.phase; }
+    }
+    recalcAllELO(); dbSave();
+    renderTournamentDetail(tid);
+    toast('Match réinitialisé — à rejouer ! 🔄');
+  });
+}
+
 function renderMatchCard(m, t) {
   const na=teamName(m.teamA), nb=teamName(m.teamB);
   if (m.finished) {
@@ -1635,6 +2020,7 @@ function renderMatchCard(m, t) {
       <div class="action-row" style="margin-top:6px">
         <button class="btn btn-xs btn-warn" onclick="openEditMatchStats('${m.id}','${t.id}')">✏️ Stats</button>
         <button class="btn btn-xs btn-secondary" onclick="openSwapRoles('${m.id}','${t.id}')">🔄 Rôles</button>
+        <button class="btn btn-xs btn-danger" onclick="replayMatch('${m.id}','${t.id}')">↺ Rejouer</button>
       </div>
     </div>`;
   }
@@ -1693,7 +2079,7 @@ function renderTournamentRanking(t) {
 /* ═══════════════════════════════════════
    MATCH — TIMER & STATS
 ═══════════════════════════════════════ */
-let currentMatchId=null, currentTournamentId=null;
+let currentMatchId=null, currentTournamentId=null, isFriendlyMatch=false;
 let timerInterval=null, timerSeconds=300, timerRunning=false, timerTotal=300;
 let currentSortiesA=0, currentSortiesB=0, currentSortiesPerBut=3;
 
@@ -1701,17 +2087,20 @@ const STAT_DEFS = {
   attacker: [
     {key:'goals',    label:'⚽ Buts',      desc:'Buts marqués'},
     {key:'gamelles', label:'🎯 Cadrages',  desc:'Tir bien cadré, non rentrant'},
+    {key:'sorties',  label:'🚪 Sorties',   desc:'Ballon sorti du terrain'},
     {key:'ownGoals', label:'🤦 CSC',       desc:'Contre son camp'},
   ],
   defender: [
     {key:'goals',    label:'⚽ Buts',      desc:'Buts de la défense'},
     {key:'saves',    label:'🛡 Arrêts',    desc:'Arrêts gardien'},
     {key:'gamelles', label:'🎯 Cadrages',  desc:'Tir bien cadré, non rentrant'},
+    {key:'sorties',  label:'🚪 Sorties',   desc:'Ballon sorti du terrain'},
     {key:'ownGoals', label:'🤦 CSC',       desc:'Contre son camp'},
   ]
 };
 
 function startMatch(matchId, tournamentId) {
+  isFriendlyMatch=false;
   const t=db.tournaments.find(x=>x.id===tournamentId);
   const ml=t?.matches||[];
   const m=ml.find(x=>x.id===matchId);
@@ -1721,18 +2110,11 @@ function startMatch(matchId, tournamentId) {
   const tA=db.teams.find(x=>x.id===m.teamA), tB=db.teams.find(x=>x.id===m.teamB);
   const atkA=db.players.find(p=>p.id===tA?.attackerId), defA=db.players.find(p=>p.id===tA?.defenderId);
   const atkB=db.players.find(p=>p.id===tB?.attackerId), defB=db.players.find(p=>p.id===tB?.defenderId);
-  const mkS=(atk,def)=>({attacker:{id:atk?.id,name:atk?.name,goals:0,gamelles:0,saves:0,ownGoals:0},defender:{id:def?.id,name:def?.name,goals:0,gamelles:0,saves:0,ownGoals:0}});
+  const mkS=(atk,def)=>({attacker:{id:atk?.id,name:atk?.name,goals:0,gamelles:0,saves:0,sorties:0,ownGoals:0},defender:{id:def?.id,name:def?.name,goals:0,gamelles:0,saves:0,sorties:0,ownGoals:0}});
   if (!m.stats.a) m.stats.a=mkS(atkA,defA);
   if (!m.stats.b) m.stats.b=mkS(atkB,defB);
-  if (m.sortiesA===undefined) m.sortiesA=0;
-  if (m.sortiesB===undefined) m.sortiesB=0;
-  currentSortiesA=m.sortiesA; currentSortiesB=m.sortiesB;
-  document.getElementById('sorties-val-a').textContent=currentSortiesA;
-  document.getElementById('sorties-val-b').textContent=currentSortiesB;
-  document.getElementById('match-sorties-a-label').textContent=tA?.name||'Éq. A';
-  document.getElementById('match-sorties-b-label').textContent=tB?.name||'Éq. B';
   document.getElementById('sorties-rule-label').textContent=`${currentSortiesPerBut} sorties = 1 but adversaire`;
-  timerTotal=(t?.matchDuration||m.matchDuration||5)*60; timerSeconds=timerTotal;
+  timerTotal=(t?.matchDuration||5)*60; timerSeconds=timerTotal;
   timerRunning=false; clearInterval(timerInterval);
   document.getElementById('timer-btn').textContent='▶ Démarrer';
   document.getElementById('timer-display').className='timer-display';
@@ -1746,6 +2128,7 @@ function startMatch(matchId, tournamentId) {
   document.getElementById('tab-ma-btn').textContent=tA?.name||'Éq. A';
   document.getElementById('tab-mb-btn').textContent=tB?.name||'Éq. B';
   renderMatchStatPanel('a',m); renderMatchStatPanel('b',m);
+  renderMatchPrediction(m, t);
   switchMatchTeam('a');
   showPage('match');
 }
@@ -1771,31 +2154,28 @@ function renderMatchStatPanel(side, m) {
 
 function getMatchList() { return db.tournaments.find(x=>x.id===currentTournamentId)?.matches||[]; }
 
+function calcMatchScores(m) {
+  const spb=currentSortiesPerBut||3;
+  const srtA=(m.stats.a?.attacker?.sorties||0)+(m.stats.a?.defender?.sorties||0)||(m.sortiesA||0);
+  const srtB=(m.stats.b?.attacker?.sorties||0)+(m.stats.b?.defender?.sorties||0)||(m.sortiesB||0);
+  const sA=(m.stats.a?.attacker?.goals||0)+(m.stats.a?.defender?.goals||0)+(m.stats.b?.attacker?.ownGoals||0)+(m.stats.b?.defender?.ownGoals||0)+Math.floor(srtB/spb);
+  const sB=(m.stats.b?.attacker?.goals||0)+(m.stats.b?.defender?.goals||0)+(m.stats.a?.attacker?.ownGoals||0)+(m.stats.a?.defender?.ownGoals||0)+Math.floor(srtA/spb);
+  return {sA,sB,srtA,srtB};
+}
+
 function updateStat(side, role, key, delta) {
   const m=getMatchList().find(x=>x.id===currentMatchId);
   if (!m||!m.stats[side]) return;
   const ps=m.stats[side][role];
   ps[key]=Math.max(0,(ps[key]||0)+delta);
-  const sA=(m.stats.a.attacker.goals||0)+(m.stats.a.defender.goals||0)+(m.stats.b.attacker.ownGoals||0)+(m.stats.b.defender.ownGoals||0)+Math.floor(currentSortiesB/currentSortiesPerBut);
-  const sB=(m.stats.b.attacker.goals||0)+(m.stats.b.defender.goals||0)+(m.stats.a.attacker.ownGoals||0)+(m.stats.a.defender.ownGoals||0)+Math.floor(currentSortiesA/currentSortiesPerBut);
+  const {sA,sB,srtA,srtB}=calcMatchScores(m);
   m.scoreA=sA; m.scoreB=sB;
   document.getElementById('match-score-a').textContent=sA;
   document.getElementById('match-score-b').textContent=sB;
   const el=document.getElementById(`sv-${side}-${role}-${key}`);
   if (el) el.textContent=ps[key];
-  dbSave();
-}
-
-function updateSorties(side, delta) {
-  const m=getMatchList().find(x=>x.id===currentMatchId);
-  if (!m) return;
-  if (side==='a') { currentSortiesA=Math.max(0,currentSortiesA+delta); m.sortiesA=currentSortiesA; document.getElementById('sorties-val-a').textContent=currentSortiesA; }
-  else            { currentSortiesB=Math.max(0,currentSortiesB+delta); m.sortiesB=currentSortiesB; document.getElementById('sorties-val-b').textContent=currentSortiesB; }
-  const sA=(m.stats.a?.attacker?.goals||0)+(m.stats.a?.defender?.goals||0)+(m.stats.b?.attacker?.ownGoals||0)+(m.stats.b?.defender?.ownGoals||0)+Math.floor(currentSortiesB/currentSortiesPerBut);
-  const sB=(m.stats.b?.attacker?.goals||0)+(m.stats.b?.defender?.goals||0)+(m.stats.a?.attacker?.ownGoals||0)+(m.stats.a?.defender?.ownGoals||0)+Math.floor(currentSortiesA/currentSortiesPerBut);
-  m.scoreA=sA; m.scoreB=sB;
-  document.getElementById('match-score-a').textContent=sA;
-  document.getElementById('match-score-b').textContent=sB;
+  const liveEl=document.getElementById('sorties-live-score');
+  if (liveEl) liveEl.textContent=`Sorties : ${srtA} (${teamName(m.teamA)}) · ${srtB} (${teamName(m.teamB)})`;
   dbSave();
 }
 
@@ -1822,7 +2202,7 @@ function toggleTimer() {
       if (timerSeconds===0) {
         document.getElementById('timer-display').classList.remove('running');
         document.getElementById('timer-display').classList.add('overtime');
-        toast('⏰ Temps écoulé !');
+        toast('⏰ Temps écoulé ! Temps additionnel en cours...');
       }
     },1000);
   }
@@ -1861,8 +2241,10 @@ function confirmFinishMatch() {
   m.finished=true; m.finishedAt=Date.now();
   m.winner=m.scoreA>m.scoreB?'a':m.scoreB>m.scoreA?'b':null;
   const t=db.tournaments.find(x=>x.id===currentTournamentId);
-  if (t) {
-    const phase=m.phase;
+  const phase=m.phase;
+  if (phase==='swiss') {
+    checkSwissRoundComplete(t);
+  } else {
     const pm=t.matches.filter(x=>x.phase===phase);
     if (pm.every(x=>x.finished)) {
       if (phase==='poule')   { generateKnockout(t); toast('Phase finale générée 🎉'); }
@@ -1870,7 +2252,19 @@ function confirmFinishMatch() {
       else if (['quart','demi'].includes(phase)) { advanceKnockout(t,phase); toast(`${phaseName(phase)} terminée !`); }
     }
   }
-  dbSave(); closeModal('modal-match-result');
+  dbSave();
+  recalcAllELO();
+  const newAch = checkAllAchievements();
+  dbSave();
+  let achCount = 0;
+  Object.entries(newAch).forEach(([pid, achs]) => {
+    const p = db.players.find(x => x.id === pid);
+    achs.slice(0, 2 - achCount).forEach(a => {
+      toast(`🎖 ${p?.name} : ${a.icon} ${a.name} !`);
+      achCount++;
+    });
+  });
+  closeModal('modal-match-result');
   showPage('tournament-detail', currentTournamentId);
 }
 
@@ -1893,35 +2287,119 @@ function getAllMatchesForPlayer(pid) {
 }
 
 function getPlayerStats(pid) {
-  let goals=0,saves=0,gamelles=0,wins=0,losses=0,draws=0,ownGoals=0;
+  let goals=0,saves=0,gamelles=0,sorties=0,wins=0,losses=0,draws=0,ownGoals=0;
   getAllMatchesForPlayer(pid).forEach(({m,side,ps})=>{
     goals    += ps.goals    ||0;
     saves    += ps.saves    ||0;
     gamelles += ps.gamelles ||0;
     ownGoals += ps.ownGoals ||0;
+    sorties  += ps.sorties  ||0;
     if (m.winner===side) wins++;
     else if (!m.winner) draws++;
     else losses++;
   });
   const winRatio = losses===0 ? (wins>0?wins:0) : parseFloat((wins/losses).toFixed(2));
-  return { goals, saves, gamelles, wins, losses, draws, ownGoals, winRatio };
+  return { goals, saves, gamelles, sorties, wins, losses, draws, ownGoals, winRatio };
+}
+
+function getPlayerStatsByRole(pid, role) {
+  let goals=0,saves=0,gamelles=0,sorties=0,wins=0,losses=0,draws=0,ownGoals=0,matches=0;
+  getAllMatchesForPlayer(pid).filter(x=>x.role===role).forEach(({m,side,ps})=>{
+    goals+=ps.goals||0; saves+=ps.saves||0; gamelles+=ps.gamelles||0;
+    ownGoals+=ps.ownGoals||0; sorties+=ps.sorties||0; matches++;
+    if(m.winner===side)wins++; else if(!m.winner)draws++; else losses++;
+  });
+  return {goals,saves,gamelles,sorties,wins,losses,draws,ownGoals,matches};
 }
 
 function getPlayerStatsByTournament(pid) {
   return db.tournaments.map(t=>{
-    let goals=0,saves=0,gamelles=0,wins=0,ownGoals=0,matches=0;
+    let goals=0,sorties=0,saves=0,gamelles=0,wins=0,ownGoals=0,matches=0;
     t.matches.filter(m=>m.finished).forEach(m=>{
       ['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{
         if (m.stats[side]?.[role]?.id!==pid) return;
         const ps=m.stats[side][role];
-        goals+=ps.goals||0; saves+=ps.saves||0;
+        goals+=ps.goals||0; saves+=ps.saves||0; sorties+=ps.sorties||0;
         gamelles+=ps.gamelles||0; ownGoals+=ps.ownGoals||0; matches++;
         if (m.winner===side) wins++;
       }));
     });
     if (!matches) return null;
-    return {tournament:t,goals,saves,gamelles,wins,ownGoals,matches};
+    return {tournament:t,goals,sorties,saves,gamelles,wins,ownGoals,matches};
   }).filter(Boolean);
+}
+
+function getPlayerBestWorstOpponent(pid) {
+  const rec={};
+  getAllMatchesForPlayer(pid).forEach(({m,side})=>{
+    const oppId=side==='a'?m.teamB:m.teamA;
+    if(!rec[oppId]) rec[oppId]={wins:0,losses:0,draws:0};
+    if(m.winner===side) rec[oppId].wins++;
+    else if(!m.winner) rec[oppId].draws++;
+    else rec[oppId].losses++;
+  });
+  const entries=Object.entries(rec).map(([tid,r])=>({tid,...r,total:r.wins+r.losses+r.draws})).filter(e=>e.total>0);
+  const best=entries.filter(e=>e.wins>0).sort((a,b)=>b.wins-a.wins||a.losses-b.losses)[0]||null;
+  const worst=entries.filter(e=>e.losses>0).sort((a,b)=>b.losses-a.losses||a.wins-b.wins)[0]||null;
+  return {best,worst};
+}
+
+function getTeamBestWorstOpponent(teamId) {
+  const rec={};
+  db.tournaments.forEach(t=>t.matches.filter(m=>m.finished&&(m.teamA===teamId||m.teamB===teamId)).forEach(m=>{
+    const side=m.teamA===teamId?'a':'b';
+    const oppId=side==='a'?m.teamB:m.teamA;
+    if(!rec[oppId]) rec[oppId]={wins:0,losses:0,draws:0};
+    if(m.winner===side) rec[oppId].wins++;
+    else if(!m.winner) rec[oppId].draws++;
+    else rec[oppId].losses++;
+  }));
+  const entries=Object.entries(rec).map(([tid,r])=>({tid,...r,total:r.wins+r.losses+r.draws})).filter(e=>e.total>0);
+  const best=entries.filter(e=>e.wins>0).sort((a,b)=>b.wins-a.wins||a.losses-b.losses)[0]||null;
+  const worst=entries.filter(e=>e.losses>0).sort((a,b)=>b.losses-a.losses||a.wins-b.wins)[0]||null;
+  return {best,worst};
+}
+
+function renderBestWorstOpponent(bwo, label) {
+  if (!bwo.best && !bwo.worst) return '';
+  let html=`<div class="section-header">${label}</div><div class="card mb-12">`;
+  if (bwo.best) {
+    const tn=teamName(bwo.best.tid);
+    html+=`<div class="flex-between" style="padding:8px 0;border-bottom:1px solid var(--beige-200)">
+      <div><div style="font-size:11px;font-weight:800;color:var(--green-500);text-transform:uppercase;letter-spacing:.04em">✅ Meilleure victime</div>
+      <div style="font-weight:700;margin-top:2px">${tn}</div></div>
+      <div style="text-align:right"><span class="pill pill-green">${bwo.best.wins}V / ${bwo.best.losses}D</span></div>
+    </div>`;
+  }
+  if (bwo.worst) {
+    const tn=teamName(bwo.worst.tid);
+    html+=`<div class="flex-between" style="padding:8px 0">
+      <div><div style="font-size:11px;font-weight:800;color:var(--red-500);text-transform:uppercase;letter-spacing:.04em">❌ Bête noire</div>
+      <div style="font-weight:700;margin-top:2px">${tn}</div></div>
+      <div style="text-align:right"><span class="pill pill-red">${bwo.worst.wins}V / ${bwo.worst.losses}D</span></div>
+    </div>`;
+  }
+  html+='</div>';
+  return html;
+}
+
+function getPlayerCleanSheets(pid) {
+  let count = 0;
+  getAllMatchesForPlayer(pid).filter(x=>x.role==='defender').forEach(({m,side})=>{
+    const goalsAgainst = side==='a' ? m.scoreB : m.scoreA;
+    if (goalsAgainst === 0 && m.finished) count++;
+  });
+  return count;
+}
+
+function getTeamCleanSheets(teamId) {
+  let count = 0;
+  db.tournaments.forEach(t => t.matches.filter(m=>m.finished&&(m.teamA===teamId||m.teamB===teamId)).forEach(m=>{
+    const side = m.teamA===teamId?'a':'b';
+    const goalsAgainst = side==='a' ? m.scoreB : m.scoreA;
+    if (goalsAgainst === 0) count++;
+  }));
+  return count;
 }
 
 function getTeamWins(teamId) {
@@ -1934,18 +2412,80 @@ function getTeamWins(teamId) {
 }
 
 /* ═══════════════════════════════════════
+   ELO SYSTEM
+═══════════════════════════════════════ */
+function getKFactor(tNum) {
+  return tNum <= 5 ? 150 : 50;
+}
+
+function getELORank(elo) {
+  if (elo >= 1600) return { name:'Légende', icon:'🐐', cls:'legende' };
+  if (elo >= 1500) return { name:'Maître',  icon:'👑', cls:'maitre'  };
+  if (elo >= 1400) return { name:'Diamant', icon:'💎', cls:'diamant' };
+  if (elo >= 1300) return { name:'Platine', icon:'💠', cls:'platine' };
+  if (elo >= 1200) return { name:'Or',      icon:'🥇', cls:'or'      };
+  if (elo >= 1100) return { name:'Argent',  icon:'🥈', cls:'argent'  };
+  if (elo >= 1000) return { name:'Bronze',  icon:'🔶', cls:'bronze'  };
+  return                   { name:'Bois',   icon:'🪵', cls:'bois'    };
+}
+
+function getPlayerELO(pid) {
+  return db.players.find(p => p.id === pid)?.elo ?? 1000;
+}
+
+function recalcAllELO() {
+  db.players.forEach(p => { p.elo = 1000; });
+  const allMatches = [];
+  db.tournaments.forEach((t, tIdx) => {
+    const tNum = tIdx + 1;
+    t.matches.filter(m => m.finished).forEach(m => allMatches.push({ m, ts: m.finishedAt || m.date || 0, tNum }));
+  });
+  allMatches.sort((a, b) => a.ts - b.ts);
+
+  allMatches.forEach(({ m, tNum }) => {
+    if (!m.winner) return;
+    const boost = tNum <= 5;
+    const K = getKFactor(tNum);
+    const ws = m.winner, ls = ws === 'a' ? 'b' : 'a';
+    const wPids = ['attacker','defender'].map(r => m.stats[ws]?.[r]?.id).filter(Boolean);
+    const lPids = ['attacker','defender'].map(r => m.stats[ls]?.[r]?.id).filter(Boolean);
+    if (!wPids.length || !lPids.length) return;
+    const avgW = wPids.reduce((s, id) => s + getPlayerELO(id), 0) / wPids.length;
+    const avgL = lPids.reduce((s, id) => s + getPlayerELO(id), 0) / lPids.length;
+    const expW = 1 / (1 + Math.pow(10, (avgL - avgW) / 400));
+    const expL = 1 - expW;
+    const wDelta = Math.round(K * (1 - expW)) + (boost ? 15 : 0);
+    const lDelta = Math.round(K * (0 - expL)) + (boost ? 5 : 0);
+    wPids.forEach(pid => {
+      const p = db.players.find(x => x.id === pid);
+      if (p) p.elo = Math.max(100, (p.elo||1000) + wDelta);
+    });
+    lPids.forEach(pid => {
+      const p = db.players.find(x => x.id === pid);
+      if (p) p.elo = Math.max(100, (p.elo||1000) + lDelta);
+    });
+  });
+  dbSave();
+}
+
+function eloRankBadge(elo) {
+  const r = getELORank(elo);
+  return `<span class="elo-rank elo-rank-${r.cls}">${r.icon} ${r.name} · ${elo}</span>`;
+}
+
+/* ═══════════════════════════════════════
    BADGES
 ═══════════════════════════════════════ */
 function getPlayerMVPScore(pid) {
   const s=getPlayerStats(pid);
-  return s.goals*3+s.saves*2+s.wins*4+s.gamelles*0.5-s.ownGoals;
+  return s.goals*5+s.saves*2+s.wins*4+getPlayerCleanSheets(pid)*3+s.gamelles*0.5-(s.ownGoals||0)*2-s.sorties*0.5;
 }
 
 // Only 3 home badges: Ballon d'Or, Soulier d'Or, Master of Defence
 const HOME_BADGE_DEFS = [
   {
     id:'ballon_or', name:"Ballon d'Or", icon:'🥇',
-    desc:'Meilleur joueur overall (buts, arrêts, victoires, cadrages)',
+    desc:'Meilleur joueur overall (buts × 5, arrêts × 2, victoires × 4, cage inv. × 3, cadrages × 0.5, CSC × -2, sorties × -0.5)',
     isMain:true,
     getWinner:()=>{
       if (!db.players.length) return null;
@@ -1973,6 +2513,7 @@ const HOME_BADGE_DEFS = [
         <div class="stat-mini"><div class="stat-mini-val">${s.saves}</div><div class="stat-mini-lbl">🛡 Arrêts</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.wins}</div><div class="stat-mini-lbl">🏆 Victoires</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.gamelles}</div><div class="stat-mini-lbl">🎯 Cadrages</div></div>
+        <div class="stat-mini"><div class="stat-mini-val">${s.sorties}</div><div class="stat-mini-lbl">🚪 Sorties</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.winRatio}</div><div class="stat-mini-lbl">V/D</div></div>
       </div>
       <div class="section-header">Comparaison avec les autres trophées</div>
@@ -1990,70 +2531,295 @@ const HOME_BADGE_DEFS = [
   },
   {
     id:'soulier_or', name:"Soulier d'Or", icon:'👟',
-    desc:'Meilleur buteur toutes compétitions',
+    desc:'Meilleur buteur net (buts − CSC)',
     isMain:false,
     getWinner:()=>{
       if (!db.players.length) return null;
-      const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).goals}));
+      const all=db.players.map(p=>{ const s=getPlayerStats(p.id); return {id:p.id,val:s.goals-(s.ownGoals||0)}; });
       const max=Math.max(...all.map(s=>s.val)); if (max<=0) return null;
       return all.find(s=>s.val===max)?.id||null;
     },
     getDetail:(wid)=>{
       const p=db.players.find(x=>x.id===wid); if (!p) return '';
       const s=getPlayerStats(wid);
-      return `<div class="badge-detail-header"><div class="badge-detail-icon">👟</div><div class="badge-detail-name">Soulier d'Or</div><div class="badge-detail-holder">${p.name}</div></div>
-      <div class="section-header">Performances</div>
+      const net=s.goals-(s.ownGoals||0);
+      return `<div class="badge-detail-header"><div class="badge-detail-icon">👟</div><div class="badge-detail-name">Soulier d'Or</div><div class="badge-detail-holder">${p.name}</div>
+        <div class="text-xs text-muted mt-8">Score net : ${net} buts</div></div>
+      <div class="section-header">Performances offensives</div>
       <div class="stat-mini-grid">
         <div class="stat-mini"><div class="stat-mini-val">${s.goals}</div><div class="stat-mini-lbl">⚽ Buts</div></div>
+        <div class="stat-mini"><div class="stat-mini-val" style="color:var(--red-500)">−${s.ownGoals||0}</div><div class="stat-mini-lbl">🤦 CSC</div></div>
+        <div class="stat-mini"><div class="stat-mini-val">${net}</div><div class="stat-mini-lbl">🎯 Net</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.gamelles}</div><div class="stat-mini-lbl">🎯 Cadrages</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.wins}</div><div class="stat-mini-lbl">🏆 Victoires</div></div>
       </div>
-      <div class="info-box" style="margin-top:8px">⚽ <span>Meilleur buteur avec <strong>${s.goals} buts</strong> toutes compétitions confondues.</span></div>`;
+      <div class="info-box" style="margin-top:8px">⚽ <span><strong>${s.goals} buts</strong> marqués, <strong>${s.ownGoals||0} CSC</strong> déduits → <strong>${net} buts nets</strong>.</span></div>`;
     }
   },
   {
     id:'master_def', name:'Master of Defence', icon:'🛡',
-    desc:"Plus grand nombre d'arrêts",
+    desc:'Meilleur défenseur (arrêts × 2 + cage inv. × 3 − CSC × 2)',
     isMain:false,
     getWinner:()=>{
       if (!db.players.length) return null;
-      const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).saves}));
+      const all=db.players.map(p=>{ const s=getPlayerStats(p.id); return {id:p.id,val:s.saves*2+getPlayerCleanSheets(p.id)*3-(s.ownGoals||0)*2}; });
       const max=Math.max(...all.map(s=>s.val)); if (max<=0) return null;
       return all.find(s=>s.val===max)?.id||null;
     },
     getDetail:(wid)=>{
       const p=db.players.find(x=>x.id===wid); if (!p) return '';
       const s=getPlayerStats(wid);
-      return `<div class="badge-detail-header"><div class="badge-detail-icon">🛡</div><div class="badge-detail-name">Master of Defence</div><div class="badge-detail-holder">${p.name}</div></div>
+      const cs=getPlayerCleanSheets(wid);
+      const score=s.saves*2+cs*3-(s.ownGoals||0)*2;
+      return `<div class="badge-detail-header"><div class="badge-detail-icon">🛡</div><div class="badge-detail-name">Master of Defence</div><div class="badge-detail-holder">${p.name}</div>
+        <div class="text-xs text-muted mt-8">Score défensif : ${score} pts</div></div>
       <div class="section-header">Performances défensives</div>
       <div class="stat-mini-grid">
         <div class="stat-mini"><div class="stat-mini-val">${s.saves}</div><div class="stat-mini-lbl">🛡 Arrêts</div></div>
-        <div class="stat-mini"><div class="stat-mini-val">${s.goals}</div><div class="stat-mini-lbl">⚽ Buts</div></div>
+        <div class="stat-mini"><div class="stat-mini-val">${cs}</div><div class="stat-mini-lbl">🔒 Cage inv.</div></div>
+        <div class="stat-mini"><div class="stat-mini-val" style="color:var(--red-500)">−${s.ownGoals||0}</div><div class="stat-mini-lbl">🤦 CSC</div></div>
         <div class="stat-mini"><div class="stat-mini-val">${s.wins}</div><div class="stat-mini-lbl">🏆 Victoires</div></div>
       </div>
-      <div class="info-box" style="margin-top:8px">🛡 <span>Meilleur défenseur avec <strong>${s.saves} arrêts</strong>.</span></div>`;
+      <div class="info-box" style="margin-top:8px">🛡 <span>${s.saves} arrêts (×2) + ${cs} cage inv. (×3) − ${s.ownGoals||0} CSC (×2) = <strong>${score} pts</strong>.</span></div>`;
     }
   },
 ];
 
-// Extra badges only shown in Stats > Badges
+// Extra badges shown in Stats > Badges
 const EXTRA_BADGE_DEFS = [
-  { id:'csc_king', name:'Roi du CSC', icon:'🤦', desc:'Plus de buts contre son camp', shame:true, getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).ownGoals})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; } },
+  { id:'csc_king', name:'Roi du CSC', icon:'🤦', desc:'Plus de buts contre son camp', shame:true,
+    getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).ownGoals})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; },
+    getScore:(pid)=>getPlayerStats(pid).ownGoals,
+    getStatRows:(pid)=>{ const s=getPlayerStats(pid); return [{val:s.ownGoals,lbl:'🤦 CSC'},{val:s.goals,lbl:'⚽ Buts'},{val:s.wins,lbl:'🏆 Victoires'}]; }
+  },
+  { id:'terroriste', name:'Terroriste', icon:'💣', desc:'Plus de sorties totales', shame:true,
+    getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerStats(p.id).sorties})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; },
+    getScore:(pid)=>getPlayerStats(pid).sorties,
+    getStatRows:(pid)=>{ const s=getPlayerStats(pid); return [{val:s.sorties,lbl:'🚪 Sorties'},{val:s.goals,lbl:'⚽ Buts'},{val:s.wins,lbl:'🏆 Victoires'}]; }
+  },
+  { id:'touriste', name:'Touriste', icon:'📉', desc:'Pire ratio Victoire/Défaite', shame:true,
+    getWinner:()=>{
+      const elig=db.players.filter(p=>{ const s=getPlayerStats(p.id); return s.losses>1; });
+      if(!elig.length) return null;
+      elig.sort((a,b)=>getPlayerStats(a.id).winRatio-getPlayerStats(b.id).winRatio);
+      return elig[0]?.id||null;
+    },
+    getStatRows:(pid)=>{ const s=getPlayerStats(pid); return [{val:s.wins,lbl:'🏆 Victoires'},{val:s.losses,lbl:'❌ Défaites'},{val:s.winRatio,lbl:'📊 V/D'}]; }
+  },
+  { id:'serie_alltime', name:'Série All Time', icon:'📈', desc:'Record de série de victoires consécutives',
+    getWinner:()=>{
+      let bestPid=null,bestStreak=0;
+      db.players.forEach(p=>{
+        let streak=0,best=0;
+        getAllMatchesForPlayer(p.id).sort((a,b)=>(a.m.finishedAt||0)-(b.m.finishedAt||0)).forEach(({m,side})=>{ if(m.winner===side){streak++;if(streak>best)best=streak;}else streak=0; });
+        if(best>bestStreak){bestStreak=best;bestPid=p.id;}
+      });
+      return bestStreak>0?bestPid:null;
+    },
+    getScore:(pid)=>{ let streak=0,best=0; getAllMatchesForPlayer(pid).sort((a,b)=>(a.m.finishedAt||0)-(b.m.finishedAt||0)).forEach(({m,side})=>{ if(m.winner===side){streak++;if(streak>best)best=streak;}else streak=0; }); return best; },
+    getStatRows:(pid)=>{ let streak=0,best=0; getAllMatchesForPlayer(pid).sort((a,b)=>(a.m.finishedAt||0)-(b.m.finishedAt||0)).forEach(({m,side})=>{ if(m.winner===side){streak++;if(streak>best)best=streak;}else streak=0; }); const s=getPlayerStats(pid); return [{val:best,lbl:'🔥 Meilleure série'},{val:s.wins,lbl:'🏆 Victoires'},{val:getAllMatchesForPlayer(pid).length,lbl:'🎮 Matchs'}]; }
+  },
+  { id:'finaliste_ne', name:'Finaliste né', icon:'👑', desc:'A joué le plus de finales',
+    getWinner:()=>{
+      const all=db.players.map(p=>{
+        let v=0;
+        db.tournaments.forEach(t=>t.matches.filter(m=>m.phase==='finale'&&m.finished).forEach(m=>{
+          ['a','b'].forEach(side=>['attacker','defender'].forEach(r=>{ if(m.stats[side]?.[r]?.id===p.id) v++; }));
+        }));
+        return {id:p.id,val:v};
+      });
+      const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null;
+      return all.find(s=>s.val===max)?.id||null;
+    },
+    getScore:(pid)=>{ let v=0; db.tournaments.forEach(t=>t.matches.filter(m=>m.phase==='finale'&&m.finished).forEach(m=>{ ['a','b'].forEach(side=>['attacker','defender'].forEach(r=>{ if(m.stats[side]?.[r]?.id===pid) v++; })); })); return v; },
+    getStatRows:(pid)=>{ let finals=0,finalWins=0; db.tournaments.forEach(t=>t.matches.filter(m=>m.phase==='finale'&&m.finished).forEach(m=>{ ['a','b'].forEach(side=>['attacker','defender'].forEach(r=>{ if(m.stats[side]?.[r]?.id===pid){finals++;if(m.winner===side)finalWins++;} })); })); return [{val:finals,lbl:'👑 Finales'},{val:finalWins,lbl:'🏆 Finales gagnées'},{val:countPlayerTournamentsWon(pid),lbl:'🏅 Tournois'}]; }
+  },
+  { id:'iceman', name:'Iceman', icon:'🧊', desc:'Meilleur ratio V/D en finale vs poule',
+    getWinner:()=>{
+      let bestPid=null,bestRatio=-Infinity;
+      db.players.forEach(p=>{
+        let fW=0,fM=0,pW=0,pM=0;
+        db.tournaments.forEach(t=>t.matches.filter(m=>m.finished).forEach(m=>{
+          ['a','b'].forEach(side=>['attacker','defender'].forEach(r=>{
+            if(m.stats[side]?.[r]?.id!==p.id) return;
+            if(m.phase==='finale'){fM++;if(m.winner===side)fW++;}
+            else if(m.phase==='poule'){pM++;if(m.winner===side)pW++;}
+          }));
+        }));
+        if(fM<1||pM<1) return;
+        const ratio=(fW/fM)-(pW/pM);
+        if(ratio>bestRatio){bestRatio=ratio;bestPid=p.id;}
+      });
+      return bestPid;
+    }
+  },
+  { id:'goat', name:'GOAT', icon:'🐐', desc:'Plus grand nombre de tournois gagnés',
+    getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:countPlayerTournamentsWon(p.id)})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; },
+    getScore:(pid)=>countPlayerTournamentsWon(pid),
+    getStatRows:(pid)=>{ const s=getPlayerStats(pid); return [{val:countPlayerTournamentsWon(pid),lbl:'🏅 Tournois'},{val:s.wins,lbl:'🏆 Victoires'},{val:s.winRatio,lbl:'📊 V/D'}]; }
+  },
+  { id:'goleador', name:'Goleador', icon:'⚡', desc:'Plus de buts sur un seul match',
+    getWinner:()=>{ let bestPid=null,bestG=0; db.players.forEach(p=>{ getAllMatchesForPlayer(p.id).forEach(({ps})=>{ const g=ps.goals||0; if(g>bestG){bestG=g;bestPid=p.id;} }); }); return bestG>0?bestPid:null; },
+    getScore:(pid)=>{ let best=0; getAllMatchesForPlayer(pid).forEach(({ps})=>{ if((ps.goals||0)>best)best=ps.goals||0; }); return best; },
+    getStatRows:(pid)=>{ let best=0; getAllMatchesForPlayer(pid).forEach(({ps})=>{ if((ps.goals||0)>best)best=ps.goals||0; }); const s=getPlayerStats(pid); return [{val:best,lbl:'⚡ Record en 1 match'},{val:s.goals,lbl:'⚽ Total buts'},{val:getAllMatchesForPlayer(pid).length,lbl:'🎮 Matchs'}]; }
+  },
+  { id:'le_dechu', name:'Le Déchu', icon:'💀', desc:"Joueur avec le moins d'ELO", shame:true,
+    getWinner:()=>{ const elig=db.players.filter(p=>getAllMatchesForPlayer(p.id).length>0); if(!elig.length) return null; const minElo=Math.min(...elig.map(p=>p.elo||1000)); return elig.find(p=>(p.elo||1000)===minElo)?.id||null; },
+    getStatRows:(pid)=>{ const p=db.players.find(x=>x.id===pid); const s=getPlayerStats(pid); const elo=p?.elo||1000; const rank=getELORank(elo); return [{val:elo,lbl:'⚡ ELO'},{val:`${rank.icon} ${rank.name}`,lbl:'Rang'},{val:s.losses,lbl:'❌ Défaites'}]; }
+  },
+  { id:'mur_de_berlin', name:'Mur de Berlin', icon:'🧱', desc:'Plus de cages inviolées en défense',
+    getWinner:()=>{ const all=db.players.map(p=>({id:p.id,val:getPlayerCleanSheets(p.id)})); const max=Math.max(...all.map(s=>s.val)); if(max<=0) return null; return all.find(s=>s.val===max)?.id||null; },
+    getScore:(pid)=>getPlayerCleanSheets(pid),
+    getStatRows:(pid)=>{ const s=getPlayerStats(pid); return [{val:getPlayerCleanSheets(pid),lbl:'🔒 Cages inv.'},{val:s.wins,lbl:'🏆 Victoires'},{val:getAllMatchesForPlayer(pid).filter(x=>x.role==='defender').length,lbl:'🛡 Matchs défenseur'}]; }
+  },
 ];
 
 function getPlayerBadges(pid) {
   return HOME_BADGE_DEFS.filter(b=>b.getWinner()===pid);
 }
 
+function getBadgeWinners(b) {
+  // Find all tied winners (same max value)
+  if (!db.players.length) return [];
+  const wid = b.getWinner(); if (!wid) return [];
+  if (!b.getScore) return [wid];
+  const maxScore = b.getScore(wid);
+  return db.players.filter(p=>b.getScore(p.id)===maxScore).map(p=>p.id);
+}
+
+let _currentBadgeId = null;
+
+function toggleBadgeLeaderboard() {
+  const lbEl = document.getElementById('badge-leaderboard');
+  const btn = document.getElementById('badge-lb-btn');
+  if (lbEl.style.display !== 'none') {
+    lbEl.style.display = 'none';
+    btn.textContent = '📊 Classement';
+    return;
+  }
+  const b = [...HOME_BADGE_DEFS,...EXTRA_BADGE_DEFS].find(x=>x.id===_currentBadgeId);
+  if (!b) return;
+  const getScore = b.getScore || (pid => {
+    if (b.id==='ballon_or') return getPlayerMVPScore(pid);
+    if (b.id==='soulier_or') { const s=getPlayerStats(pid); return s.goals-(s.ownGoals||0); }
+    if (b.id==='master_def') { const s=getPlayerStats(pid); return s.saves*2+getPlayerCleanSheets(pid)*3-(s.ownGoals||0)*2; }
+    return 0;
+  });
+  const ranked = db.players
+    .map(p => ({ p, score: getScore(p.id) }))
+    .filter(x => x.score > 0)
+    .sort((a,b) => b.score - a.score);
+  if (!ranked.length) { lbEl.innerHTML='<div class="text-center text-muted text-sm" style="padding:8px">Aucune donnée.</div>'; lbEl.style.display='block'; return; }
+  const winScore = ranked[0].score;
+  lbEl.innerHTML = `<div class="section-header" style="margin-bottom:6px">Classement</div>` +
+    ranked.map((x, i) => {
+      const isWinner = x.score === winScore;
+      const medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':`${i+1}.`;
+      const pct = Math.round((x.score / winScore) * 100);
+      return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--beige-200)">
+        <span style="font-size:13px;min-width:22px;text-align:center">${medal}</span>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+            <span style="font-weight:${isWinner?'800':'600'};font-size:13px;color:${isWinner?'var(--orange-400)':'var(--text-900)'}">${x.p.name}</span>
+            <span style="font-size:12px;font-weight:700;color:var(--text-500)">${typeof x.score==='number'?x.score%1===0?x.score:x.score.toFixed(1):x.score}</span>
+          </div>
+          <div style="height:5px;background:var(--beige-200);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${isWinner?'var(--orange-400)':'var(--beige-400)'};border-radius:3px;transition:width .3s"></div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  lbEl.style.display = 'block';
+  btn.textContent = '✕ Masquer';
+}
+
 function showBadgeDetail(badgeId) {
+  _currentBadgeId = badgeId;
+  document.getElementById('badge-leaderboard').style.display = 'none';
+  document.getElementById('badge-lb-btn').textContent = '📊 Classement';
   const b=[...HOME_BADGE_DEFS,...EXTRA_BADGE_DEFS].find(x=>x.id===badgeId);
   if (!b) return;
   const wid=b.getWinner();
+  const winners=getBadgeWinners(b);
   let html;
-  if (b.getDetail && wid) html=b.getDetail(wid);
-  else {
-    const p=wid?db.players.find(x=>x.id===wid):null;
-    html=`<div class="badge-detail-header"><div class="badge-detail-icon">${b.icon}</div><div class="badge-detail-name">${b.name}</div><div class="badge-detail-holder">${p?.name||'—'}</div><div class="badge-desc" style="margin-top:4px">${b.desc}</div></div>`;
+  if (b.getDetail && wid) {
+    html=b.getDetail(wid);
+  } else {
+    const holdersHtml=winners.length>0
+      ? winners.map(id=>{const p=db.players.find(x=>x.id===id);return `<div class="badge-detail-holder">${p?.name||'—'}</div>`;}).join('')
+      : '<div class="badge-detail-holder text-muted">—</div>';
+    html=`<div class="badge-detail-header"><div class="badge-detail-icon">${b.icon}</div><div class="badge-detail-name">${b.name}</div>${holdersHtml}<div class="badge-desc" style="margin-top:4px">${b.desc}</div></div>`;
+    // Add stats for each winner
+    if (winners.length>0 && b.getStatRows) {
+      html+=`<div class="section-header">Stats</div><div class="card">`;
+      winners.forEach(id=>{
+        const p=db.players.find(x=>x.id===id);
+        const rows=b.getStatRows(id);
+        html+=`<div style="margin-bottom:10px"><div style="font-weight:700;margin-bottom:4px">${p?.name||'?'}</div>`;
+        html+=`<div class="stat-mini-grid">${rows.map(r=>`<div class="stat-mini"><div class="stat-mini-val">${r.val}</div><div class="stat-mini-lbl">${r.lbl}</div></div>`).join('')}</div></div>`;
+      });
+      html+='</div>';
+    }
+  }
+  if (winners.length>1) html+=`<div class="info-box" style="margin-top:8px">⚡ <span>${winners.length} joueurs à égalité !</span></div>`;
+  document.getElementById('badge-detail-body').innerHTML=html;
+  document.getElementById('modal-badge-detail').classList.add('open');
+}
+
+function getAchievementStats(achId, pid) {
+  const s=getPlayerStats(pid);
+  const allM=getAllMatchesForPlayer(pid);
+  const statMap={
+    first_goal:     [{val:s.goals,lbl:'⚽ Buts total'}],
+    hat_trick:      [{val:Math.max(...allM.map(({ps})=>ps.goals||0),0),lbl:'⚽ Record en 1 match'},{val:s.goals,lbl:'⚽ Total buts'}],
+    demi_centurion: [{val:s.goals,lbl:'⚽ Buts'},{val:50,lbl:'🎯 Objectif'}],
+    centurion:      [{val:s.goals,lbl:'⚽ Buts'},{val:100,lbl:'🎯 Objectif'}],
+    demi_rempart:   [{val:s.saves,lbl:'🛡 Arrêts'},{val:50,lbl:'🎯 Objectif'}],
+    centurion_arrets:[{val:s.saves,lbl:'🛡 Arrêts'},{val:100,lbl:'🎯 Objectif'}],
+    veteran:        [{val:allM.length,lbl:'🎮 Matchs'},{val:50,lbl:'🎯 Objectif'}],
+    elo_1200:       [{val:db.players.find(p=>p.id===pid)?.elo||1000,lbl:'⚡ ELO'},{val:1200,lbl:'🎯 Seuil'}],
+    elo_1400:       [{val:db.players.find(p=>p.id===pid)?.elo||1000,lbl:'⚡ ELO'},{val:1400,lbl:'🎯 Seuil'}],
+    le_mur:         [{val:getPlayerCleanSheets(pid),lbl:'🔒 Cage inv.'},{val:s.saves,lbl:'🛡 Arrêts'}],
+    snipeur:        [{val:s.gamelles,lbl:'🎯 Cadrages'},{val:25,lbl:'🎯 Objectif'}],
+    match_parfait:  [{val:s.goals,lbl:'⚽ Buts'},{val:s.saves,lbl:'🛡 Arrêts'},{val:s.ownGoals,lbl:'🤦 CSC'}],
+    champion:       [{val:countPlayerTournamentsWon(pid),lbl:'🏅 Tournois gagnés'}],
+    serie_noire:    [{val:(()=>{let b=0,c=0;allM.sort((a,x)=>(a.m.finishedAt||0)-(x.m.finishedAt||0)).forEach(({m,side})=>{if(m.winner===side){c++;if(c>b)b=c;}else c=0;});return b;})(),lbl:'🔥 Meilleure série'}],
+    polyvalent:     [{val:allM.filter(x=>x.role==='attacker').length,lbl:'⚔️ Matchs ATT'},{val:allM.filter(x=>x.role==='defender').length,lbl:'🛡 Matchs DEF'}],
+    cameleon:       [{val:allM.filter(x=>x.role==='attacker').length,lbl:'⚔️ ATT'},{val:allM.filter(x=>x.role==='defender').length,lbl:'🛡 DEF'}],
+    dominant:       [{val:countPlayerTournamentsWon(pid),lbl:'🏅 Tournois gagnés'},{val:s.wins,lbl:'🏆 Victoires'}],
+    revenant:       [{val:countPlayerTournamentsWon(pid),lbl:'🏅 Tournois gagnés'}],
+    ballon_or_ach:  [{val:s.goals,lbl:'⚽ Buts'},{val:s.saves,lbl:'🛡 Arrêts'},{val:s.wins,lbl:'🏆 Victoires'}],
+    soulier_or_ach: [{val:s.goals,lbl:'⚽ Buts'}],
+  };
+  return statMap[achId]||[];
+}
+
+function showAchievementDetail(achId, pid) {
+  const a=ACHIEVEMENT_DEFS.find(x=>x.id===achId); if(!a) return;
+  const p=pid?db.players.find(x=>x.id===pid):null;
+  const unlocked=p?.achievements?.includes(achId);
+  let html=`<div class="badge-detail-header">
+    <div class="badge-detail-icon">${a.icon}</div>
+    <div class="badge-detail-name">${a.name}</div>
+    ${p?`<div class="badge-detail-holder" style="color:${unlocked?'var(--green-500)':'var(--text-400)'}">${unlocked?'✓ Débloqué par '+p.name:'🔒 Non débloqué par '+p.name}</div>`:''}
+    <div class="badge-desc" style="margin-top:6px">${a.desc}</div>
+  </div>`;
+  if (p) {
+    const rows=getAchievementStats(achId, pid);
+    if(rows.length) {
+      html+=`<div class="section-header">Stats de ${p.name}</div>
+      <div class="card"><div class="stat-mini-grid">${rows.map(r=>`<div class="stat-mini"><div class="stat-mini-val">${r.val}</div><div class="stat-mini-lbl">${r.lbl}</div></div>`).join('')}</div></div>`;
+    }
+  }
+  const holders=db.players.filter(x=>x.achievements?.includes(achId));
+  if(holders.length>0) {
+    html+=`<div class="section-header">Détenteurs (${holders.length})</div><div class="card">`;
+    holders.forEach(hp=>{
+      html+=`<div class="flex-center gap-8" style="padding:6px 0;border-bottom:1px solid var(--beige-200)"><div class="avatar avatar-sm">${initials(hp.name)}</div><div class="list-name text-sm">${hp.name}</div></div>`;
+    });
+    html+='</div>';
+  } else {
+    html+=`<div class="info-box" style="margin-top:8px">🔒 <span>Aucun joueur n'a encore débloqué cet achievement.</span></div>`;
   }
   document.getElementById('badge-detail-body').innerHTML=html;
   document.getElementById('modal-badge-detail').classList.add('open');
@@ -2076,6 +2842,215 @@ function renderBadgesPage() {
 }
 
 /* ═══════════════════════════════════════
+   ACHIEVEMENTS
+═══════════════════════════════════════ */
+const ACHIEVEMENT_DEFS = [
+  { id:'first_goal',       icon:'🩸', name:'Premier but',          desc:'Marquer son tout premier but',
+    check:(pid)=>getPlayerStats(pid).goals>=1 },
+  { id:'hat_trick',        icon:'🎩', name:'Hat-trick',             desc:'3+ buts dans un seul match',
+    check:(pid)=>getAllMatchesForPlayer(pid).some(({ps})=>(ps.goals||0)>=3) },
+  { id:'demi_centurion',   icon:'🌗', name:'Demi-Centurion',        desc:'50 buts au total',
+    check:(pid)=>getPlayerStats(pid).goals>=50 },
+  { id:'centurion',        icon:'💯', name:'Centurion',             desc:'100 buts au total',
+    check:(pid)=>getPlayerStats(pid).goals>=100 },
+  { id:'demi_rempart',     icon:'🌗', name:'Demi-Rempart',          desc:'50 arrêts au total',
+    check:(pid)=>getPlayerStats(pid).saves>=50 },
+  { id:'centurion_arrets', icon:'🏰', name:'Centurion des Arrêts',  desc:'100 arrêts au total',
+    check:(pid)=>getPlayerStats(pid).saves>=100 },
+  { id:'veteran',          icon:'🎮', name:'Vétéran',               desc:'50 matchs joués',
+    check:(pid)=>getAllMatchesForPlayer(pid).length>=50 },
+  { id:'elo_1200',         icon:'📈', name:'Montée en puissance',   desc:'Atteindre ELO 1200',
+    check:(pid)=>(db.players.find(p=>p.id===pid)?.elo||1000)>=1200 },
+  { id:'elo_1400',         icon:'🌟', name:'Légende ELO',           desc:'Atteindre ELO 1400',
+    check:(pid)=>(db.players.find(p=>p.id===pid)?.elo||1000)>=1400 },
+  { id:'le_mur',           icon:'🧱', name:'Le Mur',                desc:'Zéro but encaissé sur un match (défenseur)',
+    check:(pid)=>getAllMatchesForPlayer(pid).some(({m,side,role})=>{
+      if(role!=='defender'||!m.finished) return false;
+      const os=side==='a'?'b':'a';
+      return ((m.stats[os]?.attacker?.goals||0)+(m.stats[os]?.defender?.goals||0)+(m.stats[side]?.attacker?.ownGoals||0)+(m.stats[side]?.defender?.ownGoals||0))===0;
+    })
+  },
+  { id:'snipeur',          icon:'🎯', name:'Le Snipeur',            desc:'25 cadrages cumulés',
+    check:(pid)=>getPlayerStats(pid).gamelles>=25 },
+  { id:'match_parfait',    icon:'✨', name:'Match Parfait',          desc:'1 but + 1 arrêt + 0 CSC en un match',
+    check:(pid)=>getAllMatchesForPlayer(pid).some(({m,side})=>{
+      const sa=m.stats[side]; if(!sa) return false;
+      return (sa.attacker?.goals||0)+(sa.defender?.goals||0)>=1 &&
+             (sa.defender?.saves||0)>=1 &&
+             (sa.attacker?.ownGoals||0)+(sa.defender?.ownGoals||0)===0;
+    })
+  },
+  { id:'champion',         icon:'🏆', name:'Champion',              desc:'Gagner un tournoi',
+    check:(pid)=>countPlayerTournamentsWon(pid)>=1 },
+  { id:'serie_noire',      icon:'🔥', name:'Série Noire',           desc:'5 victoires consécutives',
+    check:(pid)=>{ let s=0; for(const {m,side} of getAllMatchesForPlayer(pid)){ if(m.winner===side){s++;if(s>=5)return true;}else s=0; } return false; }
+  },
+  { id:'polyvalent',       icon:'⚽', name:'Polyvalent',            desc:'10 matchs ATT et 10 matchs DEF',
+    check:(pid)=>{ const ms=getAllMatchesForPlayer(pid); return ms.filter(x=>x.role==='attacker').length>=10&&ms.filter(x=>x.role==='defender').length>=10; }
+  },
+  { id:'cameleon',         icon:'🎭', name:'Caméléon',              desc:'ATT et DEF dans le même tournoi',
+    check:(pid)=>db.tournaments.some(t=>{
+      let att=false,def=false;
+      t.matches.filter(m=>m.finished).forEach(m=>['a','b'].forEach(side=>{
+        if(m.stats[side]?.attacker?.id===pid) att=true;
+        if(m.stats[side]?.defender?.id===pid) def=true;
+      }));
+      return att&&def;
+    })
+  },
+  { id:'dominant',         icon:'👊', name:'Dominant',              desc:'Gagner un tournoi sans perdre',
+    check:(pid)=>db.tournaments.some(t=>{
+      const fin=t.matches.find(m=>m.phase==='finale'&&m.finished); if(!fin||!fin.winner) return false;
+      const wIds=['attacker','defender'].map(r=>fin.stats[fin.winner]?.[r]?.id);
+      if(!wIds.includes(pid)) return false;
+      return t.matches.filter(m=>m.finished).every(m=>{
+        const side=m.stats.a?.attacker?.id===pid||m.stats.a?.defender?.id===pid?'a':
+                   m.stats.b?.attacker?.id===pid||m.stats.b?.defender?.id===pid?'b':null;
+        if(!side) return true;
+        return m.winner!==( side==='a'?'b':'a' );
+      });
+    })
+  },
+  { id:'revenant',         icon:'🔄', name:'Revenant',              desc:'Ne pas finir 1er de poule et gagner la finale',
+    check:(pid)=>db.tournaments.some(t=>{
+      const fin=t.matches.find(m=>m.phase==='finale'&&m.finished); if(!fin||!fin.winner) return false;
+      const wIds=['attacker','defender'].map(r=>fin.stats[fin.winner]?.[r]?.id);
+      if(!wIds.includes(pid)) return false;
+      const winTeam=fin.winner==='a'?fin.teamA:fin.teamB;
+      return !t.groups.some((g,gi)=>getGroupStandings(t,gi)[0]?.teamId===winTeam);
+    })
+  },
+  { id:'ballon_or_ach',    icon:'🥇', name:'Ballon d\'Or',          desc:'Avoir détenu le Ballon d\'Or au moins une fois',
+    check:(pid)=>{ const p=db.players.find(x=>x.id===pid); return !!(p?.hadBallonOr); }
+  },
+  { id:'soulier_or_ach',   icon:'👟', name:'Soulier d\'Or',         desc:'Avoir détenu le Soulier d\'Or au moins une fois',
+    check:(pid)=>{ const p=db.players.find(x=>x.id===pid); return !!(p?.hadSoulierOr); }
+  },
+];
+
+function checkAndGrantAchievements(pid) {
+  const p=db.players.find(x=>x.id===pid); if(!p) return [];
+  if(!p.achievements) p.achievements=[];
+  const newOnes=[];
+  ACHIEVEMENT_DEFS.forEach(def=>{
+    if(!p.achievements.includes(def.id)&&def.check(pid)){
+      p.achievements.push(def.id);
+      newOnes.push(def);
+    }
+  });
+  return newOnes;
+}
+
+function checkAllAchievements() {
+  // Update badge achievement flags
+  const boWid=HOME_BADGE_DEFS[0].getWinner(), soWid=HOME_BADGE_DEFS[1].getWinner();
+  if(boWid){ const p=db.players.find(x=>x.id===boWid); if(p) p.hadBallonOr=true; }
+  if(soWid){ const p=db.players.find(x=>x.id===soWid); if(p) p.hadSoulierOr=true; }
+  const newByPlayer={};
+  db.players.forEach(p=>{ const n=checkAndGrantAchievements(p.id); if(n.length) newByPlayer[p.id]=n; });
+  if(Object.keys(newByPlayer).length) dbSave();
+  return newByPlayer;
+}
+
+function getPlayerAchievements(pid) {
+  const p=db.players.find(x=>x.id===pid);
+  if(!p||!p.achievements) return [];
+  return ACHIEVEMENT_DEFS.filter(d=>p.achievements.includes(d.id));
+}
+
+/* ═══════════════════════════════════════
+   HISTORY PAGE
+═══════════════════════════════════════ */
+const TEAM_PALETTE=['#D4621A','#2B6CB8','#1E8B4A','#9B59B6','#C89A1A','#C8392B','#0891B2','#B05A30','#5A5A5A','#7C3AED'];
+
+function getTeamColor(tid) {
+  const idx = db.teams.findIndex(t=>t.id===tid);
+  return TEAM_PALETTE[idx % TEAM_PALETTE.length];
+}
+
+function renderHistoryPage() {
+  const el=document.getElementById('stats-history-content'); if(!el) return;
+  if (!db.tournaments.length) {
+    el.innerHTML='<div class="empty"><div class="empty-icon">📅</div><div class="empty-title">Aucun tournoi</div></div>';
+    return;
+  }
+
+  // Build team win counts for dominance chart
+  const teamWinCounts={};
+  db.teams.forEach(t=>{ teamWinCounts[t.id]=0; });
+  const allFinished=[];
+  db.tournaments.forEach(t=>t.matches.filter(m=>m.finished).forEach(m=>{
+    allFinished.push({m,t});
+    if(m.winner==='a'&&teamWinCounts[m.teamA]!==undefined) teamWinCounts[m.teamA]++;
+    if(m.winner==='b'&&teamWinCounts[m.teamB]!==undefined) teamWinCounts[m.teamB]++;
+  }));
+  allFinished.sort((a,b)=>(a.m.finishedAt||0)-(b.m.finishedAt||0));
+
+  // Dominance summary — teams sorted by wins
+  const teamsRanked=[...db.teams].filter(t=>teamWinCounts[t.id]>0).sort((a,b)=>teamWinCounts[b.id]-teamWinCounts[a.id]);
+  const maxWins=teamsRanked[0]?teamWinCounts[teamsRanked[0].id]:1;
+
+  let html=`<div class="section-header">🏆 Dominance globale</div>
+  <div class="card mb-12">
+    ${teamsRanked.map((t,i)=>{
+      const w=teamWinCounts[t.id], color=getTeamColor(t.id);
+      const pct=Math.round(w/maxWins*100);
+      return `<div style="margin-bottom:10px">
+        <div class="flex-between mb-4">
+          <div class="flex-center gap-8">
+            <div style="width:12px;height:12px;border-radius:3px;background:${color};flex-shrink:0"></div>
+            <span style="font-weight:700;font-size:13px">${t.name}</span>
+          </div>
+          <span style="font-weight:800;color:${color}">${w}V</span>
+        </div>
+        <div style="height:8px;background:var(--beige-200);border-radius:4px;overflow:hidden">
+          <div style="height:100%;width:${pct}%;background:${color};border-radius:4px;transition:width .5s"></div>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  // Match history by tournament
+  db.tournaments.forEach(t=>{
+    const tMatches=t.matches.filter(m=>m.finished).sort((a,b)=>(a.finishedAt||0)-(b.finishedAt||0));
+    if(!tMatches.length) return;
+    let tw={};
+    tMatches.forEach(m=>{
+      [m.teamA,m.teamB].forEach(tid=>{ if(!tw[tid]) tw[tid]={w:0,l:0,d:0}; });
+      if(m.winner==='a'){tw[m.teamA].w++;tw[m.teamB].l++;}
+      else if(m.winner==='b'){tw[m.teamB].w++;tw[m.teamA].l++;}
+      else{tw[m.teamA].d++;tw[m.teamB].d++;}
+    });
+    html+=`<div class="section-header">${t.name} <span class="pill ${t.status==='finished'?'pill-green':'pill-orange'}" style="margin-left:4px;font-size:9px">${t.status==='finished'?'Terminé':'En cours'}</span></div>
+    <div class="card mb-12">
+      ${tMatches.map(m=>{
+        const ca=getTeamColor(m.teamA), cb=getTeamColor(m.teamB);
+        const wA=m.winner==='a', wB=m.winner==='b', draw=!m.winner;
+        const dateStr=m.finishedAt?new Date(m.finishedAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}):'';
+        return `<div style="display:flex;align-items:center;gap:6px;padding:7px 0;border-bottom:1px solid var(--beige-200)">
+          <div style="flex:1;text-align:right">
+            <span style="font-weight:${wA?800:500};color:${wA?ca:'var(--text-700)'};font-size:13px">${teamName(m.teamA)}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:3px;flex-shrink:0">
+            <span style="width:8px;height:8px;border-radius:50%;background:${ca};display:inline-block"></span>
+            <span style="font-family:var(--font-display);font-weight:800;font-size:15px;min-width:40px;text-align:center">${m.scoreA}–${m.scoreB}</span>
+            <span style="width:8px;height:8px;border-radius:50%;background:${cb};display:inline-block"></span>
+          </div>
+          <div style="flex:1">
+            <span style="font-weight:${wB?800:500};color:${wB?cb:'var(--text-700)'};font-size:13px">${teamName(m.teamB)}</span>
+          </div>
+          ${dateStr?`<span style="font-size:10px;color:var(--text-400);flex-shrink:0">${dateStr}</span>`:''}
+        </div>`;
+      }).join('')}
+      <div style="padding-top:8px;display:flex;flex-wrap:wrap;gap:6px">
+        ${Object.entries(tw).map(([tid,r])=>`<span style="font-size:11px;font-weight:700;color:${getTeamColor(tid)}">${teamName(tid)} ${r.w}V-${r.d}N-${r.l}D</span>`).join('')}
+      </div>
+    </div>`;
+  });
+  el.innerHTML=html;
+}
+
+/* ═══════════════════════════════════════
    RANKINGS
 ═══════════════════════════════════════ */
 function switchRanking(type, btn) {
@@ -2084,11 +3059,13 @@ function switchRanking(type, btn) {
 }
 function renderRanking(type) {
   const el=document.getElementById('ranking-list');
-  const data=db.players.map(p=>({player:p,...getPlayerStats(p.id)}));
+  const data=db.players.map(p=>({player:p,...getPlayerStats(p.id),cleanSheets:getPlayerCleanSheets(p.id)}));
   const sortFns={
-    goals:(a,b)=>b.goals-a.goals,
+    goals:(a,b)=>b.goals-a.goals, sorties:(a,b)=>b.sorties-a.sorties,
     saves:(a,b)=>b.saves-a.saves, gamelles:(a,b)=>b.gamelles-a.gamelles,
     ownGoals:(a,b)=>b.ownGoals-a.ownGoals, wins:(a,b)=>b.wins-a.wins,
+    cleanSheets:(a,b)=>b.cleanSheets-a.cleanSheets,
+    elo:(a,b)=>(b.player.elo||1000)-(a.player.elo||1000),
     winRatio:(a,b)=>{
       const av=a.winRatio===Infinity?99999:a.winRatio||0;
       const bv=b.winRatio===Infinity?99999:b.winRatio||0;
@@ -2096,16 +3073,23 @@ function renderRanking(type) {
     },
   };
   data.sort(sortFns[type]||sortFns.goals);
-  const labels={goals:'buts',saves:'arrêts',gamelles:'cadrages',ownGoals:'CSC',wins:'victoires',winRatio:'V/D ratio'};
+  const labels={goals:'buts',sorties:'sorties',saves:'arrêts',gamelles:'cadrages',ownGoals:'CSC',wins:'victoires',winRatio:'V/D ratio',elo:'ELO',cleanSheets:'cage inv.'};
   if (!data.length) { el.innerHTML='<div class="empty"><div class="empty-icon">📊</div><div class="empty-title">Aucune stat</div></div>'; return; }
   el.innerHTML=`<div class="card">${data.map((d,i)=>{
-    const raw=d[type]??0;
-    const val=type==='winRatio'?(d.losses===0?(d.wins>0?'∞':'—'):raw):raw;
+    const elo=d.player.elo||1000;
+    const rank=getELORank(elo);
+    let val, sublabel;
+    if (type==='elo') { val=elo; sublabel=`${rank.icon} ${rank.name}`; }
+    else if (type==='winRatio') { val=d.losses===0?(d.wins>0?'∞':'—'):d.winRatio; sublabel=labels[type]; }
+    else { val=d[type]??0; sublabel=labels[type]; }
     return `<div class="list-item" onclick="showPage('player-detail','${d.player.id}')" style="cursor:pointer">
       <div class="rank-num ${['rank-1','rank-2','rank-3'][i]||''}">${i+1}</div>
       <div class="avatar avatar-sm">${initials(d.player.name)}</div>
-      <div class="list-info"><div class="list-name">${d.player.name}</div><div class="list-sub">${d.player.role==='attaquant'?'⚔️ ATT':d.player.role==='defenseur'?'🛡 DEF':'⚽ Poly'}</div></div>
-      <div class="list-right"><div class="list-stat">${val}</div><div class="list-stat-label">${labels[type]}</div></div>
+      <div class="list-info">
+        <div class="list-name">${d.player.name}</div>
+        <div class="list-sub">${d.player.role==='attaquant'?'⚔️ ATT':d.player.role==='defenseur'?'🛡 DEF':'⚽ Poly'}${type!=='elo'?` · ${rank.icon} ${rank.name}`:''}</div>
+      </div>
+      <div class="list-right"><div class="list-stat">${val}</div><div class="list-stat-label">${sublabel}</div></div>
     </div>`;
   }).join('')}</div>`;
 }
@@ -2139,7 +3123,7 @@ function renderCharts() {
     });
   }
   if (!labels.length) return;
-  [['chart-goals','goals','Buts cumulés'],['chart-gamelles','gamelles','Cadrages cumulés'],['chart-wins','wins','Victoires cumulées']].forEach(([id,key,label])=>{
+  [['chart-goals','goals','Buts cumulés'],['chart-gamelles','gamelles','Cadrages cumulés'],['chart-wins','wins','Victoires cumulées'],['chart-sorties','sorties','Sorties cumulées']].forEach(([id,key,label])=>{
     destroyChart(id);
     const canvas=document.getElementById(id); if (!canvas) return;
     chartInstances[id]=new Chart(canvas,{type:'line',data:{labels,datasets:makeDatasets(key)},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12,padding:10}}},scales:{x:{grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11}}},y:{beginAtZero:true,grid:{color:'rgba(0,0,0,.04)'},ticks:{font:{size:11},stepSize:1},title:{display:true,text:label,font:{size:10}}}}}});
@@ -2158,56 +3142,195 @@ function renderPlayerDetail(pid) {
   document.getElementById('pd-fullname').textContent=p.name;
   document.getElementById('pd-avatar').textContent=initials(p.name);
   document.getElementById('pd-role').textContent=p.role==='attaquant'?'⚔️ Attaquant':p.role==='defenseur'?'🛡 Défenseur':'⚽ Polyvalent';
-  document.getElementById('pd-badges').innerHTML=badges.map(b=>`<span class="pill pill-gold">${b.icon} ${b.name}</span>`).join('');
+  const elo=p.elo||1000;
+  const eloRank=getELORank(elo);
+  document.getElementById('pd-badges').innerHTML=
+    `<span class="elo-rank elo-rank-${eloRank.cls}">${eloRank.icon} ${eloRank.name} · ${elo}</span>`+
+    badges.map(b=>`<span class="pill pill-gold">${b.icon} ${b.name}</span>`).join('');
   document.getElementById('pd-edit-btn').onclick=()=>openEditPlayer(p.id);
-  document.getElementById('pd-stat-grid').innerHTML=[
-    {label:'⚽ Buts',val:s.goals},{label:'🛡 Arrêts',val:s.saves},
-    {label:'🎯 Cadrages',val:s.gamelles},
-    {label:'🏆 Victoires',val:s.wins},{label:'🤦 CSC',val:s.ownGoals},
-    {label:'📊 V/D',val:wrDisplay},{label:'🏅 Tournois',val:countPlayerTournamentsWon(p.id)},
-    {label:'🎮 Matchs',val:getAllMatchesForPlayer(p.id).length},
-  ].map(x=>`<div class="stat-mini"><div class="stat-mini-val">${x.val}</div><div class="stat-mini-lbl">${x.label}</div></div>`).join('');
 
-  // Chart
-  const tournaments=[...db.tournaments].reverse();
-  const chartLabels=tournaments.map((_,i)=>`T${i+1}`);
-  const chartData=tournaments.map(t=>{let v=0;t.matches.filter(m=>m.finished).forEach(m=>['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{if(m.stats[side]?.[role]?.id===p.id)v+=m.stats[side][role].goals||0;})));return v;});
-  destroyChart('pd-chart');
-  const canvas=document.getElementById('pd-chart');
-  if (canvas&&chartLabels.length) {
-    chartInstances['pd-chart']=new Chart(canvas,{type:'bar',data:{labels:chartLabels,datasets:[{label:'Buts',data:chartData,backgroundColor:'#D4621A88',borderColor:'#D4621A',borderWidth:1.5,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{stepSize:1,font:{size:10}}}}}});
-  }
+  // Default to overview tab
+  switchPDTab('overview', p.id);
+}
 
-  // Stats par tournoi
-  const tStats=getPlayerStatsByTournament(p.id);
-  document.getElementById('pd-tournament-stats').innerHTML=tStats.length
-    ?`<div class="card">${tStats.map(ts=>`<div class="list-item"><div class="list-info"><div class="list-name text-sm">${ts.tournament.name}</div><div class="list-sub">⚽${ts.goals} 🛡${ts.saves} 🎯${ts.gamelles} 🤦${ts.ownGoals} · 🏆${ts.wins}V/${ts.matches}M</div></div></div>`).join('')}</div>`
-    :'<div class="text-muted text-sm text-center" style="padding:16px">Aucun tournoi joué</div>';
+let currentPid = null;
+function switchPDTab(tab, pid) {
+  currentPid = pid;
+  const p=db.players.find(x=>x.id===pid); if (!p) return;
+  const s=getPlayerStats(p.id);
+  const wrDisplay=s.losses===0?(s.wins>0?'∞':'—'):s.winRatio;
+  // Update tab active state
+  document.querySelectorAll('.role-tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+  // Hide all panels
+  ['pd-tab-overview','pd-tab-attacker','pd-tab-defender','pd-tab-records','pd-tab-achievements'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.style.display='none';
+  });
 
-  // Match history
-  const allM=getAllMatchesForPlayer(pid);
-  document.getElementById('pd-matches').innerHTML=allM.length
-    ?`<div class="card">${allM.slice(0,15).map(({m,t,side,ps,friendly})=>{
+  if (tab==='overview') {
+    const el=document.getElementById('pd-tab-overview'); if(el) el.style.display='';
+    document.getElementById('pd-stat-grid').innerHTML=[
+      {label:'⚽ Buts',val:s.goals},{label:'🚪 Sorties',val:s.sorties},
+      {label:'🛡 Arrêts',val:s.saves},{label:'🎯 Cadrages',val:s.gamelles},
+      {label:'🏆 Victoires',val:s.wins},{label:'🤦 CSC',val:s.ownGoals},
+      {label:'📊 V/D',val:wrDisplay},{label:'🏅 Tournois',val:countPlayerTournamentsWon(p.id)},
+      {label:'🎮 Matchs',val:getAllMatchesForPlayer(p.id).length},
+      {label:'🔒 Cage inv.',val:getPlayerCleanSheets(p.id)},
+    ].map(x=>`<div class="stat-mini"><div class="stat-mini-val">${x.val}</div><div class="stat-mini-lbl">${x.label}</div></div>`).join('');
+
+    // Chart
+    const tournaments=[...db.tournaments].reverse();
+    const chartLabels=tournaments.map((_,i)=>`T${i+1}`);
+    const chartData=tournaments.map(t=>{let v=0;t.matches.filter(m=>m.finished).forEach(m=>['a','b'].forEach(side=>['attacker','defender'].forEach(role=>{if(m.stats[side]?.[role]?.id===p.id)v+=m.stats[side][role].goals||0;})));return v;});
+    destroyChart('pd-chart');
+    const canvas=document.getElementById('pd-chart');
+    if (canvas&&chartLabels.length) {
+      chartInstances['pd-chart']=new Chart(canvas,{type:'bar',data:{labels:chartLabels,datasets:[{label:'Buts',data:chartData,backgroundColor:'#D4621A88',borderColor:'#D4621A',borderWidth:1.5,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10}}},y:{beginAtZero:true,ticks:{stepSize:1,font:{size:10}}}}}});
+    }
+
+    // Match map
+    const allM=getAllMatchesForPlayer(p.id);
+    const mapEl=document.getElementById('pd-match-map');
+    if(mapEl) mapEl.innerHTML=allM.slice(0,40).map(({m,side})=>{
+      const cls=m.winner===side?'win':m.winner===null?'draw':'loss';
       const my=side==='a'?m.scoreA:m.scoreB, opp_=side==='a'?m.scoreB:m.scoreA;
-      const opp=side==='a'?teamName(m.teamB):teamName(m.teamA);
-      const res=my>opp_?'✓':my<opp_?'✗':'=';
-      const col=my>opp_?'var(--green-500)':my<opp_?'var(--red-500)':'var(--text-400)';
-      return `<div class="list-item"><div style="width:20px;font-weight:800;color:${col}">${res}</div>
-        <div class="list-info"><div class="list-name text-sm">vs ${opp}</div><div class="list-sub">${t?.name||'?'} · ${my}–${opp_} · ⚽${ps.goals} 🎯${ps.gamelles} 🤦${ps.ownGoals}</div></div></div>`;
-    }).join('')}</div>`
-    :'<div class="text-muted text-sm text-center" style="padding:20px">Aucun match joué</div>';
+      return `<div class="match-dot ${cls}" title="${my}–${opp_}"></div>`;
+    }).join('');
+
+    // Stats par tournoi
+    const tStats=getPlayerStatsByTournament(p.id);
+    document.getElementById('pd-tournament-stats').innerHTML=tStats.length
+      ?`<div class="card">${tStats.map(ts=>`<div class="list-item"><div class="list-info"><div class="list-name text-sm">${ts.tournament.name}</div><div class="list-sub">⚽${ts.goals} 🛡${ts.saves} 🎯${ts.gamelles} 🚪${ts.sorties||0} 🤦${ts.ownGoals} · 🏆${ts.wins}V/${ts.matches}M</div></div></div>`).join('')}</div>`
+      :'<div class="text-muted text-sm text-center" style="padding:16px">Aucun tournoi joué</div>';
+
+    // Best/Worst opponent
+    const bwo=getPlayerBestWorstOpponent(p.id);
+    const bwoEl=document.getElementById('pd-opponents');
+    if (bwoEl) bwoEl.innerHTML=renderBestWorstOpponent(bwo,'⚔️ Adversaires');
+
+    // Match history — sorted newest first
+    const allMSorted = [...allM].sort((a,b)=>(b.m.finishedAt||0)-(a.m.finishedAt||0));
+    document.getElementById('pd-matches').innerHTML=allMSorted.length
+      ?`<div class="card">${allMSorted.slice(0,20).map(({m,t,side,ps})=>{
+        const my=side==='a'?m.scoreA:m.scoreB, opp_=side==='a'?m.scoreB:m.scoreA;
+        const opp=side==='a'?teamName(m.teamB):teamName(m.teamA);
+        const res=my>opp_?'✓':my<opp_?'✗':'=';
+        const col=my>opp_?'var(--green-500)':my<opp_?'var(--red-500)':'var(--text-400)';
+        const dateStr=m.finishedAt?new Date(m.finishedAt).toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}):'';
+        return `<div class="list-item"><div style="width:20px;font-weight:800;color:${col}">${res}</div>
+          <div class="list-info"><div class="list-name text-sm">vs ${opp}</div><div class="list-sub">${t?.name||'?'}${dateStr?' · '+dateStr:''} · ${my}–${opp_} · ⚽${ps.goals} 🎯${ps.gamelles} 🤦${ps.ownGoals}</div></div></div>`;
+      }).join('')}</div>`
+      :'<div class="text-muted text-sm text-center" style="padding:20px">Aucun match joué</div>';
+
+  } else if (tab==='attacker' || tab==='defender') {
+    const role = tab==='attacker'?'attacker':'defender';
+    const rs = getPlayerStatsByRole(p.id, role);
+    const panelId = tab==='attacker'?'pd-tab-attacker':'pd-tab-defender';
+    const el=document.getElementById(panelId); if(el) el.style.display='';
+    const gridId = tab==='attacker'?'pd-stat-grid-att':'pd-stat-grid-def';
+    const rwDisplay=rs.losses===0?(rs.wins>0?'∞':'—'):(rs.wins/Math.max(rs.losses,1)).toFixed(2);
+    const cleanSheets = role==='defender' ? getPlayerCleanSheets(p.id) : null;
+    document.getElementById(gridId).innerHTML=[
+      {label:'⚽ Buts',val:rs.goals},{label:'🎮 Matchs',val:rs.matches},
+      {label:'🛡 Arrêts',val:rs.saves},{label:'🎯 Cadrages',val:rs.gamelles},
+      {label:'🏆 Victoires',val:rs.wins},{label:'🤦 CSC',val:rs.ownGoals},
+      {label:'📊 V/D',val:rwDisplay},{label:'🚪 Sorties',val:rs.sorties},
+      ...(role==='defender'?[{label:'🔒 Cage inv.',val:cleanSheets}]:[]),
+    ].map(x=>`<div class="stat-mini"><div class="stat-mini-val">${x.val}</div><div class="stat-mini-lbl">${x.label}</div></div>`).join('');
+
+  } else if (tab==='records') {
+    const el=document.getElementById('pd-tab-records'); if(el) el.style.display='';
+    renderPersonalRecords(p.id);
+
+  } else if (tab==='achievements') {
+    const el=document.getElementById('pd-tab-achievements'); if(el) el.style.display='';
+    const achEl=document.getElementById('pd-achievements');
+    if (achEl) {
+      const unlockedIds=p.achievements||[];
+      achEl.innerHTML=ACHIEVEMENT_DEFS.map(a=>{
+        const unlocked=unlockedIds.includes(a.id);
+        return `<div class="ach-card ${unlocked?'unlocked':''}" onclick="showAchievementDetail('${a.id}','${p.id}')" style="cursor:pointer">
+          <div class="ach-icon">${a.icon}</div>
+          <div class="ach-name">${a.name}</div>
+          <div class="ach-desc">${a.desc}</div>
+        </div>`;
+      }).join('');
+    }
+  }
+}
+
+function renderPersonalRecords(pid) {
+  const el=document.getElementById('pd-records-body'); if (!el) return;
+  const allM=getAllMatchesForPlayer(pid);
+  if (!allM.length) { el.innerHTML='<div class="text-muted text-sm text-center" style="padding:20px">Aucun match joué</div>'; return; }
+  let bestGoals=0, bestSaves=0, biggestWin=0, longestWinStreak=0, curStreak=0;
+  let bestGoalsMatch=null, biggestWinMatch=null;
+  allM.forEach(({m,side,ps})=>{
+    const g=ps.goals||0, sv=ps.saves||0;
+    if(g>bestGoals){bestGoals=g;bestGoalsMatch=m;}
+    if(sv>bestSaves) bestSaves=sv;
+    const my=side==='a'?m.scoreA:m.scoreB, opp_=side==='a'?m.scoreB:m.scoreA;
+    const diff=my-opp_;
+    if(diff>biggestWin){biggestWin=diff;biggestWinMatch=m;}
+    if(m.winner===side){curStreak++;longestWinStreak=Math.max(longestWinStreak,curStreak);}else curStreak=0;
+  });
+  const rows=[
+    {label:'⚽ Record buts (match)',val:bestGoals},
+    {label:'🛡 Record arrêts (match)',val:bestSaves},
+    {label:'🏆 Plus grande victoire',val:biggestWin>0?`+${biggestWin}`:'—'},
+    {label:'🔥 Série de victoires',val:longestWinStreak},
+    {label:'🎮 Total matchs joués',val:allM.length},
+    {label:'⚽ Total buts marqués',val:allM.reduce((s,{ps})=>s+(ps.goals||0),0)},
+    {label:'🛡 Total arrêts',val:allM.reduce((s,{ps})=>s+(ps.saves||0),0)},
+  ];
+  el.innerHTML=rows.map(r=>`<div class="record-row"><span class="text-sm">${r.label}</span><span class="font-bold">${r.val}</span></div>`).join('');
 }
 
 /* ═══════════════════════════════════════
    COMPARE
 ═══════════════════════════════════════ */
+let _compareMode = 'players';
+
+function switchCompareMode(mode, btn) {
+  _compareMode = mode;
+  document.querySelectorAll('.compare-mode-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('compare-players-panel').style.display = mode==='players' ? '' : 'none';
+  document.getElementById('compare-teams-panel').style.display   = mode==='teams'   ? '' : 'none';
+  if (mode==='teams') {
+    ['compare-team-a','compare-team-b'].forEach(id=>{
+      const sel=document.getElementById(id), cur=sel.value;
+      sel.innerHTML='<option value="">— Choisir —</option>'+db.teams.map(t=>`<option value="${t.id}" ${t.id===cur?'selected':''}>${t.name}</option>`).join('');
+    });
+    renderTeamComparison();
+  }
+}
+
 function renderCompare() {
   ['compare-player-a','compare-player-b'].forEach(id=>{
     const sel=document.getElementById(id), cur=sel.value;
     sel.innerHTML='<option value="">— Choisir —</option>'+db.players.map(p=>`<option value="${p.id}" ${p.id===cur?'selected':''}>${p.name}</option>`).join('');
   });
+  ['compare-team-a','compare-team-b'].forEach(id=>{
+    const sel=document.getElementById(id), cur=sel.value;
+    sel.innerHTML='<option value="">— Choisir —</option>'+db.teams.map(t=>`<option value="${t.id}" ${t.id===cur?'selected':''}>${t.name}</option>`).join('');
+  });
   renderComparison();
 }
+
+function _compareBarRow(label, vA, vB) {
+  const total=vA+vB;
+  const pctA=total?Math.round(vA/total*100):50, pctB=100-pctA;
+  return `<div class="compare-stat-label">${label}</div>
+    <div class="compare-bar-row">
+      <div class="compare-label" style="color:var(--red-500)">${vA}</div>
+      <div class="compare-bar-wrap">
+        <div class="compare-bar-a" style="width:${pctA}%">${pctA>15?pctA+'%':''}</div>
+        <div class="compare-bar-b" style="width:${pctB}%">${pctB>15?pctB+'%':''}</div>
+      </div>
+      <div class="compare-label" style="text-align:left;color:var(--blue-500)">${vB}</div>
+    </div>`;
+}
+
 function renderComparison() {
   const pidA=document.getElementById('compare-player-a').value;
   const pidB=document.getElementById('compare-player-b').value;
@@ -2215,36 +3338,79 @@ function renderComparison() {
   if (!pidA||!pidB) { el.innerHTML='<div class="empty"><div class="empty-icon">⚖️</div><div class="empty-title">Choisis 2 joueurs</div></div>'; return; }
   const pA=db.players.find(x=>x.id===pidA), pB=db.players.find(x=>x.id===pidB);
   const sA=getPlayerStats(pidA), sB=getPlayerStats(pidB);
+  const eloA=pA?.elo||1000, eloB=pB?.elo||1000;
+  const rkA=getELORank(eloA), rkB=getELORank(eloB);
   const stats=[
-    {key:'goals',label:'⚽ Buts'},
+    {key:'goals',label:'⚽ Buts'},{key:'sorties',label:'🚪 Sorties'},
     {key:'saves',label:'🛡 Arrêts'},{key:'gamelles',label:'🎯 Cadrages'},
     {key:'ownGoals',label:'🤦 CSC'},{key:'wins',label:'🏆 Victoires'},
     {key:'winRatio',label:'📊 V/D'},
   ];
   let html=`<div class="card mb-12">
-    <div class="flex-between mb-12">
-      <div class="flex-center gap-8"><div class="avatar avatar-sm" style="background:var(--red-50);border-color:var(--red-400);color:var(--red-500)">${initials(pA?.name||'?')}</div><span style="font-weight:700">${pA?.name}</span></div>
+    <div class="flex-between mb-8">
+      <div class="flex-center gap-8"><div class="avatar avatar-sm" style="background:var(--red-50);border-color:var(--red-400);color:var(--red-500)">${initials(pA?.name||'?')}</div><div><div style="font-weight:700">${pA?.name}</div><div class="text-xs text-muted">${rkA.icon} ${rkA.name} · ${eloA}</div></div></div>
       <span style="font-size:18px;color:var(--beige-400)">vs</span>
-      <div class="flex-center gap-8"><span style="font-weight:700">${pB?.name}</span><div class="avatar avatar-sm" style="background:var(--blue-50);border-color:var(--blue-400);color:var(--blue-500)">${initials(pB?.name||'?')}</div></div>
-    </div>`;
+      <div class="flex-center gap-8"><div><div style="font-weight:700;text-align:right">${pB?.name}</div><div class="text-xs text-muted text-right">${rkB.icon} ${rkB.name} · ${eloB}</div></div><div class="avatar avatar-sm" style="background:var(--blue-50);border-color:var(--blue-400);color:var(--blue-500)">${initials(pB?.name||'?')}</div></div>
+    </div>
+    ${_compareBarRow('⚡ ELO', eloA, eloB)}`;
   stats.forEach(({key,label})=>{
     const vA=parseFloat(sA[key])||0, vB=parseFloat(sB[key])||0;
-    const total=vA+vB;
-    const pctA=total?Math.round(vA/total*100):50, pctB=100-pctA;
-    html+=`<div class="compare-stat-label">${label}</div>
-      <div class="compare-bar-row">
-        <div class="compare-label" style="color:var(--red-500)">${vA}</div>
-        <div class="compare-bar-wrap">
-          <div class="compare-bar-a" style="width:${pctA}%">${pctA>15?pctA+'%':''}</div>
-          <div class="compare-bar-b" style="width:${pctB}%">${pctB>15?pctB+'%':''}</div>
-        </div>
-        <div class="compare-label" style="text-align:left;color:var(--blue-500)">${vB}</div>
-      </div>`;
+    html+=_compareBarRow(label, vA, vB);
   });
   const sc=getPlayerMVPScore(pidA), sb=getPlayerMVPScore(pidB);
   const winner=sc>sb?pA:sb>sc?pB:null;
   if (winner) html+=`<div class="text-center mt-12" style="padding:10px;background:var(--gold-50);border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:800;color:var(--gold-500)">🏆 Meilleur overall : ${winner.name}</div>`;
   html+='</div>';
+  el.innerHTML=html;
+}
+
+function renderTeamComparison() {
+  const tAid=document.getElementById('compare-team-a').value;
+  const tBid=document.getElementById('compare-team-b').value;
+  const el=document.getElementById('compare-teams-result');
+  if (!tAid||!tBid) { el.innerHTML='<div class="empty"><div class="empty-icon">⚖️</div><div class="empty-title">Choisis 2 équipes</div></div>'; return; }
+  const tA=db.teams.find(x=>x.id===tAid), tB=db.teams.find(x=>x.id===tBid);
+
+  function teamStats(tid) {
+    let matches=0,wins=0,losses=0,draws=0,goals=0,goalsAgainst=0,tournoiWins=0;
+    db.tournaments.forEach(t=>t.matches.filter(m=>m.finished&&(m.teamA===tid||m.teamB===tid)).forEach(m=>{
+      const side=m.teamA===tid?'a':'b';
+      matches++; goals+=side==='a'?m.scoreA:m.scoreB; goalsAgainst+=side==='a'?m.scoreB:m.scoreA;
+      if(m.winner===side) wins++; else if(!m.winner) draws++; else losses++;
+    }));
+    tournoiWins=getTeamTournamentsWon(tid);
+    const streak=getTeamBestStreak(tid);
+    const winRatio=losses===0?(wins>0?wins:0):parseFloat((wins/losses).toFixed(2));
+    return {matches,wins,losses,draws,goals,goalsAgainst,tournoiWins,streak,winRatio};
+  }
+
+  // Head-to-head
+  let h2hWA=0,h2hWB=0,h2hD=0;
+  db.tournaments.flatMap(t=>t.matches)
+    .filter(m=>m.finished&&((m.teamA===tAid&&m.teamB===tBid)||(m.teamA===tBid&&m.teamB===tAid)))
+    .forEach(m=>{
+      const sA=m.teamA===tAid?'a':'b';
+      if(m.winner===sA) h2hWA++; else if(!m.winner) h2hD++; else h2hWB++;
+    });
+
+  const sA=teamStats(tAid), sB=teamStats(tBid);
+  const atkA=db.players.find(p=>p.id===tA?.attackerId), defA=db.players.find(p=>p.id===tA?.defenderId);
+  const atkB=db.players.find(p=>p.id===tB?.attackerId), defB=db.players.find(p=>p.id===tB?.defenderId);
+
+  let html=`<div class="card mb-12">
+    <div class="flex-between mb-12">
+      <div class="flex-center gap-8"><div class="avatar avatar-sm" style="background:var(--red-50);border-color:var(--red-400);color:var(--red-500)">${initials(tA?.name||'?')}</div><div><div style="font-weight:700">${tA?.name}</div><div class="text-xs text-muted">⚔️ ${atkA?.name||'?'} · 🛡 ${defA?.name||'?'}</div></div></div>
+      <span style="font-size:18px;color:var(--beige-400)">vs</span>
+      <div class="flex-center gap-8"><div><div style="font-weight:700;text-align:right">${tB?.name}</div><div class="text-xs text-muted text-right">⚔️ ${atkB?.name||'?'} · 🛡 ${defB?.name||'?'}</div></div><div class="avatar avatar-sm" style="background:var(--blue-50);border-color:var(--blue-400);color:var(--blue-500)">${initials(tB?.name||'?')}</div></div>
+    </div>
+    ${h2hWA+h2hWB+h2hD>0?`<div style="text-align:center;padding:8px;background:var(--beige-200);border-radius:8px;margin-bottom:12px;font-size:13px;font-weight:700">⚔️ Face à face : <span style="color:var(--red-500)">${h2hWA}V</span> · ${h2hD}N · <span style="color:var(--blue-500)">${h2hWB}V</span></div>`:''}
+    ${_compareBarRow('🎮 Matchs', sA.matches, sB.matches)}
+    ${_compareBarRow('🏆 Victoires', sA.wins, sB.wins)}
+    ${_compareBarRow('📊 Ratio V/D', parseFloat(sA.winRatio)||0, parseFloat(sB.winRatio)||0)}
+    ${_compareBarRow('⚽ Buts', sA.goals, sB.goals)}
+    ${_compareBarRow('🏅 Tournois', sA.tournoiWins, sB.tournoiWins)}
+    ${_compareBarRow('🔥 Série', sA.streak, sB.streak)}
+  </div>`;
   el.innerHTML=html;
 }
 
@@ -2268,8 +3434,27 @@ function renderHome() {
     </div>`;
   } else {
     heroEl.innerHTML=`<div class="hero"><div class="hero-title">Bienvenue ! ⚽</div><div class="hero-sub">Aucun tournoi en cours. Lance le premier !</div>
-      <div class="hero-actions"><button class="btn btn-sm" style="background:rgba(255,255,255,.9);color:var(--orange-400);font-weight:700" onclick="openModal('modal-new-tournament')">+ Nouveau tournoi</button></div>
+      <div class="hero-actions"></div>
     </div>`;
+  }
+
+  // Active KotT session
+  const activeKot=(db.kotSessions||[]).find(s=>s.status==='active');
+  const kotEl=document.getElementById('home-hero');
+  const existingKot=document.getElementById('home-kot-banner');
+  if(existingKot) existingKot.remove();
+  if(activeKot) {
+    const topTeam=[...activeKot.teams].map(tid=>({tid,s:activeKot.stats[tid]||{}})).sort((a,b)=>(b.s.wins||0)-(a.s.wins||0))[0];
+    const banner=document.createElement('div');
+    banner.id='home-kot-banner';
+    banner.innerHTML=`<div class="card mb-12" style="background:var(--purple-50);border:2px solid var(--purple-500);cursor:pointer" onclick="showKotSession('${activeKot.id}')">
+      <div class="flex-between">
+        <div><div style="font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--purple-500)">👑 King of the Table — ${activeKot.name}</div>
+          <div class="text-xs text-muted mt-4">${activeKot.matches.length} matchs · Leader : ${topTeam?teamName(topTeam.tid)+' ('+topTeam.s.wins+'V)':'—'}</div></div>
+        <span class="pill pill-purple">Reprendre →</span>
+      </div>
+    </div>`;
+    kotEl.insertAdjacentElement('afterend', banner);
   }
 
   // Badges — 3 home badges: Ballon d'Or (main), Soulier d'Or + Master Def (sub row)
@@ -2280,7 +3465,7 @@ function renderHome() {
   const sP=sWid?db.players.find(p=>p.id===sWid):null;
   const mdP=mdWid?db.players.find(p=>p.id===mdWid):null;
   badgesEl.innerHTML=`
-    <div class="home-badge-main ${boP?'':''}" onclick="showBadgeDetail('ballon_or')">
+    <div class="home-badge-main" onclick="showBadgeDetail('ballon_or')">
       <div class="badge-icon">🥇</div>
       <div class="badge-name">Ballon d'Or</div>
       <div class="badge-holder">${boP?.name||'—'}</div>
@@ -2312,15 +3497,6 @@ function renderHome() {
     shameEl.innerHTML=html||'<div class="card text-center text-muted text-sm" style="padding:16px">Pas encore de stats. À vos tables !</div>';
   }
 
-  // Recent tournaments
-  document.getElementById('home-tournaments').innerHTML=db.tournaments.slice(0,4).map(t=>{
-    const done=t.matches.filter(m=>m.finished).length, total=t.matches.length;
-    return `<div class="card flex-center gap-12" onclick="showPage('tournament-detail','${t.id}')" style="cursor:pointer">
-      <span style="font-size:28px">🏆</span>
-      <div class="list-info"><div class="list-name">${t.name}</div><div class="list-sub">${new Date(t.date).toLocaleDateString('fr-FR')} · ${done}/${total} matchs</div></div>
-      <span class="pill ${t.status==='finished'?'pill-green':'pill-orange'}">${t.status==='finished'?'Terminé':'En cours'}</span>
-    </div>`;
-  }).join('')||'<div class="card text-center text-muted text-sm" style="padding:16px">Aucun tournoi pour l\'instant.</div>';
 }
 
 /* ═══════════════════════════════════════
@@ -2341,6 +3517,106 @@ function renderTournaments() {
       <div class="text-xs text-muted mt-8">${done}/${total} matchs · ${pct}%</div>
     </div>`;
   }).join('');
+}
+
+/* ═══════════════════════════════════════
+   WHEEL OF FORTUNE
+═══════════════════════════════════════ */
+function populateWheelModal() {
+  const grid = document.getElementById('wheel-players');
+  if (!grid) return;
+  grid.innerHTML = db.players.map(p => `
+    <div class="wheel-pcard" id="wp-${p.id}" onclick="toggleWheelPlayer('${p.id}')">
+      <div class="avatar avatar-sm" style="margin:0 auto 4px">${initials(p.name)}</div>
+      <div style="font-size:11px;font-weight:700;text-align:center">${p.name}</div>
+      <div style="font-size:10px;color:var(--text-400);text-align:center">${p.role==='attaquant'?'⚔️':p.role==='defenseur'?'🛡':'⚽'}</div>
+    </div>`).join('');
+  document.getElementById('wheel-result').innerHTML='';
+}
+function toggleWheelPlayer(pid) {
+  const el=document.getElementById('wp-'+pid);
+  if(el) el.classList.toggle('selected');
+}
+let _wheelTeams = null;
+
+function spinWheel() {
+  const selected=[...document.querySelectorAll('.wheel-pcard.selected')].map(el=>el.id.replace('wp-',''));
+  if(selected.length<2){toast('Sélectionne au moins 2 joueurs !');return;}
+  const arr=[...selected];
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  // Build duo pairs — if even, pair 1-2, 3-4... If odd, last player gets an extra
+  const pairs=[];
+  for(let i=0;i<arr.length;i+=2){
+    if(i+1<arr.length) pairs.push([arr[i],arr[i+1]]);
+    else pairs[pairs.length-1].push(arr[i]); // add extra to last pair
+  }
+  _wheelTeams = pairs;
+  const pName=pid=>db.players.find(p=>p.id===pid)?.name||'?';
+  const colors=['var(--red-500)','var(--blue-500)','var(--green-500)','var(--purple-500)','var(--gold-500)'];
+  document.getElementById('wheel-result').innerHTML=`
+    <div class="card" style="margin-top:12px">
+      ${pairs.map((pair,i)=>`
+        <div style="margin-bottom:8px">
+          <div style="font-weight:700;color:${colors[i%colors.length]};margin-bottom:4px">Équipe ${String.fromCharCode(65+i)}</div>
+          ${pair.map(id=>`<div class="text-sm" style="padding:2px 0">${pName(id)}</div>`).join('')}
+        </div>`).join('<div class="divider"></div>')}
+    </div>
+    <button class="btn btn-green btn-full btn-sm mt-8" onclick="saveWheelTeams()">💾 Enregistrer ces équipes</button>`;
+  toast('🎲 Équipes générées !');
+}
+
+function saveWheelTeams() {
+  if (!_wheelTeams||!_wheelTeams.length) return;
+  const colors=['rouge','bleu','vert','violet','or'];
+  let created=0;
+  _wheelTeams.forEach((pair,i)=>{
+    const [p1id,p2id]=pair;
+    const p1=db.players.find(p=>p.id===p1id), p2=db.players.find(p=>p.id===p2id);
+    if(!p1||!p2) return;
+    const name=`${p1.name} & ${p2.name}`;
+    const exists=db.teams.find(t=>(t.attackerId===p1id&&t.defenderId===p2id)||(t.attackerId===p2id&&t.defenderId===p1id));
+    if(exists){toast(`⚠️ ${name} existe déjà`);return;}
+    db.teams.push({id:uid(),name,attackerId:p1id,defenderId:p2id});
+    created++;
+  });
+  if(created>0){dbSave();renderTeams();toast(`✅ ${created} équipe(s) enregistrée(s) !`);}
+  closeModal('modal-wheel');
+}
+
+/* ═══════════════════════════════════════
+   MATCH PREDICTION
+═══════════════════════════════════════ */
+function renderMatchPrediction(m, t) {
+  ['a','b'].forEach(side => {
+    const el = document.getElementById('match-predict-'+side);
+    if (!el) return;
+    const teamId = side==='a' ? m.teamA : m.teamB;
+    const oppId  = side==='a' ? m.teamB : m.teamA;
+    const team   = db.teams.find(x=>x.id===teamId);
+    const opp    = db.teams.find(x=>x.id===oppId);
+    if (!team||!opp) { el.innerHTML=''; return; }
+    // ELO
+    const atkId  = side==='a' ? m.stats?.a?.attacker?.id : m.stats?.b?.attacker?.id;
+    const defId  = side==='a' ? m.stats?.a?.defender?.id : m.stats?.b?.defender?.id;
+    const atk    = db.players.find(p=>p.id===atkId);
+    const def    = db.players.find(p=>p.id===defId);
+    const eloAtk = atk?.elo||1000, eloDef = def?.elo||1000;
+    const eloAvg = Math.round((eloAtk+eloDef)/2);
+    // Recent form (last 5 matches of each player)
+    const form = [atkId,defId].filter(Boolean).map(pid=>{
+      return getAllMatchesForPlayer(pid).slice(0,5).reduce((acc,{m:mx,side:s})=>{
+        if(mx.winner===s) return acc+'<span style="color:var(--green-500)">W</span>';
+        if(!mx.winner) return acc+'<span style="color:var(--text-400)">D</span>';
+        return acc+'<span style="color:var(--red-400)">L</span>';
+      },'');
+    });
+    el.innerHTML=`<div class="predict-card">
+      <div style="font-weight:700;font-size:12px;margin-bottom:6px">${side==='a'?'🔴':'🔵'} ${team.name}</div>
+      <div class="text-xs" style="margin-bottom:4px">⚡ ELO moy. : <strong>${eloAvg}</strong></div>
+      ${atk?`<div class="text-xs">⚔️ ${atk.name} — forme : ${form[0]||'—'}</div>`:''}
+      ${def?`<div class="text-xs">🛡 ${def.name} — forme : ${form[1]||'—'}</div>`:''}
+    </div>`;
+  });
 }
 
 /* ═══════════════════════════════════════
@@ -2389,6 +3665,7 @@ function adminExportMD() {
   });
   if (!db.tournaments.length) md += `_Aucun tournoi._\n`;
 
+
   md += `\n---\n\n## JSON brut\n\n\`\`\`json\n${JSON.stringify(db, null, 2)}\n\`\`\`\n`;
 
   const blob = new Blob([md], { type: 'text/markdown' });
@@ -2408,46 +3685,27 @@ function adminImportData(mode) {
   try { parsed = JSON.parse(raw); }
   catch(e) { toast('JSON invalide : ' + e.message); return; }
   if (typeof parsed !== 'object' || !parsed.version) { toast('Format invalide — version manquante'); return; }
-
-  const titleEl = document.getElementById('confirm-import-title');
-  const textEl  = document.getElementById('confirm-import-text');
-  const exportBtn = document.getElementById('confirm-import-export-btn');
-  const confirmBtn = document.getElementById('confirm-import-data');
-
-  if (mode === 'replace') {
-    titleEl.textContent = '🔄 Remplacer les données';
-    textEl.innerHTML = 'Les données actuelles (joueurs, équipes, tournois) seront <strong>définitivement remplacées</strong> par le JSON importé.<br><br>Tu peux exporter les données actuelles avant de continuer.';
-    exportBtn.style.display = 'block';
-    confirmBtn.textContent = '🔄 Remplacer';
-    confirmBtn.onclick = () => {
-      localStorage.setItem(DB_KEY, raw);
-      dbLoad(); closeModal('modal-confirm-import');
-      document.getElementById('admin-import-json').value = '';
-      adminRefreshDebug(); renderHome();
-      toast('Données remplacées !');
-    };
-  } else {
-    titleEl.textContent = '➕ Fusionner les données';
-    const newP = (parsed.players||[]).length, newT = (parsed.teams||[]).length, newTo = (parsed.tournaments||[]).length;
-    textEl.innerHTML = `Fusion de <strong>${newP} joueur(s)</strong>, <strong>${newT} équipe(s)</strong>, <strong>${newTo} tournoi(s)</strong> avec les données existantes.<br><br>Les doublons (même ID) seront ignorés.`;
-    exportBtn.style.display = 'none';
-    confirmBtn.textContent = '➕ Fusionner';
-    confirmBtn.onclick = () => {
-      const existingIds = {
-        players: new Set(db.players.map(x=>x.id)),
-        teams:   new Set(db.teams.map(x=>x.id)),
-        tournaments: new Set(db.tournaments.map(x=>x.id)),
-      };
-      (parsed.players||[]).forEach(x=>{ if(!existingIds.players.has(x.id)) db.players.push(x); });
-      (parsed.teams||[]).forEach(x=>{ if(!existingIds.teams.has(x.id)) db.teams.push(x); });
-      (parsed.tournaments||[]).forEach(x=>{ if(!existingIds.tournaments.has(x.id)) db.tournaments.push(x); });
-      dbSave(); closeModal('modal-confirm-import');
-      document.getElementById('admin-import-json').value = '';
-      adminRefreshDebug(); renderHome();
-      toast('Données fusionnées !');
-    };
-  }
+  const modeLabel = mode==='merge' ? 'Fusionner (ajouter aux données existantes)' : 'Remplacer toutes les données';
+  const txtEl = document.getElementById('confirm-import-text');
+  if (txtEl) txtEl.textContent = modeLabel;
   openModal('modal-confirm-import');
+  document.getElementById('confirm-import-data').onclick = () => {
+    if (mode === 'merge') {
+      // Merge: add new players/teams/tournaments not already present
+      parsed.players?.forEach(p => { if (!db.players.find(x=>x.id===p.id)) db.players.push(p); });
+      parsed.teams?.forEach(t => { if (!db.teams.find(x=>x.id===t.id)) db.teams.push(t); });
+      parsed.tournaments?.forEach(t => { if (!db.tournaments.find(x=>x.id===t.id)) db.tournaments.push(t); });
+      dbSave();
+    } else {
+      localStorage.setItem(DB_KEY, raw);
+      dbLoad();
+    }
+    closeModal('modal-confirm-import');
+    document.getElementById('admin-import-json').value = '';
+    adminRefreshDebug();
+    renderHome();
+    toast(mode==='merge' ? 'Données fusionnées !' : 'Données importées !');
+  };
 }
 
 const _adminErrors = [];
@@ -2492,14 +3750,331 @@ function adminRefreshDebug() {
   rawEl.textContent = JSON.stringify(db, null, 2);
 }
 
+function adminRecalcELO() {
+  recalcAllELO();
+  toast('⚡ ELO recalculé pour tous les joueurs !');
+  adminRefreshDebug();
+}
+
+function adminCheckAchievements() {
+  recalcAllELO();
+  const newByPlayer = checkAllAchievements();
+  dbSave();
+  const total = Object.values(newByPlayer).reduce((s, a) => s + a.length, 0);
+  toast(total > 0 ? `🏆 ${total} achievement(s) attribué(s) !` : '✓ Tous les achievements sont à jour');
+  adminRefreshDebug();
+}
+
 function renderAdmin() {
   adminRefreshDebug();
 }
 
 /* ═══════════════════════════════════════
+   SWISS SYSTEM
+═══════════════════════════════════════ */
+function saveSwissTournament() {
+  const name = document.getElementById('nto-swiss-name').value.trim();
+  const rounds = parseInt(document.getElementById('nto-swiss-rounds').value)||5;
+  const duration = parseInt(document.getElementById('nto-swiss-duration').value)||5;
+  const sortiesPerBut = parseInt(document.getElementById('nto-swiss-sorties').value)||3;
+  if (!name) { toast('Donne un nom !'); return; }
+  const teams = [...document.querySelectorAll('#nto-swiss-teams-list input:checked')].map(c=>c.value);
+  if (teams.length < 4) { toast('Swiss : minimum 4 équipes !'); return; }
+  const t = { id:uid(), name, date:Date.now(), status:'active', mode:'swiss', teams, matches:[], matchDuration:duration, tiebreak:'goal_average', phase:'swiss', sortiesPerBut, groups:[], knockoutRounds:[], specialMatches:{}, swissRounds:rounds, swissCurrent:1, swissStandings:{} };
+  teams.forEach(tid=>{ t.swissStandings[tid]={pts:0,wins:0,draws:0,losses:0,gf:0,ga:0,matches:0,opponents:[]}; });
+  generateSwissRound(t, 1);
+  db.tournaments.unshift(t);
+  dbSave(); closeModal('modal-new-tournament');
+  renderHome(); renderTournaments();
+  toast('Tournoi Swiss créé ! 🔄');
+  showPage('tournament-detail', t.id);
+}
+
+function generateSwissRound(t, roundNum) {
+  const standings = getSwissStandings(t);
+  // Pair teams: try to pair by equal points, avoid rematches
+  const available = [...standings.map(s=>s.teamId)];
+  const pairs = [];
+  // Shuffle teams with same points block, then pair top-vs-next
+  const used = new Set();
+  for (let i=0; i<available.length; i++) {
+    if (used.has(available[i])) continue;
+    for (let j=i+1; j<available.length; j++) {
+      if (used.has(available[j])) continue;
+      const prevOpp = t.swissStandings[available[i]]?.opponents||[];
+      if (prevOpp.includes(available[j])) continue; // already played
+      pairs.push([available[i], available[j]]);
+      used.add(available[i]); used.add(available[j]); break;
+    }
+    // If no unused opponent found, allow rematch
+    if (!used.has(available[i])) {
+      for (let j=i+1; j<available.length; j++) {
+        if (!used.has(available[j])) {
+          pairs.push([available[i], available[j]]);
+          used.add(available[i]); used.add(available[j]); break;
+        }
+      }
+    }
+  }
+  pairs.forEach(([tA,tB])=>{
+    const coin=Math.random()<.5;
+    t.matches.push({id:uid(),phase:'swiss',swissRound:roundNum,teamA:coin?tA:tB,teamB:coin?tB:tA,stats:{a:null,b:null},scoreA:0,scoreB:0,finished:false,winner:null,sortiesA:0,sortiesB:0});
+  });
+}
+
+function getSwissStandings(t) {
+  const pts = {};
+  t.teams.forEach(tid=>pts[tid]={teamId:tid,pts:0,wins:0,draws:0,losses:0,gf:0,ga:0,matches:0});
+  t.matches.filter(m=>m.finished&&m.phase==='swiss').forEach(m=>{
+    if(!pts[m.teamA]||!pts[m.teamB]) return;
+    pts[m.teamA].matches++; pts[m.teamB].matches++;
+    pts[m.teamA].gf+=m.scoreA; pts[m.teamA].ga+=m.scoreB;
+    pts[m.teamB].gf+=m.scoreB; pts[m.teamB].ga+=m.scoreA;
+    if(m.winner==='a'){pts[m.teamA].pts+=3;pts[m.teamA].wins++;pts[m.teamB].losses++;}
+    else if(m.winner==='b'){pts[m.teamB].pts+=3;pts[m.teamB].wins++;pts[m.teamA].losses++;}
+    else{pts[m.teamA].pts++;pts[m.teamA].draws++;pts[m.teamB].pts++;pts[m.teamB].draws++;}
+  });
+  return Object.values(pts).sort((a,b)=>b.pts!==a.pts?b.pts-a.pts:(b.gf-b.ga)-(a.gf-a.ga)||b.gf-a.gf);
+}
+
+function checkSwissRoundComplete(t) {
+  const curRound = t.swissCurrent||1;
+  const roundMatches = t.matches.filter(m=>m.phase==='swiss'&&m.swissRound===curRound);
+  if (!roundMatches.length||!roundMatches.every(m=>m.finished)) return;
+  // Update standings opponents list
+  roundMatches.forEach(m=>{
+    if(!t.swissStandings) t.swissStandings={};
+    if(!t.swissStandings[m.teamA]) t.swissStandings[m.teamA]={pts:0,wins:0,draws:0,losses:0,gf:0,ga:0,matches:0,opponents:[]};
+    if(!t.swissStandings[m.teamB]) t.swissStandings[m.teamB]={pts:0,wins:0,draws:0,losses:0,gf:0,ga:0,matches:0,opponents:[]};
+    if(!t.swissStandings[m.teamA].opponents.includes(m.teamB)) t.swissStandings[m.teamA].opponents.push(m.teamB);
+    if(!t.swissStandings[m.teamB].opponents.includes(m.teamA)) t.swissStandings[m.teamB].opponents.push(m.teamA);
+  });
+  if (curRound < (t.swissRounds||5)) {
+    t.swissCurrent = curRound+1;
+    generateSwissRound(t, t.swissCurrent);
+    toast(`🔄 Round ${t.swissCurrent} généré !`);
+  } else {
+    t.status='finished'; t.phase='finished';
+    toast('🏆 Swiss terminé ! Classement final établi.');
+  }
+  dbSave();
+}
+
+function renderSwissTournamentDetail(t) {
+  const el = document.getElementById('td-matches'); if(!el) return;
+  const standings = getSwissStandings(t);
+  const curRound = t.swissCurrent||1;
+  let html=`<div class="card mb-12" style="background:var(--blue-50);border-color:var(--blue-400)">
+    <div class="card-title" style="color:var(--blue-500)">🔄 Tournoi Swiss · Round ${curRound}/${t.swissRounds||5}</div>
+    <div class="progress-bar mt-8"><div class="progress-fill" style="width:${Math.round((curRound-1)/(t.swissRounds||5)*100)}%;background:var(--blue-400)"></div></div>
+  </div>
+  <div class="section-header">Classement provisoire</div>
+  <div class="card mb-12">
+    ${standings.map((s,i)=>`<div class="list-item">
+      <div class="rank-num ${['rank-1','rank-2','rank-3'][i]||''}">${i+1}</div>
+      <div class="list-info"><div class="list-name">${teamName(s.teamId)}</div><div class="list-sub">${s.matches}J · ${s.wins}V ${s.draws}N ${s.losses}D · ${s.gf}:${s.ga}</div></div>
+      <div class="list-right"><div class="list-stat" style="color:var(--blue-500)">${s.pts}</div><div class="list-stat-label">pts</div></div>
+    </div>`).join('')}
+  </div>`;
+  // Rounds
+  for(let r=1;r<=curRound;r++){
+    const rm=t.matches.filter(m=>m.phase==='swiss'&&m.swissRound===r);
+    if(!rm.length) continue;
+    const done=rm.every(m=>m.finished);
+    html+=`<div class="swiss-round"><div class="swiss-round-header">Round ${r} ${done?'✓':''}</div>`;
+    rm.forEach(m=>{html+=renderMatchCard(m,t);});
+    html+='</div>';
+  }
+  if(t.status==='finished'){
+    html+=`<div class="card" style="background:var(--gold-50);border-color:var(--gold-500);margin-top:16px;text-align:center">
+      <div class="card-title" style="color:var(--gold-500)">🏆 Swiss terminé</div>
+      <div style="margin-top:8px;font-size:15px;font-weight:700">${teamName(standings[0]?.teamId)} 🥇</div>
+      <div style="font-size:13px;color:var(--text-500)">${standings[0]?.pts} pts</div>
+    </div>`;
+  }
+  html+=`<div style="margin-top:20px;padding-bottom:20px"><button class="btn btn-danger btn-full" onclick="deleteTournament('${t.id}')">🗑 Supprimer ce tournoi</button></div>`;
+  el.innerHTML=html;
+}
+
+/* ═══════════════════════════════════════
+   KING OF THE TABLE
+═══════════════════════════════════════ */
+function saveKotSession() {
+  const name = document.getElementById('nto-kot-name').value.trim();
+  const goalThreshold = parseInt(document.getElementById('nto-kot-goals').value)||3;
+  const sortiesPerBut = parseInt(document.getElementById('nto-kot-sorties').value)||3;
+  if (!name) { toast('Donne un nom à la session !'); return; }
+  const teams = [...document.querySelectorAll('#nto-kot-teams-list input:checked')].map(c=>c.value);
+  if (teams.length < 3) { toast('King of the Table : minimum 3 équipes !'); return; }
+  // Shuffle queue
+  const queue = [...teams];
+  for(let i=queue.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[queue[i],queue[j]]=[queue[j],queue[i]];}
+  const session = {
+    id:uid(), name, date:Date.now(), status:'active',
+    goalThreshold, sortiesPerBut, teams,
+    queue, // ordered list, first two are on table
+    matches:[], // KotT matches
+    stats:{} // per-team: reigns, wins, losses
+  };
+  teams.forEach(tid=>{ session.stats[tid]={reigns:0,wins:0,losses:0,currentReign:0,bestReign:0}; });
+  // First two are "on table"
+  session.stats[queue[0]].reigns=1; session.stats[queue[0]].currentReign=1;
+  if (!db.kotSessions) db.kotSessions=[];
+  db.kotSessions.unshift(session);
+  dbSave(); closeModal('modal-new-tournament');
+  renderHome();
+  toast('👑 Session King of the Table lancée !');
+  showKotSession(session.id);
+}
+
+let currentKotId = null;
+
+function showKotSession(sid) {
+  currentKotId = sid;
+  const renders = document.getElementById('page-kot');
+  if (!renders) return;
+  showPage('kot');
+}
+
+function renderKotPage() {
+  if (!currentKotId) return;
+  const session = db.kotSessions?.find(s=>s.id===currentKotId);
+  if (!session) return;
+  document.getElementById('kot-title').textContent = session.name;
+  document.getElementById('kot-status-pill').textContent = session.status==='finished'?'Terminée':'En cours';
+  const q=session.queue;
+  const onTable=[q[0],q[1]].filter(Boolean);
+  let html='';
+  // Current match display
+  if(onTable.length>=2) {
+    const tA=db.teams.find(t=>t.id===onTable[0]), tB=db.teams.find(t=>t.id===onTable[1]);
+    html+=`<div class="kot-table-card">
+      <div style="font-size:11px;font-weight:800;color:var(--orange-400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px">👑 Sur la table</div>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-bottom:16px">
+        <div style="text-align:center"><div style="font-family:var(--font-display);font-weight:800;font-size:14px">${tA?.name||'?'}</div><div class="text-xs text-muted">Règne : ${session.stats[onTable[0]]?.currentReign||1}</div></div>
+        <div style="font-size:20px;color:var(--beige-400)">vs</div>
+        <div style="text-align:center"><div style="font-family:var(--font-display);font-weight:800;font-size:14px">${tB?.name||'?'}</div><div class="text-xs text-muted">Règne : ${session.stats[onTable[1]]?.currentReign||0}</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <button class="btn btn-primary btn-full" onclick="kotMatchResult('${session.id}','${onTable[0]}','${onTable[1]}','a')">🏆 ${tA?.name||'A'} gagne</button>
+        <button class="btn btn-blue btn-full" onclick="kotMatchResult('${session.id}','${onTable[0]}','${onTable[1]}','b')">🏆 ${tB?.name||'B'} gagne</button>
+      </div>
+    </div>`;
+  }
+  // Queue
+  html+=`<div class="section-header">File d'attente</div><div class="kot-queue">`;
+  q.forEach((tid,i)=>{
+    const t=db.teams.find(x=>x.id===tid);
+    const st=session.stats[tid]||{};
+    html+=`<div class="kot-queue-item ${i<2?'on-table':''}">
+      <div class="kot-queue-pos ${i===0?'crown':''}">${i<2?'🎮':i+1}</div>
+      <div style="flex:1"><div style="font-weight:700;font-size:13px">${t?.name||'?'}</div>
+        <div class="text-xs text-muted">${st.wins||0}V · ${st.losses||0}D · ${st.reigns||0} règne(s)</div></div>
+      ${i>=2?`<button class="btn btn-xs btn-danger" onclick="kotRemoveTeam('${session.id}','${tid}')">✕</button>`:''}
+    </div>`;
+  });
+  html+='</div>';
+  // History
+  if(session.matches.length) {
+    html+=`<div class="section-header">Historique des matchs</div><div class="card">`;
+    [...session.matches].reverse().forEach(m=>{
+      const wn=teamName(m.winner), ln=teamName(m.loser);
+      html+=`<div class="list-item"><div style="width:20px;font-size:16px">👑</div><div class="list-info"><div class="list-name text-sm">${wn} def. ${ln}</div></div></div>`;
+    });
+    html+='</div>';
+  }
+  // End session
+  html+=`<div style="margin-top:16px;padding-bottom:20px">
+    <button class="btn btn-warn btn-full" onclick="kotEndSession('${session.id}')">🏁 Terminer la session</button>
+  </div>`;
+  document.getElementById('kot-content').innerHTML=html;
+}
+
+function kotMatchResult(sid, teamAId, teamBId, winner) {
+  const session=db.kotSessions?.find(s=>s.id===sid); if(!session) return;
+  const winnerId = winner==='a' ? teamAId : teamBId;
+  const loserId  = winner==='a' ? teamBId : teamAId;
+  session.matches.push({id:uid(),winner:winnerId,loser:loserId,date:Date.now()});
+  const ws=session.stats[winnerId], ls=session.stats[loserId];
+  ws.wins=(ws.wins||0)+1; ls.losses=(ls.losses||0)+1;
+  // Winner stays on table (position 0 or 1 stays, loser goes to end)
+  const wIdx=session.queue.indexOf(winnerId);
+  const lIdx=session.queue.indexOf(loserId);
+  session.queue.splice(lIdx,1); // remove loser from current position
+  session.queue.push(loserId);  // add loser to end of queue
+  // Update current reign
+  ls.currentReign=0;
+  ws.currentReign=(ws.currentReign||0)+1;
+  if(ws.currentReign>ws.bestReign) ws.bestReign=ws.currentReign;
+  // Next team enters (queue[1] now becomes the challenger)
+  const challenger=session.queue[1];
+  if(challenger) {
+    const cs=session.stats[challenger]||{};
+    cs.reigns=(cs.reigns||0)+1; cs.currentReign=1;
+    session.stats[challenger]=cs;
+    toast(`⬆️ ${teamName(challenger)} monte sur la table !`);
+  }
+  dbSave(); renderKotPage();
+}
+
+function kotRemoveTeam(sid, tid) {
+  const session=db.kotSessions?.find(s=>s.id===sid); if(!session) return;
+  session.queue=session.queue.filter(x=>x!==tid);
+  if(session.queue.length<2) { toast('Plus assez d\'équipes — session terminée !'); kotEndSession(sid); return; }
+  toast(`${teamName(tid)} retiré(e) de la session`);
+  dbSave(); renderKotPage();
+}
+
+function kotEndSession(sid) {
+  const session=db.kotSessions?.find(s=>s.id===sid); if(!session) return;
+  session.status='finished';
+  // Show summary
+  const rankings=[...session.teams].map(tid=>({tid,s:session.stats[tid]||{}}))
+    .sort((a,b)=>(b.s.wins||0)-(a.s.wins||0));
+  dbSave();
+  let html=`<div class="card" style="background:var(--gold-50);border-color:var(--gold-500);margin-bottom:12px">
+    <div class="card-title" style="color:var(--gold-500)">🏁 Session terminée — ${session.name}</div>
+    ${rankings.map((r,i)=>`<div class="flex-between" style="padding:6px 0;border-bottom:1px solid var(--beige-200)">
+      <div class="flex-center gap-8"><span style="font-size:18px">${['🥇','🥈','🥉'][i]||'·'}</span><span style="font-weight:700">${teamName(r.tid)}</span></div>
+      <span class="pill pill-orange">${r.s.wins||0}V · ${r.s.bestReign||0} best</span>
+    </div>`).join('')}
+  </div>
+  <button class="btn btn-secondary btn-full" onclick="showPage('home')">← Retour à l'accueil</button>`;
+  document.getElementById('kot-content').innerHTML=html;
+  document.getElementById('kot-status-pill').textContent='Terminée';
+}
+
+/* ═══════════════════════════════════════
+   SWIPE NAVIGATION (mobile)
+═══════════════════════════════════════ */
+(function(){
+  const SWIPE_PAGES = ['home','players','teams','tournaments','stats','compare','admin'];
+  let tsX=0, tsY=0;
+  document.addEventListener('touchstart', e=>{
+    tsX = e.touches[0].clientX;
+    tsY = e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', e=>{
+    if (window.innerWidth >= 768) return; // desktop sidebar handles nav
+    const dx = e.changedTouches[0].clientX - tsX;
+    const dy = e.changedTouches[0].clientY - tsY;
+    if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)*0.8) return;
+    if (!SWIPE_PAGES.includes(currentPage)) return;
+    const idx = SWIPE_PAGES.indexOf(currentPage);
+    if (dx < 0 && idx < SWIPE_PAGES.length-1) showPage(SWIPE_PAGES[idx+1]); // swipe left → next
+    else if (dx > 0 && idx > 0) showPage(SWIPE_PAGES[idx-1]);               // swipe right → prev
+  }, {passive:true});
+})();
+
+/* ═══════════════════════════════════════
    INIT
 ═══════════════════════════════════════ */
 renderHome();
+// Retroactive ELO + achievements for existing data (all functions now defined)
+(function() {
+  const hasMatches = db.tournaments.some(t=>t.matches.some(m=>m.finished));
+  if (hasMatches) { recalcAllELO(); checkAllAchievements(); dbSave(); }
+})();
 </script>
 </body>
 </html>
